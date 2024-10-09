@@ -46,6 +46,7 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
                   ),
                   100.h.verticalSpace,
                   AppTextField(
+                      fillcolor: Colors.transparent,
                     controller: _referralcontroller,
                     hintText: "Enter your 6 digit code here",
                   ),
@@ -63,7 +64,14 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
           ),
           SliverFillRemaining(
             hasScrollBody: false,
-            child: Waitinglist(title: "Don’t have the code?", subtitle: ""),
+            child: Waitinglist(
+              title: "Don’t have the code?",
+              subtitle: "",
+              text: "JOIN OUR WATING LIST ",
+              onpressed: () {
+                context.pushNamed(AppRoute.fortywaitinglistscreen.name);
+              },
+            ),
           )
         ]));
   }

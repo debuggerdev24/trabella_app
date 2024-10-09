@@ -37,7 +37,7 @@ class GlobalText extends StatelessWidget {
     final fontTextStyle = TextStyle(
       fontFamily: fontFamily ?? 'Sans',
       color: color,
-      height: height ?? 1.2,
+      height: height ?? 1.3,
       overflow: textOverflow,
       fontSize: fontSize,
       fontWeight: fontWeight,

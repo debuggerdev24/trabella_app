@@ -85,9 +85,14 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
           ),
           Expanded(
             child: Waitinglist(
-                title: "Not forty yet?",
-                subtitle:
-                    "We’ll send you a “Happy four-oh!” email with a code on your birthday!"),
+              title: "Not forty yet?",
+              subtitle:
+                  "We’ll send you a “Happy four-oh!” email with a code on your birthday!",
+              text: "JOIN OUR WATING LIST",
+              onpressed: () {
+                context.pushNamed(AppRoute.fortywaitinglistscreen.name);
+              },
+            ),
           )
         ],
       ),

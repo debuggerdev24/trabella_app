@@ -10,6 +10,15 @@ class AppAssets {
   static const String welcome = "assets/splash.png";
   static const String password = "assets/password.png";
   static const String datepicker = "assets/date.png";
+  static const String congratulation = "assets/congratulation.png";
+  static const String date = "assets/date.png";
+  static const String homebackground = "assets/homebackground.png";
+  static const String profilecard1 = "assets/profile1.png";
+  static const String profilecard2 = "assets/profile2.png";
+  static const String myprofile2 = "assets/profie.png";
+  static const String profileedit = "assets/profile_edit.png";
+  static const String profile2 = "assets/profile2.png";
+  static const String tripbackground = "assets\tripbackground.png";
 
   static const String apple = "assets/icons/apple.svg";
   static const String google = "assets/icons/google.svg";
@@ -22,6 +31,38 @@ class AppAssets {
   static const String facebookbutton = "assets/icons/facebookbutton.svg";
   static const String instagram = "assets/icons/instagram.svg";
   static const String tripadvisor = "assets/icons/tripadvisor.svg";
+  static const String check = "assets/icons/check.svg";
+  static const String addlanguage = "assets/icons/addlanguahe.svg";
+  static const String message = "assets/icons/messages.svg";
+  static const String notification = "assets/icons/notification.svg";
+  static const String mappin = "assets/icons/mappin.svg";
+  static const String thisorthat = "assets/icons/thisorthat.svg";
+  static const String instagramwhite = "assets/icons/instagramwhite.svg";
+  static const String birthchart = "assets/icons/birthchart.svg";
+  static const String stamps = "assets/icons/stamps.svg";
+  static const String setting = "assets/icons/setting.svg";
+  static const String myprofile = "assets/icons/myprofile.svg";
+  static const String invitefriend = "assets/icons/invitefriend.svg";
+  static const String logout = "assets/icons/logout.svg";
+  static const String drawercancel = "assets/icons/drawercancel.svg";
+  static const String appicon = "assets/icons/appicon.svg";
+  static const String homeicon = "assets/icons/homeicon.svg";
+  static const String portugal = "assets/icons/Portugal.svg";
+  static const String france = "assets/icons/France.svg";
+  static const String germany = "assets/icons/Germany.svg";
+  static const String savedplace = "assets/icons/saveplace.svg";
+
+  // Tabs//
+  static const String home = "assets/icons/home.svg";
+  static const String trips = "assets/icons/trip.svg";
+  static const String wallet = "assets/icons/wallet.svg";
+  static const String chats = "assets/icons/chat.svg";
+  static const String profile = "assets/icons/profile.svg";
+  static const String homefill = "assets/icons/homefill.svg";
+  static const String tripsfill = "assets/icons/tripsfill.svg";
+  static const String walletfill = "assets/icons/walletfill.svg";
+  static const String chatsfill = "assets/icons/chatfill.svg";
+  static const String profilefill = "assets/icons/profilefill.svg";
 }
 
 class SvgIcon extends StatelessWidget {

@@ -39,9 +39,7 @@ class CameraProvider with ChangeNotifier {
       _isCameraInitialized = true;
       _controller!.value =
           _controller!.value.copyWith(previewSize: previewSize);
-      // _controller!.value.copyWith(
-      //   previewSize: previewSize,
-      // );
+ 
       notifyListeners();
     } catch (e) {
       log("$e", name: "ERROR");

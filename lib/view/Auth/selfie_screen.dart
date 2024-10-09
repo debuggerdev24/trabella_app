@@ -40,7 +40,7 @@ class _selfieScreenState extends State<selfieScreen> {
                 ),
                 60.h.verticalSpace,
                 GlobalText(
-                  'It’s time for a selfie. Smile!',
+                  'It’s time for a selfie.Smile!',
                   textStyle: textStyle20SemiBold.copyWith(
                       color: AppColors.redcolor,
                       fontSize: 30.sp,
@@ -57,8 +57,6 @@ class _selfieScreenState extends State<selfieScreen> {
                 AppButton(
                   onPressed: () {
                     openAlertBox();
-                    context.pushNamed(AppRoute.takeselfiescreen.name);
-                    
                   },
                   text: "TAKE A SELFIE",
                 ),
@@ -92,7 +90,7 @@ class _selfieScreenState extends State<selfieScreen> {
                       padding: EdgeInsets.only(top: 13.r),
                       child: GestureDetector(
                           onTap: () {
-                            context.pop();
+                            context.pushNamed(AppRoute.takeselfiescreen.name);
                           },
                           child: SvgPicture.asset(AppAssets.cancel)),
                     ),
@@ -102,11 +100,11 @@ class _selfieScreenState extends State<selfieScreen> {
                 reqiredfiled("Make sure we can see you clearly"),
                 8.h.verticalSpace,
                 reqiredfiled(
-                    "Keep your face free of anything that hides it (glasses are fine, but no sunnies)"),
+                    "Keep your face free of anything that hides it (glasses are fine,but no sunnies)"),
                 8.h.verticalSpace,
                 reqiredfiled("Look straight at the camera"),
                 8.h.verticalSpace,
-                reqiredfiled("Take a live picture - old photos won’t work"),
+                reqiredfiled("Take a live picture - old photoswon’t work"),
                 32.h.verticalSpace,
               ],
             ),
@@ -119,9 +117,11 @@ class _selfieScreenState extends State<selfieScreen> {
       children: [
         SvgPicture.asset(AppAssets.bulletpoint),
         10.w.horizontalSpace,
-        GlobalText(text,
-            textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor.withOpacity(0.9))),
+        Expanded(
+          child: GlobalText(text,
+              textStyle: textStyle14.copyWith(
+                  color: AppColors.textcolor.withOpacity(0.9))),
+        ),
       ],
     );
   }

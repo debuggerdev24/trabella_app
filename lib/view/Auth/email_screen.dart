@@ -46,6 +46,7 @@ class _EmailscreenState extends State<Emailscreen> {
               ),
               100.h.verticalSpace,
               const AppTextField(
+                fillcolor: Colors.transparent,
                 hintText: "trabella@travel.com",
               ),
               30.h.verticalSpace,

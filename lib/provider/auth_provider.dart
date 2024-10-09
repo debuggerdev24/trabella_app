@@ -13,14 +13,8 @@ class Authprovider with ChangeNotifier {
 
   int get currentStep => _currentStep;
   DateTime get selectedDate => _selectedDate;
-  String get name => _name ?? ""; 
-  String get confirmPassword => _confirmPassword ?? ""; 
- 
-
-
-  
-
-  
+  String get name => _name ?? "";
+  String get confirmPassword => _confirmPassword ?? "";
 
   void nextStep() {
     if (_currentStep < 5) {
@@ -51,7 +45,7 @@ class Authprovider with ChangeNotifier {
     notifyListeners();
   }
 
-   updateConfirmPassword(String pwd) {
+  updateConfirmPassword(String pwd) {
     _confirmPassword = pwd;
     notifyListeners();
   }

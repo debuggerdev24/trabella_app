@@ -12,6 +12,7 @@ import 'package:travel_app/widgets/Authwidgets/auth_screens.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
 import 'package:travel_app/widgets/back_button.dart';
+import 'package:travel_app/widgets/steeper.dart';
 
 class HorizontalStepper extends StatelessWidget {
   @override
@@ -32,7 +33,7 @@ class HorizontalStepper extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             70.h.verticalSpace,
-            customStepper(context),
+            const Customstepper(),
             38.h.verticalSpace,
             KBackButton(
               onBackClick: () {
@@ -68,38 +69,6 @@ class HorizontalStepper extends StatelessWidget {
     );
   }
 
-  Widget customStepper(BuildContext context) {
-    final stepperProvider = Provider.of<Authprovider>(context);
-    return Row(
-      children: List.generate(6, (index) {
-        // Adjust the number of steps
-        return Row(
-          children: [
-            GestureDetector(
-              onTap: () {
-                stepperProvider.jumpToStep(index);
-              },
-              child: CircleAvatar(
-                radius: 7.r,
-                backgroundColor: stepperProvider.currentStep >= index
-                    ? AppColors.darkredcolor
-                    : AppColors.greycolor.withOpacity(0.5),
-              ),
-            ),
-            if (index < 5)
-              Container(
-                width: 50.w,
-                height: 5.r,
-                color: stepperProvider.currentStep > index
-                    ? AppColors.darkredcolor
-                    : AppColors.dotsteeprcolor,
-              ),
-          ],
-        );
-      }),
-    );
-  }
-
   Widget _confirmpassword(BuildContext context) {
     final stepperProvider = Provider.of<Authprovider>(context, listen: false);
     return SingleChildScrollView(
@@ -115,6 +84,7 @@ class HorizontalStepper extends StatelessWidget {
           ),
           150.h.verticalSpace,
           AppTextField(
+              fillcolor: Colors.transparent,
             hintText: "Confirm your password",
             suffixIcon: Image.asset(AppAssets.password),
             onChanged: (value) {
@@ -148,6 +118,7 @@ class HorizontalStepper extends StatelessWidget {
           ),
           148.h.verticalSpace,
           AppTextField(
+              fillcolor: Colors.transparent,
             labelText: "First name",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -158,6 +129,7 @@ class HorizontalStepper extends StatelessWidget {
           ),
           20.h.verticalSpace,
           AppTextField(
+              fillcolor: Colors.transparent,
             labelText: "Last Name",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -193,6 +165,7 @@ class HorizontalStepper extends StatelessWidget {
           ),
           149.h.verticalSpace,
           AppTextField(
+              fillcolor: Colors.transparent,
             labelText: "Nickname",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),

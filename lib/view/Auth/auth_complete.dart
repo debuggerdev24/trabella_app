@@ -98,12 +98,13 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
     );
   }
 
-  startTimer() {
+  startTimer() async {
     var duration = const Duration(milliseconds: 2000);
+    if (!mounted) return;
     return Future.delayed(
       duration,
       () {
-        context.goNamed(AppRoute.authcompletescreen.name);
+        context.pushNamed(AppRoute.congratulationscreen.name);
       },
     );
   }

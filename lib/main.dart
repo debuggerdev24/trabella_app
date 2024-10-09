@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/provider/camera_provider.dart';
+import 'package:travel_app/provider/home_provider.dart';
+import 'package:travel_app/provider/trips_provider.dart';
 import 'package:travel_app/utils/routes/route.dart';
 
 void main() {
@@ -11,6 +13,8 @@ void main() {
       providers: [
         ChangeNotifierProvider<Authprovider>(create: (_) => Authprovider()),
         ChangeNotifierProvider<CameraProvider>(create: (_) => CameraProvider()),
+        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+        ChangeNotifierProvider<TripProvider>(create: (_) => TripProvider()),
       ],
       child: const MyApp(),
     ),

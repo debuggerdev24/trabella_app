@@ -31,6 +31,7 @@ class AppTextField extends StatelessWidget {
     this.maxLines,
     this.outlineInputBorder,
     this.hintStyle,
+    this.fillcolor,
     this.enabled,
     this.isRequired = false,
     this.bottomText,
@@ -68,6 +69,7 @@ class AppTextField extends StatelessWidget {
   final String? bottomText;
   final TextStyle? bottomTextStyle;
   final bool readOnly;
+  final Color? fillcolor;
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +119,8 @@ class AppTextField extends StatelessWidget {
             suffix: suffix,
             prefix: prefix,
             hintText: hintText,
+            fillColor: fillcolor,
+            filled: true,
             hintStyle: hintStyle ?? textStyle14.copyWith(color: Colors.grey),
             contentPadding: contentPadding ??
                 REdgeInsets.symmetric(horizontal: 15.r, vertical: 23.r),

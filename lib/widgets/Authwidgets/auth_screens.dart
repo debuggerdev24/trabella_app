@@ -12,10 +12,16 @@ import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
+import 'package:travel_app/widgets/date_picker.dart';
 
-class Setbirthday extends StatelessWidget {
+class Setbirthday extends StatefulWidget {
   const Setbirthday({super.key});
 
+  @override
+  State<Setbirthday> createState() => _SetbirthdayState();
+}
+
+class _SetbirthdayState extends State<Setbirthday> {
   @override
   Widget build(BuildContext context) {
     final stepperProvider = Provider.of<Authprovider>(context);
@@ -32,39 +38,19 @@ class Setbirthday extends StatelessWidget {
           ),
           149.h.verticalSpace,
           AppTextField(
+              fillcolor: Colors.transparent,
             labelText: "Date of Birth",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
             suffixIcon: GestureDetector(
               onTap: () {
-                showCupertinoModalPopup<void>(
+                CustomDatePickers.showPicker(
                   context: context,
-                  builder: (_) {
-                    final size = MediaQuery.of(context).size;
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(2, 1),
-                              blurRadius: 3,
-                              color: AppColors.greycolor)
-                        ],
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(18),
-                          topRight: Radius.circular(18),
-                        ),
-                      ),
-                      height: size.height * 0.27,
-                      child: CupertinoDatePicker(
-                        mode: CupertinoDatePickerMode.date,
-                        initialDateTime: stepperProvider.selectedDate,
-                        onDateTimeChanged: (value) {
-                          stepperProvider.updateDate(value);
-                        },
-                      ),
-                    );
+                  mode: CupertinoDatePickerMode.date,
+                  initialDateTime: stepperProvider.selectedDate,
+                  onDateTimeChanged: (value) {
+                    stepperProvider.updateDate(value);
                   },
                 );
               },
@@ -127,17 +113,21 @@ class _SetpasswordState extends State<Setpassword> {
           ),
           110.h.verticalSpace,
           AppTextField(
+            fillcolor: Colors.transparent,
             controller: _setpasswordcontroller,
             hintText: "Choose your password",
             suffixIcon: Image.asset(AppAssets.password),
-            // onChanged: (String? value) {
-            //   stepperProvider.updatePassword(value ?? "");
-            // },
+            onChanged: (String? value) {
+              stepperProvider.updatePassword(value ?? "");
+            },
           ),
           36.h.verticalSpace,
           AppButton(
             onPressed: () {
               stepperProvider.nextStep();
+              if (stepperProvider.currentStep == 0) {
+                stepperProvider.nextStep();
+              }
             },
             text: "NEXT",
           ),
@@ -177,6 +167,7 @@ class _SetlocationState extends State<Setlocation> {
         ),
         110.h.verticalSpace,
         AppTextField(
+            fillcolor: Colors.transparent,
           labelText: "Location",
           labelStyle: textStyle18SemiBold.copyWith(color: AppColors.blackColor),
           hintText: "Enter your location",

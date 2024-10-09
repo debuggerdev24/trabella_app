@@ -89,8 +89,8 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 13.r),
+                    Align(
+                      alignment: Alignment.topRight,
                       child: GestureDetector(
                           onTap: () {
                             context.pop();

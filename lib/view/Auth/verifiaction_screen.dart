@@ -45,7 +45,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                 height: 1.sh,
                 width: 1.sw,
                 child: Stack(
-                  children: [   
+                  children: [
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Align(
@@ -102,7 +102,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                 ),
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),
@@ -111,12 +111,8 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
   }
 
   Widget cameraWidget(CameraProvider provider) {
-    // get screen size
     final size = Size(0.8.sw, 300.h);
-    // calculate scale for aspect ratio widget
     var scale = provider.controller!.value.aspectRatio / size.aspectRatio;
-
-    // check if adjustments are needed...
     if (provider.controller!.value.aspectRatio < size.aspectRatio) {
       scale = 1 / scale;
     }
