@@ -30,7 +30,7 @@ import 'package:travel_app/view/Trips/trip_createscreen.dart';
 import 'package:travel_app/view/Wallet/wallet_screen.dart';
 import 'package:travel_app/view/splash/splash_screen.dart';
 import 'package:travel_app/view/waitinglist/endofverification.dart';
-import 'package:travel_app/view/waitinglist/forty_waitinglis.dart';
+import 'package:travel_app/view/waitinglist/forty_waitinglist.dart';
 import 'package:travel_app/view/welcome/intro_screen.dart';
 import 'package:travel_app/view/welcome/onbording_screen.dart';
 
@@ -107,7 +107,7 @@ class AppNavigator {
   static StatefulNavigationShell? indexedStackNavigationShell;
 
   static final router = GoRouter(
-    initialLocation: AppRoute.homescreen.path,
+    initialLocation: AppRoute.splashScreen.path,
     debugLogDiagnostics: true,
     navigatorKey: rootNavigator,
     routes: [

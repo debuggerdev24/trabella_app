@@ -21,6 +21,7 @@ class TripProvider with ChangeNotifier {
   List<Map<String, dynamic>> get flightAttendances => _flightAttendances;
   List<Map<String, dynamic>> get itinereydata => _itinereydata;
   TripTabEnum get currentTripTab => _currentTripTab;
+
   bool get isShowSaved => _isShowSaved;
 
   void chnageTripTab(TripTabEnum value) {

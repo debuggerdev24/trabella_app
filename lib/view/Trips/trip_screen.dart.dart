@@ -43,7 +43,7 @@ class _TripsScreenState extends State<TripsScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TopBar(),
-            100.h.verticalSpace,
+            0.05.sh.verticalSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: GlobalText(
@@ -73,7 +73,6 @@ class _TripsScreenState extends State<TripsScreen>
                   },
                   text: "PLAN YOUR NEXT TRIP"),
             ),
-            
             Expanded(
               child: TabItems(
                 tripProvider: tripProvider,
@@ -165,6 +164,7 @@ class _TripsScreenState extends State<TripsScreen>
     DateTime? _Todate;
 
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext cont) {
         PageController _dialogPageController = PageController(initialPage: 0);
@@ -193,7 +193,6 @@ class _TripsScreenState extends State<TripsScreen>
                           _flightAttendance(_dialogPageController),
                           _accommodation(_dialogPageController, () {
                             context.pop();
-                            context.pushNamed(AppRoute.tripsscreen.name);
                           }),
                         ],
                       ),
@@ -221,9 +220,20 @@ class _TripsScreenState extends State<TripsScreen>
     final TextEditingController _tripnamecontroller = TextEditingController();
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Align(
+          alignment: Alignment.topRight,
+          child: GestureDetector(
+            onTap: () {
+              context.pop();
+            },
+            child: SvgPicture.asset(AppAssets.cancel),
+          ),
+        ),
+        10.h.verticalSpace,
         GlobalText(
-          "Create Trip",
+          "Create trip",
           textAlign: TextAlign.center,
           textStyle: textStyle20SemiBold.copyWith(
             color: AppColors.darkredcolor,

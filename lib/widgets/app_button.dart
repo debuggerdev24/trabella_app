@@ -58,7 +58,7 @@ class AppButton extends StatelessWidget {
                     : AppColors.darkredcolor),
         fixedSize: type == AppButtonWidthType.full
             ? Size(350.w, 65.h)
-            : Size(350.w, 65.h),
+            : Size(129.w, 60.h),
       ),
       label: GlobalText(
         text,

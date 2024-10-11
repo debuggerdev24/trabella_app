@@ -9,5 +9,3 @@ extension TripTabEnumExtension on TripTabEnum {
     };
   }
 }
-
-

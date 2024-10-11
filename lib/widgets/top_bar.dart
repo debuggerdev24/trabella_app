@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 import 'package:travel_app/utils/app_assets.dart';
 
 class TopBar extends StatelessWidget {
@@ -10,9 +11,9 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        right: 40.r,
-        left: 30.r,
-        top: 80.h,
+        right: 40.w,
+        left: 40.w,
+        top: 70.h,
       ),
       child: Row(
         children: [
@@ -28,6 +29,7 @@ class TopBar extends StatelessWidget {
               );
             },
           ),
+          
           const Spacer(),
           SvgPicture.asset(
             AppAssets.notification,

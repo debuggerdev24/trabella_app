@@ -37,6 +37,7 @@ class AppTextField extends StatelessWidget {
     this.bottomText,
     this.bottomTextStyle,
     this.readOnly = false,
+    this.textAlign = TextAlign.start,
   });
 
   final String? labelText;
@@ -70,6 +71,7 @@ class AppTextField extends StatelessWidget {
   final TextStyle? bottomTextStyle;
   final bool readOnly;
   final Color? fillcolor;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -101,11 +103,12 @@ class AppTextField extends StatelessWidget {
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
           controller: controller,
-
+          textAlign: textAlign,
           autovalidateMode:
               autoValidateMode ?? AutovalidateMode.onUserInteraction,
           obscureText: obSecureText ?? false,
           cursorColor: AppColors.blackColor,
+          cursorHeight: 30,
           style: textStyle16.copyWith(color: AppColors.blackColor),
           onTap: onTap,
           onTapOutside: (event) {

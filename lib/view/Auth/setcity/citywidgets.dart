@@ -4,11 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
+import 'package:travel_app/tabs/tabs.dart';
 import 'package:travel_app/utils/app_assets.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
+import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
@@ -149,7 +152,7 @@ class SetName extends StatelessWidget {
           ),
           53.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelText: "Date of Birth",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -171,7 +174,7 @@ class SetName extends StatelessWidget {
           ),
           20.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelText: "Birth Time",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -192,7 +195,7 @@ class SetName extends StatelessWidget {
           ),
           20.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             labelText: "Birth Place",
@@ -368,7 +371,7 @@ class _HolidaydestinationState extends State<Holidaydestination> {
         40.h.verticalSpace,
         AppButton(
           onPressed: () {
-            stepperProvider.nextStep();
+            context.pushNamed(AppRoute.homescreen.name);
           },
           text: "NEXT",
         ),

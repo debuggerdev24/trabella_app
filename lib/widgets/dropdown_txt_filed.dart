@@ -33,21 +33,6 @@ class CardDropDownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    labelText?.isNotEmpty ?? false
-        ? Container(
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-            alignment: Alignment.centerLeft,
-            child: RichText(
-              text: TextSpan(children: [
-                TextSpan(
-                  text: labelText,
-                  style: labelStyle ??
-                      textStyle16.copyWith(color: AppColors.blackColor),
-                ),
-              ]),
-            ),
-          )
-        : const SizedBox.shrink();
     return DropdownButtonFormField(
       dropdownColor: AppColors.backgroungcolor,
       // name: name,

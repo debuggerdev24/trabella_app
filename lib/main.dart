@@ -5,6 +5,7 @@ import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/provider/camera_provider.dart';
 import 'package:travel_app/provider/home_provider.dart';
 import 'package:travel_app/provider/trips_provider.dart';
+import 'package:travel_app/provider/wallet_provider.dart';
 import 'package:travel_app/utils/routes/route.dart';
 
 void main() {
@@ -15,6 +16,7 @@ void main() {
         ChangeNotifierProvider<CameraProvider>(create: (_) => CameraProvider()),
         ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
         ChangeNotifierProvider<TripProvider>(create: (_) => TripProvider()),
+        ChangeNotifierProvider<WalletProvider>(create: (_) => WalletProvider()),
       ],
       child: const MyApp(),
     ),

@@ -15,3 +15,4 @@ class AppColors {
   static const darkredcolor = Color(0xFFD7372B);
   static const redcolor = Color(0xFFEF3934);
 }
+

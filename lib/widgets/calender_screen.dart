@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:travel_app/utils/app_assets.dart';
 
@@ -30,37 +31,17 @@ class Calendar extends StatelessWidget {
                 color: Colors.white,
                 child: Column(
                   children: [
-                    TableCalendar(
-                      daysOfWeekStyle: DaysOfWeekStyle(
-                        weekdayStyle:
-                            TextStyle(color: Colors.grey, fontSize: 16.sp),
-                        weekendStyle:
-                            TextStyle(color: Colors.grey, fontSize: 15.sp),
-                        dowTextFormatter: (date, locale) =>
-                            DateFormat.E(locale).format(date).substring(0, 1),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(23),
-                        ),
-                      ),
-                      daysOfWeekHeight: 50.h,
-                      firstDay: DateTime.utc(2020, 10, 16),
-                      lastDay: DateTime.utc(2050, 3, 14),
-                      currentDay: DateTime.now(),
-                      rowHeight: 55.sp,
-                      formatAnimationCurve: Curves.easeInOut,
-                      calendarFormat: CalendarFormat.month,
-                      daysOfWeekVisible: true,
-                      headerVisible: true,
-                      headerStyle: HeaderStyle(
-                        titleCentered: true,
-                        formatButtonVisible: false,
-                        titleTextStyle: TextStyle(
-                          color: AppColors.textcolor,
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      focusedDay: focusedDay,
+                    SfDateRangePicker(
+                      todayHighlightColor: Colors.transparent,
+                      rangeSelectionColor:
+                          AppColors.darkredcolor.withOpacity(0.2),
+                      endRangeSelectionColor: AppColors.darkredcolor,
+                      startRangeSelectionColor: AppColors.darkredcolor,
+                      headerStyle: DateRangePickerHeaderStyle(
+                          backgroundColor: AppColors.whiteColor),
+                      view: DateRangePickerView.month,
+                      backgroundColor: AppColors.whiteColor,
+                      selectionMode: DateRangePickerSelectionMode.range,
                     ),
                   ],
                 ),
@@ -162,7 +143,7 @@ class Calendar extends StatelessWidget {
               ),
             ],
           ),
-          Divider(),        
+          Divider(),
           Text(
             'Accommodation',
             style: TextStyle(
@@ -191,8 +172,6 @@ class Calendar extends StatelessWidget {
             ),
           ),
           Divider(),
-
-          // Another Accommodation (if needed)
           ListTile(
             title: Text(
               'Hotel Lisbon',

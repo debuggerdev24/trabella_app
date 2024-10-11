@@ -65,7 +65,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 ),
                 20.h.verticalSpace,
                 AppTextField(
-                    fillcolor: Colors.transparent,
+                  fillcolor: Colors.transparent,
                   labelText: "Email",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -73,7 +73,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 ),
                 20.h.verticalSpace,
                 AppTextField(
-                    fillcolor: Colors.transparent,
+                  fillcolor: Colors.transparent,
                   labelText: "Date of Birth",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -111,7 +111,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                     )),
                 20.h.verticalSpace,
                 AppTextField(
-                    fillcolor: Colors.transparent,
+                  fillcolor: Colors.transparent,
                   maxLength: 200,
                   labelText: "About you",
                   labelStyle:
@@ -120,7 +120,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 ),
                 20.h.verticalSpace,
                 AppTextField(
-                    fillcolor: Colors.transparent,
+                  fillcolor: Colors.transparent,
                   maxLength: 200,
                   labelText: "Trabella is for you because...",
                   labelStyle:
@@ -144,7 +144,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
       ['Australia', 'Germany', 'Canada', 'USA']
           .map(
             (country) => DropdownMenuItem(
-              value: country, 
+              value: country,
               child: Text(
                 country,
                 style: textStyle16,

@@ -51,6 +51,14 @@ class AppAssets {
   static const String france = "assets/icons/France.svg";
   static const String germany = "assets/icons/Germany.svg";
   static const String savedplace = "assets/icons/saveplace.svg";
+  static const String down = "assets/icons/down.svg";
+  static const String circleinfo = "assets/icons/circle-info.svg";
+  static const String applepay = "assets/icons/applepay.svg";
+  static const String gpay = "assets/icons/gpay.svg";
+  static const String paypal = "assets/icons/paypal.svg";
+  static const String transfer = "assets/icons/transfer.svg";
+  static const String more = "assets/icons/more.svg";
+  static const String splits = "assets/icons/split.svg";
 
   // Tabs//
   static const String home = "assets/icons/home.svg";
