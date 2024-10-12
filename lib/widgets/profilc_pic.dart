@@ -35,8 +35,8 @@ class ProfilePic extends StatelessWidget {
             ),
           if (file == null)
             Container(
-              height: 120,
-              width: 200,
+              height: 120.h,
+              width: 200.w,
               margin: EdgeInsets.symmetric(horizontal: 12.h),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,

@@ -18,6 +18,7 @@ import 'package:travel_app/view/Auth/setcity/this_or_that.dart';
 import 'package:travel_app/view/Auth/setpassword_screen.dart';
 import 'package:travel_app/view/Auth/takeselfie_screen.dart';
 import 'package:travel_app/view/Auth/verifiaction_screen.dart';
+import 'package:travel_app/view/Chats/chatmessage_screen.dart';
 import 'package:travel_app/view/Chats/chats_screen.dart';
 import 'package:travel_app/view/Home/feedback_screen.dart';
 import 'package:travel_app/view/Home/feedbackverified_screen.dart';
@@ -73,6 +74,7 @@ enum AppRoute {
 
   ////////// BRANCH 4 //////////
   chatsscreen,
+  chatmessagescreen,
 
   ////////// BRANCH 5 //////////
   profilescreen,
@@ -320,10 +322,19 @@ class AppNavigator {
             navigatorKey: _shellNavigatorchats,
             routes: <RouteBase>[
               GoRoute(
-                  path: AppRoute.chatsscreen.path,
-                  name: AppRoute.chatsscreen.name,
-                  builder: (BuildContext context, GoRouterState state) =>
-                      const ChatScreen())
+                path: AppRoute.chatsscreen.path,
+                name: AppRoute.chatsscreen.name,
+                builder: (BuildContext context, GoRouterState state) =>
+                    const ChatScreen(),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: AppRoute.chatmessagescreen.name,
+                    name: AppRoute.chatmessagescreen.name,
+                    builder: (BuildContext context, GoRouterState state) =>
+                        ChatmessageScreen(),
+                  )
+                ],
+              ),
             ],
           ),
           StatefulShellBranch(

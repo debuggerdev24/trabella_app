@@ -35,57 +35,59 @@ class _WalletScreenState extends State<WalletScreen> {
       drawer: drawers(),
       backgroundColor: AppColors.backgroungcolor,
       body: Consumer<WalletProvider>(builder: (context, walletprovider, _) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TopBar(),
-            Center(
-              child: Switch.adaptive(
-                value: cardadding,
-                onChanged: (bool value) {
-                  setState(() {
-                    cardadding = value;
-                  });
-                },
-                activeColor: AppColors.darkredcolor,
-              ),
-            ),
-            100.h.verticalSpace,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.w),
-              child: GlobalText(
-                textAlign: TextAlign.start,
-                'Wallet',
-                textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.redcolor,
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            10.h.verticalSpace,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.w),
-              child: GlobalText(
-                'Trabella wallet makes it easier for you to transfer and split fares with other Trabellas.',
-                textStyle: textStyle16.copyWith(
-                  color: AppColors.textcolor,
-                  fontSize: 15.sp,
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopBar(),
+              Center(
+                child: Switch.adaptive(
+                  value: cardadding,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cardadding = value;
+                    });
+                  },
+                  activeColor: AppColors.darkredcolor,
                 ),
               ),
-            ),
-            30.h.verticalSpace,
-            Padding(
+              100.h.verticalSpace,
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
-                child: cardadding
-                    ? AppButton(
-                        onPressed: () {
-                          openAlertBox(onCreditCard: () {
-                            _cardPayment();
-                          });
-                        },
-                        text: "ADD CARD")
-                    : _transfer()),
-          ],
+                child: GlobalText(
+                  textAlign: TextAlign.start,
+                  'Wallet',
+                  textStyle: textStyle20SemiBold.copyWith(
+                      color: AppColors.redcolor,
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+              10.h.verticalSpace,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.w),
+                child: GlobalText(
+                  'Trabella wallet makes it easier for you to transfer and split fares with other Trabellas.',
+                  textStyle: textStyle16.copyWith(
+                    color: AppColors.textcolor,
+                    fontSize: 15.sp,
+                  ),
+                ),
+              ),
+              30.h.verticalSpace,
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40.w),
+                  child: cardadding
+                      ? AppButton(
+                          onPressed: () {
+                            openAlertBox(onCreditCard: () {
+                              _cardPayment();
+                            });
+                          },
+                          text: "ADD CARD")
+                      : _transfer()),
+            ],
+          ),
         );
       }),
     );
@@ -458,73 +460,75 @@ class _WalletScreenState extends State<WalletScreen> {
 
   Widget _topup() {
     return Consumer<WalletProvider>(builder: (context, walletprovider, _) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: GestureDetector(
-              onTap: () {
-                context.pop();
-              },
-              child: SvgPicture.asset(AppAssets.cancel),
+      return SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () {
+                  context.pop();
+                },
+                child: SvgPicture.asset(AppAssets.cancel),
+              ),
             ),
-          ),
-          GlobalText(
-            "Top up",
-            textStyle: textStyle20SemiBold.copyWith(
-              color: AppColors.darkredcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600,
+            GlobalText(
+              "Top up",
+              textStyle: textStyle20SemiBold.copyWith(
+                color: AppColors.darkredcolor,
+                fontSize: 30.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          32.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Enter amount',
-              textStyle: textStyle16.copyWith(
-                  color: AppColors.textcolor,
-                  fontSize: 25.sp,
-                  fontWeight: FontWeight.w600),
+            32.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Enter amount',
+                textStyle: textStyle16.copyWith(
+                    color: AppColors.textcolor,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.w600),
+              ),
             ),
-          ),
-          12.h.verticalSpace,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.w),
-            child: AppTextField(
-              keyboardType: TextInputType.number,
-              fillcolor: AppColors.backgroungcolor,
-              textAlign: TextAlign.center,
-              border: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: AppColors.darkredcolor,
-                      width: 2,
-                      strokeAlign: 20)),
-              hintText: 'AUD 00.00',
-              hintStyle:
-                  textStyle16.copyWith(fontSize: 35.sp, color: Colors.grey),
+            12.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              child: AppTextField(
+                keyboardType: TextInputType.number,
+                fillcolor: AppColors.backgroungcolor,
+                textAlign: TextAlign.center,
+                border: const UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: AppColors.darkredcolor,
+                        width: 2,
+                        strokeAlign: 20)),
+                hintText: 'AUD 50.00',
+                hintStyle:
+                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
+              ),
             ),
-          ),
-          30.h.verticalSpace,
-          const Wrap(
-            spacing: 5,
-            runSpacing: 20,
-            children: [
-              TopUpChip(text: "AUD 50"),
-              TopUpChip(text: "AUD 100"),
-              TopUpChip(text: "AUD 150"),
-              TopUpChip(text: "AUD 200")
-            ],
-          ),
-          50.h.verticalSpace,
-          AppButton(
-              onPressed: () {
-                context.pop();
-                toptransfer();
-              },
-              text: "TOP UP")
-        ],
+            30.h.verticalSpace,
+            const Wrap(
+              spacing: 5,
+              runSpacing: 20,
+              children: [
+                TopUpChip(text: "AUD 50"),
+                TopUpChip(text: "AUD 100"),
+                TopUpChip(text: "AUD 150"),
+                TopUpChip(text: "AUD 200")
+              ],
+            ),
+            50.h.verticalSpace,
+            AppButton(
+                onPressed: () {
+                  context.pop();
+                  toptransfer();
+                },
+                text: "TOP UP")
+          ],
+        ),
       );
     });
   }
@@ -596,121 +600,123 @@ class _WalletScreenState extends State<WalletScreen> {
 
   Widget _splitbill() {
     return Consumer<WalletProvider>(builder: (context, walletprovider, _) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: GestureDetector(
-              onTap: () {
-                context.pop();
-              },
-              child: SvgPicture.asset(AppAssets.cancel),
+      return SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () {
+                  context.pop();
+                },
+                child: SvgPicture.asset(AppAssets.cancel),
+              ),
             ),
-          ),
-          GlobalText(
-            "Split the bills",
-            textStyle: textStyle20SemiBold.copyWith(
-              color: AppColors.darkredcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          30.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Enter amount',
-              textStyle: textStyle16.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 25.sp,
+            GlobalText(
+              "Split the bills",
+              textStyle: textStyle20SemiBold.copyWith(
+                color: AppColors.darkredcolor,
+                fontSize: 30.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.w),
-            child: AppTextField(
-              keyboardType: TextInputType.number,
-              fillcolor: AppColors.backgroungcolor,
-              textAlign: TextAlign.center,
-              border: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.darkredcolor,
-                  width: 2,
-                  strokeAlign: 20,
+            30.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Enter amount',
+                textStyle: textStyle16.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 25.sp,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              hintText: 'AUD 50.00',
-              hintStyle:
-                  textStyle16.copyWith(fontSize: 35.sp, color: Colors.grey),
             ),
-          ),
-          10.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Between',
-              textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: AppTextField(
+                keyboardType: TextInputType.number,
+                fillcolor: AppColors.backgroungcolor,
+                textAlign: TextAlign.center,
+                border: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.darkredcolor,
+                    width: 2,
+                    strokeAlign: 20,
+                  ),
+                ),
+                hintText: 'AUD 50.00',
+                hintStyle:
+                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
               ),
             ),
-          ),
-          10.h.verticalSpace,
-          CardDropDownField(
-            value: "Jordan",
-            onChanged: (value) {},
-            dropDownList: countrydropdownlist(),
-          ),
-          20.h.verticalSpace,
-          Center(
-            child: CircleAvatar(
-              backgroundColor: AppColors.darkredcolor,
-              radius: 25.0,
-              child: SvgPicture.asset(AppAssets.addlanguage),
-            ),
-          ),
-          10.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'For',
-              textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+            10.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Between',
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          20.h.verticalSpace,
-          Container(
-            height: 60.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.r),
-                border: Border.all(color: AppColors.greycolor)),
-            child: const Center(child: GlobalText("Dinner")),
-          ),
-          30.h.verticalSpace,
-          Row(
-            children: [
-              AppButton(
-                type: AppButtonWidthType.half,
-                onPressed: () {
-                  context.pop();
-                  evenlybill();
-                },
-                text: "EVENLY",
+            10.h.verticalSpace,
+            CardDropDownField(
+              value: "Jordan",
+              onChanged: (value) {},
+              dropDownList: countrydropdownlist(),
+            ),
+            20.h.verticalSpace,
+            Center(
+              child: CircleAvatar(
+                backgroundColor: AppColors.darkredcolor,
+                radius: 25.0,
+                child: SvgPicture.asset(AppAssets.addlanguage),
               ),
-              10.w.horizontalSpace,
-              AppButton(
-                type: AppButtonWidthType.half,
-                onPressed: () {},
-                text: "%",
+            ),
+            10.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'For',
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ],
-          ),
-        ],
+            ),
+            20.h.verticalSpace,
+            Container(
+              height: 60.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.r),
+                  border: Border.all(color: AppColors.greycolor)),
+              child: const Center(child: GlobalText("Dinner")),
+            ),
+            30.h.verticalSpace,
+            Row(
+              children: [
+                AppButton(
+                  type: AppButtonWidthType.half,
+                  onPressed: () {
+                    context.pop();
+                    evenlybill();
+                  },
+                  text: "EVENLY",
+                ),
+                10.w.horizontalSpace,
+                AppButton(
+                  type: AppButtonWidthType.half,
+                  onPressed: () {},
+                  text: "%",
+                ),
+              ],
+            ),
+          ],
+        ),
       );
     });
   }
@@ -735,96 +741,98 @@ class _WalletScreenState extends State<WalletScreen> {
 
   Widget _evenlybill() {
     return Consumer<WalletProvider>(builder: (context, walletprovider, _) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: GestureDetector(
-              onTap: () {
-                context.pop();
-              },
-              child: SvgPicture.asset(AppAssets.cancel),
+      return SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () {
+                  context.pop();
+                },
+                child: SvgPicture.asset(AppAssets.cancel),
+              ),
             ),
-          ),
-          GlobalText(
-            "Split the bills",
-            textStyle: textStyle20SemiBold.copyWith(
-              color: AppColors.darkredcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          30.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'You’ve split',
-              textStyle: textStyle16.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 25.sp,
+            GlobalText(
+              "Split the bills",
+              textStyle: textStyle20SemiBold.copyWith(
+                color: AppColors.darkredcolor,
+                fontSize: 30.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.w),
-            child: AppTextField(
-              keyboardType: TextInputType.number,
-              fillcolor: AppColors.backgroungcolor,
-              textAlign: TextAlign.center,
-              border: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.darkredcolor,
-                  width: 2,
-                  strokeAlign: 20,
+            30.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'You’ve split',
+                textStyle: textStyle16.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 25.sp,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              hintText: 'AUD 50.00',
-              hintStyle:
-                  textStyle16.copyWith(fontSize: 35.sp, color: Colors.grey),
             ),
-          ),
-          20.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Evenly',
-              textStyle: textStyle14.copyWith(
-                color: AppColors.darkredcolor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: AppTextField(
+                keyboardType: TextInputType.number,
+                fillcolor: AppColors.backgroungcolor,
+                textAlign: TextAlign.center,
+                border: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.darkredcolor,
+                    width: 2,
+                    strokeAlign: 20,
+                  ),
+                ),
+                hintText: 'AUD 50.00',
+                hintStyle:
+                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
               ),
             ),
-          ),
-          30.h.verticalSpace,
-          ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(AppAssets.myprofile2),
+            20.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Evenly',
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.darkredcolor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
-            title: Text('You'),
-            trailing: Text('AUD 25.00'),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(AppAssets.myprofile2),
+            30.h.verticalSpace,
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(AppAssets.myprofile2),
+              ),
+              title: Text('You'),
+              trailing: Text('AUD 25.00'),
             ),
-            title: Text('Amelia'),
-            trailing: Text('AUD 25.00'),
-          ),
-          30.h.verticalSpace,
-          AppButton(
-              onPressed: () {
-                context.pop();
-                transferbill();
-              },
-              text: "TRANSFER"),
-          20.h.verticalSpace,
-          AppButton(
-              onPressed: () {
-                context.pop();
-              },
-              text: "REQUEST")
-        ],
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(AppAssets.myprofile2),
+              ),
+              title: Text('Amelia'),
+              trailing: Text('AUD 25.00'),
+            ),
+            30.h.verticalSpace,
+            AppButton(
+                onPressed: () {
+                  context.pop();
+                  transferbill();
+                },
+                text: "TRANSFER"),
+            20.h.verticalSpace,
+            AppButton(
+                onPressed: () {
+                  context.pop();
+                },
+                text: "REQUEST")
+          ],
+        ),
       );
     });
   }
@@ -849,103 +857,105 @@ class _WalletScreenState extends State<WalletScreen> {
 
   Widget _transferbill() {
     return Consumer<WalletProvider>(builder: (context, walletprovider, _) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: GestureDetector(
-              onTap: () {
-                context.pop();
-              },
-              child: SvgPicture.asset(AppAssets.cancel),
+      return SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () {
+                  context.pop();
+                },
+                child: SvgPicture.asset(AppAssets.cancel),
+              ),
             ),
-          ),
-          GlobalText(
-            "Transfer",
-            textStyle: textStyle20SemiBold.copyWith(
-              color: AppColors.darkredcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          30.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Enter amount',
-              textStyle: textStyle16.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 25.sp,
+            GlobalText(
+              "Transfer",
+              textStyle: textStyle20SemiBold.copyWith(
+                color: AppColors.darkredcolor,
+                fontSize: 30.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40.w),
-            child: AppTextField(
-              keyboardType: TextInputType.number,
-              fillcolor: AppColors.backgroungcolor,
-              textAlign: TextAlign.center,
-              border: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.darkredcolor,
-                  width: 2,
-                  strokeAlign: 20,
+            30.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Enter amount',
+                textStyle: textStyle16.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 25.sp,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              hintText: 'AUD 25.00',
-              hintStyle:
-                  textStyle16.copyWith(fontSize: 35.sp, color: Colors.grey),
             ),
-          ),
-          10.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'Between',
-              textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: AppTextField(
+                keyboardType: TextInputType.number,
+                fillcolor: AppColors.backgroungcolor,
+                textAlign: TextAlign.center,
+                border: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.darkredcolor,
+                    width: 2,
+                    strokeAlign: 20,
+                  ),
+                ),
+                hintText: 'AUD 25.00',
+                hintStyle:
+                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
               ),
             ),
-          ),
-          10.h.verticalSpace,
-          CardDropDownField(
-            value: "Jordan",
-            onChanged: (value) {},
-            dropDownList: countrydropdownlist(),
-          ),
-          10.h.verticalSpace,
-          Center(
-            child: GlobalText(
-              'For',
-              textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+            10.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'Between',
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          20.h.verticalSpace,
-          Container(
-            height: 60.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.r),
-                border: Border.all(color: AppColors.greycolor)),
-            child: const Center(child: GlobalText("Dinner")),
-          ),
-          30.h.verticalSpace,
-          AppButton(
-            onPressed: () {
-              context.pop();
-              transfer();
-            },
-            text: "TRANSFER",
-          ),
-          10.w.horizontalSpace,
-        ],
+            10.h.verticalSpace,
+            CardDropDownField(
+              value: "Jordan",
+              onChanged: (value) {},
+              dropDownList: countrydropdownlist(),
+            ),
+            10.h.verticalSpace,
+            Center(
+              child: GlobalText(
+                'For',
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.textcolor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            20.h.verticalSpace,
+            Container(
+              height: 60.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.r),
+                  border: Border.all(color: AppColors.greycolor)),
+              child: const Center(child: GlobalText("Dinner")),
+            ),
+            30.h.verticalSpace,
+            AppButton(
+              onPressed: () {
+                context.pop();
+                transfer();
+              },
+              text: "TRANSFER",
+            ),
+            10.w.horizontalSpace,
+          ],
+        ),
       );
     });
   }

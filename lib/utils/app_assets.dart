@@ -19,6 +19,7 @@ class AppAssets {
   static const String profileedit = "assets/profile_edit.png";
   static const String profile2 = "assets/profile2.png";
   static const String tripbackground = "assets\tripbackground.png";
+  static const String chatuser = "assets/chat.png";
 
   static const String apple = "assets/icons/apple.svg";
   static const String google = "assets/icons/google.svg";
@@ -59,6 +60,8 @@ class AppAssets {
   static const String transfer = "assets/icons/transfer.svg";
   static const String more = "assets/icons/more.svg";
   static const String splits = "assets/icons/split.svg";
+  static const String phone = "assets/icons/phone.svg";
+  static const String videocall = "assets/icons/video.svg";
 
   // Tabs//
   static const String home = "assets/icons/home.svg";
