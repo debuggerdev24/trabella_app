@@ -50,16 +50,14 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
               GlobalText(
                 'Hold tight, we’re checking the details.',
                 textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.backgroungcolor,
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.w600),
+                    color: AppColors.backgroungcolor),
               ),
               GlobalText(
                 'We should be finished within an hour, but sometimes it can take a little longer.',
-                textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.backgroungcolor,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w300),
+                textStyle: textStyle18.copyWith(
+                  color: AppColors.backgroungcolor,
+                  fontSize: 18.sp,
+                ),
               ),
               125.h.verticalSpace,
               GlobalText(
@@ -79,15 +77,15 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                   ),
                   10.w.horizontalSpace,
                   SvgIcon(
-                    AppAssets.instagram,
-                    color: AppColors.backgroungcolor,
-                    size: 68.w,
-                  ),
-                  10.w.horizontalSpace,
-                  SvgIcon(
                     AppAssets.tripadvisor,
                     color: AppColors.backgroungcolor,
                     size: 70.w,
+                  ),
+                  10.w.horizontalSpace,
+                  SvgIcon(
+                    AppAssets.instagram,
+                    color: AppColors.backgroungcolor,
+                    size: 68.w,
                   ),
                 ],
               ),

@@ -8,7 +8,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Auth/verifiaction_screen.dart';
+import 'package:travel_app/view/Auth/take_photo_screen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/back_button.dart';
 
@@ -37,10 +37,19 @@ class ImageviewsScreen extends StatelessWidget {
                       iconcolor: AppColors.backgroungcolor,
                     ),
                     100.h.verticalSpace,
-                    SizedBox(
-                        height: 450.h,
-                        width: double.infinity,
-                        child: Image.file(File(imagePath))),
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(12.r),
+                        child: Image.file(
+                          fit: BoxFit.fill,
+                          File(imagePath),
+                          width: double.infinity,
+                          height: 350.h,
+                        )),
+
+                    // SizedBox(
+                    //     height: 300.h,
+                    //     width: double.infinity,
+                    //     child: Image.file(File(imagePath))),
                     100.h.verticalSpace,
                     AppButton(
                       onPressed: () {

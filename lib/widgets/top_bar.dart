@@ -29,7 +29,6 @@ class TopBar extends StatelessWidget {
               );
             },
           ),
-          
           const Spacer(),
           SvgPicture.asset(
             AppAssets.notification,

@@ -8,18 +8,21 @@ import 'package:travel_app/view/Auth/email_screen.dart';
 import 'package:travel_app/view/Auth/emailverified_screen.dart';
 import 'package:travel_app/view/Auth/idverification.dart';
 import 'package:travel_app/view/Auth/imageviews_screen.dart';
+import 'package:travel_app/view/Auth/login_screen.dart';
 import 'package:travel_app/view/Auth/notification_screen.dart';
 import 'package:travel_app/view/Auth/otp_screen.dart';
 import 'package:travel_app/view/Auth/referralcode_screen.dart';
 import 'package:travel_app/view/Auth/selfie_screen.dart';
-import 'package:travel_app/view/Auth/selfie_view.dart';
+import 'package:travel_app/view/Auth/selfie_view_screen.dart';
 import 'package:travel_app/view/Auth/setcity/setcity_screen.dart';
-import 'package:travel_app/view/Auth/setcity/this_or_that.dart';
+
 import 'package:travel_app/view/Auth/setpassword_screen.dart';
 import 'package:travel_app/view/Auth/takeselfie_screen.dart';
-import 'package:travel_app/view/Auth/verifiaction_screen.dart';
-import 'package:travel_app/view/Chats/chatmessage_screen.dart';
-import 'package:travel_app/view/Chats/chats_screen.dart';
+import 'package:travel_app/view/Auth/this_or_that/cat_or_dog_screen.dart';
+import 'package:travel_app/view/Auth/this_or_that/this_or_that_screen.dart';
+import 'package:travel_app/view/Auth/take_photo_screen.dart';
+import 'package:travel_app/view/Chats/chat_list_screen.dart';
+import 'package:travel_app/view/Chats/chat_message_list.dart';
 import 'package:travel_app/view/Home/feedback_screen.dart';
 import 'package:travel_app/view/Home/feedbackverified_screen.dart';
 import 'package:travel_app/view/Home/home_screen.dart';
@@ -57,6 +60,8 @@ enum AppRoute {
   thisorthatscreen,
   fortywaitinglistscreen,
   endofverificationscreen,
+  catordogscreen,
+  loginscreen,
   ////////// BRANCH 1 //////////
   homescreen,
   myprofilescreen,
@@ -82,7 +87,7 @@ enum AppRoute {
 
 extension PathName on AppRoute {
   String get path =>
-      switch (this) { AppRoute.splashScreen => "/", _ => "/$name" };
+      switch (this) { AppRoute.homescreen => "/", _ => "/$name" };
 }
 
 class AppNavigator {
@@ -174,6 +179,11 @@ class AppNavigator {
         builder: (context, state) {
           return TakePhotoScreen();
         },
+      ),
+      GoRoute(
+        path: AppRoute.catordogscreen.path,
+        name: AppRoute.catordogscreen.name,
+        builder: (context, state) => CatOrDogScreen(),
       ),
       GoRoute(
         path: AppRoute.imageviewscreen.path,
@@ -268,6 +278,13 @@ class AppNavigator {
           return FeedbackverifiedScreen();
         },
       ),
+      GoRoute(
+        path: AppRoute.loginscreen.path,
+        name: AppRoute.loginscreen.name,
+        builder: (context, state) {
+          return LoginScreen();
+        },
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           indexedStackNavigationShell = navigationShell;
@@ -285,7 +302,9 @@ class AppNavigator {
                 name: AppRoute.homescreen.name,
                 builder: (BuildContext context, GoRouterState state) =>
                     const HomeScreen(),
-                routes: <RouteBase>[],
+                routes: <RouteBase>[
+
+                ],
               ),
             ],
           ),

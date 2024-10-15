@@ -62,7 +62,7 @@ class AppButton extends StatelessWidget {
       ),
       label: GlobalText(
         text,
-        textStyle: textStyle16.copyWith(fontSize: 16.sp),
+        textStyle: textStyle16.copyWith(fontSize: 18.sp),
       ),
     );
   }

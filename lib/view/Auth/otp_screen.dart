@@ -43,10 +43,8 @@ class _OtpScreenState extends State<OtpScreen> {
                   60.h.verticalSpace,
                   GlobalText(
                     'We’ve emailed you a verification code',
-                    textStyle: textStyle16Bold.copyWith(
-                        color: AppColors.redcolor,
-                        fontSize: 30.sp,
-                        fontWeight: FontWeight.w600),
+                    textStyle: textStyle20SemiBold.copyWith(
+                        color: AppColors.redcolor, fontWeight: FontWeight.w600),
                   ),
                   146.h.verticalSpace,
                   _buildOtpInput(),
@@ -60,7 +58,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   20.h.verticalSpace,
                   Center(
                     child: GlobalText(
-                      color: AppColors.greycolor,
+                      color: AppColors.textcolor,
                       'Resend code',
                       textStyle: textStyle18SemiBold.copyWith(
                         decoration: TextDecoration.underline,

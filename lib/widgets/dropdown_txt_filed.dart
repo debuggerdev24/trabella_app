@@ -55,7 +55,7 @@ class CardDropDownField extends StatelessWidget {
         fillColor: AppColors.backgroungcolor,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: AppColors.greycolor,
           ),
         ),

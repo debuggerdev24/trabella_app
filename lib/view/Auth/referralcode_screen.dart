@@ -40,13 +40,11 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
                   GlobalText(
                     'Enter your referral code',
                     textStyle: textStyle20SemiBold.copyWith(
-                        color: AppColors.redcolor,
-                        fontSize: 30.sp,
-                        fontWeight: FontWeight.w600),
+                        color: AppColors.redcolor, fontWeight: FontWeight.w600),
                   ),
                   100.h.verticalSpace,
                   AppTextField(
-                      fillcolor: Colors.transparent,
+                    fillcolor: Colors.transparent,
                     controller: _referralcontroller,
                     hintText: "Enter your 6 digit code here",
                   ),

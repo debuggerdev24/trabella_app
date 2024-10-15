@@ -15,6 +15,7 @@ import 'package:travel_app/view/Trips/trip_createscreen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
 import 'package:travel_app/widgets/calender_screen.dart';
+import 'package:travel_app/widgets/darwer_tile.dart';
 import 'package:travel_app/widgets/date_picker.dart';
 import 'package:travel_app/widgets/dropdown_txt_filed.dart';
 import 'package:travel_app/widgets/tab_items.dart';
@@ -29,13 +30,10 @@ class TripsScreen extends StatefulWidget {
 
 class _TripsScreenState extends State<TripsScreen>
     with SingleTickerProviderStateMixin {
-  final TextEditingController _tripnamecontroller = TextEditingController();
-  final PageController _pageController = PageController(initialPage: 0);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawers(),
+      drawer: const CustomDrawer(),
       backgroundColor: AppColors.backgroungcolor,
       body: Consumer2<TripProvider, HomeProvider>(
           builder: (context, tripProvider, homeProvider, _) {
@@ -45,26 +43,24 @@ class _TripsScreenState extends State<TripsScreen>
             const TopBar(),
             0.05.sh.verticalSpace,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 40),
               child: GlobalText(
                 'Trip',
                 textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.darkredcolor,
-                    fontSize: 30.sp,
-                    fontWeight: FontWeight.w600),
+                  color: AppColors.darkredcolor,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: GlobalText(
                 'No upcoming trips yet...',
-                textStyle: textStyle16.copyWith(
+                textStyle: textStyle18.copyWith(
                   color: AppColors.textcolor,
-                  fontSize: 20.sp,
                 ),
               ),
             ),
-            50.h.verticalSpace,
+            20.h.verticalSpace,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: AppButton(
@@ -73,6 +69,7 @@ class _TripsScreenState extends State<TripsScreen>
                   },
                   text: "PLAN YOUR NEXT TRIP"),
             ),
+            30.h.verticalSpace,
             Expanded(
               child: TabItems(
                 tripProvider: tripProvider,
@@ -84,85 +81,7 @@ class _TripsScreenState extends State<TripsScreen>
     );
   }
 
-  Widget Drawers() {
-    return Drawer(
-      backgroundColor: AppColors.darkredcolor,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(color: AppColors.darkredcolor),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: SvgIcon(
-                  AppAssets.drawercancel,
-                  color: AppColors.whiteColor,
-                  size: 36.sp,
-                ),
-              ),
-            ),
-          ),
-          ListTile(
-              onTap: () {
-                context.pushNamed(AppRoute.myprofilescreen.name);
-              },
-              title: Text(
-                "My Profile",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.myprofile,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {},
-              title: Text(
-                "Invite Friends",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.invitefriend,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {
-                context.pushNamed(AppRoute.settingscreen.name);
-              },
-              title: Text(
-                "Settings",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.setting,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {},
-              title: Text(
-                "Log out",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.logout,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-        ],
-      ),
-    );
-  }
-
   void openAlertBox(HomeProvider provider, TripProvider tripprovider) {
-    DateTime? _Formdate;
-    DateTime? _Todate;
-
     showDialog(
       barrierDismissible: false,
       context: context,
@@ -182,20 +101,17 @@ class _TripsScreenState extends State<TripsScreen>
                 content: SizedBox(
                     width: 500.w,
                     height: 0.50.sh,
-                    child: SizedBox(
-                      height: 400.h,
-                      child: PageView(
-                        controller: _dialogPageController,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: [
-                          createtrip(_dialogPageController),
-                          _destination(_dialogPageController),
-                          _flightAttendance(_dialogPageController),
-                          _accommodation(_dialogPageController, () {
-                            context.pop();
-                          }),
-                        ],
-                      ),
+                    child: PageView(
+                      controller: _dialogPageController,
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        createtrip(_dialogPageController),
+                        _destination(_dialogPageController),
+                        _flightAttendance(_dialogPageController),
+                        _accommodation(_dialogPageController, () {
+                          context.pop();
+                        }),
+                      ],
                     )));
           },
         );
@@ -406,7 +322,6 @@ class _TripsScreenState extends State<TripsScreen>
               SizedBox(height: 20.h),
               AppButton(
                 onPressed: () {
-                  // Navigate to the next page
                   pageController.nextPage(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeIn,
@@ -436,15 +351,12 @@ class _TripsScreenState extends State<TripsScreen>
                 alignment: Alignment.topRight,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .pop(); // Use Navigator if context.pop() is not defined
+                    Navigator.of(context).pop();
                   },
                   child: SvgPicture.asset(AppAssets.cancel),
                 ),
               ),
-              SizedBox(
-                  height:
-                      10.0), // Replace with `10.h.verticalSpace` if using screen utils
+              SizedBox(height: 10.0),
               Center(
                 child: GlobalText(
                   "Create trip",
@@ -558,19 +470,14 @@ class _TripsScreenState extends State<TripsScreen>
                   },
                   child: CircleAvatar(
                     backgroundColor: AppColors.darkredcolor,
-                    radius: 25.0, // Replace with `25.r` if using screen utils
-                    child: Icon(Icons.add,
-                        color: Colors.white,
-                        size:
-                            30.0), // Replace with `30.sp` if using screen utils
+                    radius: 25.0,
+                    child: Icon(Icons.add, color: Colors.white, size: 30.0),
                   ),
                 ),
               ),
               SizedBox(height: 20.0),
               AppButton(
                 onPressed: () {
-                  // Optionally, you can process or validate flightAttendances here
-                  // Navigate to the next page
                   pageController.nextPage(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeIn,
@@ -582,7 +489,10 @@ class _TripsScreenState extends State<TripsScreen>
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    // Implement skip functionality if needed
+                    pageController.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
                   },
                   child: GlobalText(
                     color: AppColors.greycolor,
@@ -746,7 +656,9 @@ class _TripsScreenState extends State<TripsScreen>
               SizedBox(height: 10.0),
               Center(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.pop();
+                  },
                   child: GlobalText(
                     color: AppColors.greycolor,
                     'Skip',

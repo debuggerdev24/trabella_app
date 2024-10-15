@@ -52,23 +52,23 @@ class _EndofverificationScreenState extends State<EndofverificationScreen> {
                 'Thank you!',
                 textStyle: textStyle20SemiBold.copyWith(
                     color: AppColors.backgroungcolor,
-                    fontSize: 30.sp,
+                    fontSize: 40.sp,
                     fontWeight: FontWeight.w600),
               ),
               GlobalText(
                 'A referral code is coming your way on your 40th birthday!',
-                textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.backgroungcolor,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w300),
+                textStyle: textStyle16.copyWith(
+                  color: AppColors.backgroungcolor,
+                  fontSize: 18.sp,
+                ),
               ),
               125.h.verticalSpace,
               GlobalText(
                 'In the meantime, check out and follow our social accounts!',
-                textStyle: textStyle20SemiBold.copyWith(
+                textStyle: textStyle16.copyWith(
                     color: AppColors.backgroungcolor,
                     fontSize: 18.sp,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w500),
               ),
               39.h.verticalSpace,
               Row(
@@ -78,17 +78,17 @@ class _EndofverificationScreenState extends State<EndofverificationScreen> {
                     color: AppColors.backgroungcolor,
                     size: 68.w,
                   ),
-                  10.w.horizontalSpace,
-                  SvgIcon(
-                    AppAssets.instagram,
-                    color: AppColors.backgroungcolor,
-                    size: 68.w,
-                  ),
-                  10.w.horizontalSpace,
+                  20.w.horizontalSpace,
                   SvgIcon(
                     AppAssets.tripadvisor,
                     color: AppColors.backgroungcolor,
                     size: 70.w,
+                  ),
+                  20.w.horizontalSpace,
+                  SvgIcon(
+                    AppAssets.instagram,
+                    color: AppColors.backgroungcolor,
+                    size: 68.w,
                   ),
                 ],
               ),

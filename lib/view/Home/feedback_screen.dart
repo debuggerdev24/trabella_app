@@ -38,22 +38,21 @@ class FeedbackScreen extends StatelessWidget {
                 "Share feedback",
                 textStyle: textStyle16.copyWith(
                     color: AppColors.backgroungcolor,
-                    fontSize: 30.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600),
               ),
               10.h.verticalSpace,
               GlobalText(
                 "Your feedback and ideas are incredibly valuable to us.",
-                textStyle: textStyle16.copyWith(
+                textStyle: textStyle18.copyWith(
                   color: AppColors.backgroungcolor,
-                  fontSize: 18.sp,
                 ),
               ),
               30.h.verticalSpace,
               AppTextField(
                 controller: _feedbackcontroller,
                 hintText: "Type here...",
-                maxLines: 5,
+                maxLines: 3,
                 fillcolor: AppColors.backgroungcolor,
               ),
               50.verticalSpace,

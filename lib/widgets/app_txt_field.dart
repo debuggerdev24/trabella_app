@@ -88,7 +88,8 @@ class AppTextField extends StatelessWidget {
                     TextSpan(
                       text: labelText,
                       style: labelStyle ??
-                          textStyle16.copyWith(color: AppColors.blackColor),
+                          textStyle18SemiBold.copyWith(
+                              color: AppColors.blackColor),
                     ),
                   ]),
                 ),
@@ -168,7 +169,7 @@ class AppTextField extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Text(
               bottomText!,
-              style: textStyle12.copyWith(color: AppColors.greycolor),
+              style: textStyle18.copyWith(color: AppColors.greycolor),
             ),
           )
       ],

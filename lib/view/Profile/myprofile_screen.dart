@@ -59,8 +59,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 20.h.verticalSpace,
                 Center(
                   child: ProfilePic(
-                      image: AppAssets.myprofile2,
-                      icon: SvgPicture.asset(AppAssets.profileedit)),
+                    image: AppAssets.myprofile2,
+                  ),
                 ),
                 AppTextField(
                   fillcolor: Colors.transparent,
@@ -142,6 +142,30 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   hintText: "trabella@travel.com",
                 ),
                 20.h.verticalSpace,
+                AppTextField(
+                  fillcolor: Colors.transparent,
+                  maxLength: 200,
+                  labelText: "Languages ",
+                  labelStyle:
+                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+                  hintText: "English, Spanish",
+                ),
+                20.h.verticalSpace,
+                AppTextField(
+                  fillcolor: Colors.transparent,
+                  labelText: "Zodiac",
+                  labelStyle:
+                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+                  hintText: "Sun: Sagittarius",
+                ),
+                20.h.verticalSpace,
+                AppTextField(
+                  fillcolor: Colors.transparent,
+                  labelStyle:
+                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+                  hintText: "Rising: Sagittarius",
+                ),
+                30.h.verticalSpace,
                 AppButton(
                     onPressed: () {
                       context.pushNamed(AppRoute.settingscreen.name);

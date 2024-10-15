@@ -57,11 +57,11 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 ),
                 60.h.verticalSpace,
                 GlobalText(
-                  'Not forty yet? Join our waiting list',
+                  'Not forty yet? \nJoin our waiting list',
                   textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.redcolor,
+                    fontSize: 30.sp,
+                  ),
                 ),
                 20.h.verticalSpace,
                 AppTextField(

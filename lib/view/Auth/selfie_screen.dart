@@ -42,9 +42,8 @@ class _selfieScreenState extends State<selfieScreen> {
                 GlobalText(
                   'It’s time for a selfie.Smile!',
                   textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.redcolor,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.redcolor,
+                  ),
                 ),
                 5.h.verticalSpace,
                 GlobalText(
@@ -90,11 +89,19 @@ class _selfieScreenState extends State<selfieScreen> {
                       padding: EdgeInsets.only(top: 13.r),
                       child: GestureDetector(
                           onTap: () {
+                            context.pop();
                             context.pushNamed(AppRoute.takeselfiescreen.name);
                           },
                           child: SvgPicture.asset(AppAssets.cancel)),
                     ),
                   ],
+                ),
+                GlobalText(
+                  "Tips",
+                  textStyle: textStyle20SemiBold.copyWith(
+                      color: AppColors.darkredcolor,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600),
                 ),
                 10.h.verticalSpace,
                 reqiredfiled("Make sure we can see you clearly"),
@@ -120,6 +127,7 @@ class _selfieScreenState extends State<selfieScreen> {
         Expanded(
           child: GlobalText(text,
               textStyle: textStyle14.copyWith(
+                  fontSize: 16.sp,
                   color: AppColors.textcolor.withOpacity(0.9))),
         ),
       ],

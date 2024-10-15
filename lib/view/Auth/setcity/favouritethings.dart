@@ -7,7 +7,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Auth/verifiaction_screen.dart';
+import 'package:travel_app/view/Auth/take_photo_screen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/destination_chip.dart';
 
@@ -26,7 +26,7 @@ class _FavouritethingsState extends State<Favouritethings> {
     "HIKING",
     "BAKING",
     "GARDENING",
-    "YoGA",
+    "YOGA",
     "MOVIES",
     "FESTIVALS",
     "GALLERIES",
@@ -47,9 +47,8 @@ class _FavouritethingsState extends State<Favouritethings> {
         GlobalText(
           'Choose 5 things you’re really into',
           textStyle: textStyle20SemiBold.copyWith(
-              color: AppColors.redcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600),
+            color: AppColors.redcolor,
+          ),
         ),
         30.h.verticalSpace,
         Wrap(
@@ -79,14 +78,19 @@ class _FavouritethingsState extends State<Favouritethings> {
           text: "NEXT",
         ),
         20.h.verticalSpace,
-        Center(
-          child: GlobalText(
-            color: AppColors.greycolor,
-            'Skip',
-            textStyle: textStyle18SemiBold.copyWith(
-              decoration: TextDecoration.underline,
-              decorationColor: AppColors.textcolor.withOpacity(0.8),
-              color: AppColors.textcolor.withOpacity(0.8),
+        GestureDetector(
+          onTap: () {
+            stepperProvider.nextStep();
+          },
+          child: Center(
+            child: GlobalText(
+              color: AppColors.greycolor,
+              'Skip',
+              textStyle: textStyle18SemiBold.copyWith(
+                decoration: TextDecoration.underline,
+                decorationColor: AppColors.textcolor.withOpacity(0.8),
+                color: AppColors.textcolor.withOpacity(0.8),
+              ),
             ),
           ),
         ),

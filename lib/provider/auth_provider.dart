@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class Authprovider with ChangeNotifier {
   int _currentStep = 0;
   DateTime _selectedDate = DateTime.now();
+  DateTime _initialTime = DateTime.now();
 
   String? password;
   String? _confirmPassword;
@@ -13,6 +14,7 @@ class Authprovider with ChangeNotifier {
 
   int get currentStep => _currentStep;
   DateTime get selectedDate => _selectedDate;
+  DateTime get initialTime => _initialTime;
   String get name => _name ?? "";
   String get confirmPassword => _confirmPassword ?? "";
 
@@ -37,6 +39,11 @@ class Authprovider with ChangeNotifier {
 
   void updateDate(DateTime date) {
     _selectedDate = date;
+    notifyListeners();
+  }
+
+   void updateTime(DateTime time) {
+    _initialTime = time;
     notifyListeners();
   }
 

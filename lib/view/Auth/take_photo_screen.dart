@@ -73,9 +73,8 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                           ? GlobalText(
                               'MOVE YOUR ID INSIDE THE BORDER',
                               textStyle: textStyle18SemiBold.copyWith(
-                                  color: AppColors.backgroungcolor,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600),
+                                color: AppColors.backgroungcolor,
+                              ),
                             )
                           : Container(),
                     ),

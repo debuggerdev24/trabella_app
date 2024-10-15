@@ -15,4 +15,9 @@ extension DateTimeToString on DateTime {
     final formatter = DateFormat('MMM dd', 'en_US');
     return formatter.format(this);
   }
+
+  String  get totime{
+    final formatter = DateFormat('hh:mm a');
+    return formatter.format(this);
+  }
 }

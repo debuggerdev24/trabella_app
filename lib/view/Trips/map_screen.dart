@@ -57,7 +57,7 @@ class Mapscreen extends StatelessWidget {
               prefixIcon: const Icon(Icons.search),
               hintText: "Search",
               fillcolor: AppColors.whiteColor,
-              contentPadding: EdgeInsets.symmetric(horizontal: 20.r),
+              contentPadding: EdgeInsets.symmetric(horizontal: 30.r),
             )),
         Positioned(
             right: 20,
@@ -120,15 +120,15 @@ class Mapscreen extends StatelessWidget {
   Widget _savedplace() {
     ScrollController _scrollController = ScrollController();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Places you saved",
-              style: textStyle16.copyWith(
+              style: textStyle18.copyWith(
                   color: AppColors.textcolor,
                   fontWeight: FontWeight.w600,
-                  fontSize: 20.sp)),
+                  fontSize: 24.sp)),
           SizedBox(height: 25.h),
           SizedBox(
             height: 500.h,
@@ -169,14 +169,15 @@ class Mapscreen extends StatelessWidget {
                             children: [
                               Text(
                                 restaurant['name'].toString(),
-                                style: appBarTitleStyle.copyWith(
-                                  color: Colors.black,
-                                ),
+                                style: textStyle18.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.textcolor),
                               ),
                               Text(
                                 restaurant['category'].toString(),
-                                style: TextStyle(
-                                    fontSize: 14.0, color: Colors.grey),
+                                style: textStyle18.copyWith(
+                                  color: AppColors.textcolor,
+                                ),
                               ),
                               Row(
                                 children: [
@@ -203,21 +204,22 @@ class Mapscreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              10.h.verticalSpace,
                               Row(
                                 children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.bookmark,
-                                        size: 30.w,
-                                        color: AppColors.darkredcolor,
-                                      )),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: SvgIcon(
-                                        AppAssets.circleinfo,
-                                        size: 23.w,
-                                      )),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Icon(
+                                      Icons.bookmark,
+                                      size: 30.w,
+                                      color: AppColors.darkredcolor,
+                                    ),
+                                  ),
+                                  5.w.horizontalSpace,
+                                  SvgIcon(
+                                    AppAssets.circleinfo,
+                                    size: 23.w,
+                                  )
                                 ],
                               ),
                             ],

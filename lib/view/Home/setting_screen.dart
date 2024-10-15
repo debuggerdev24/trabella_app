@@ -41,16 +41,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         iconcolor: AppColors.backgroungcolor),
                   ),
                   30.h.verticalSpace,
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text(
-                      "Settings",
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    child: GlobalText("Settings",
+                        textStyle: textStyle20SemiBold.copyWith(
+                            color: AppColors.darkredcolor)),
                   ),
                   30.h.verticalSpace,
                   _buildSettingsOption("Account management"),
@@ -75,7 +70,10 @@ class _SettingScreenState extends State<SettingScreen> {
 
   Widget _buildSettingsOption(String title, {bool isSwitch = false}) {
     return ListTile(
-      title: Text(title),
+      title: GlobalText(
+        title,
+        textStyle: textStyle18SemiBold,
+      ),
       trailing: isSwitch
           ? Switch.adaptive(
               value: _notificationsEnabled,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/tabs/tabs.dart';
@@ -53,7 +54,7 @@ class _LanguageSelectionState extends State<LanguageSelection> {
 
   @override
   Widget build(BuildContext context) {
-    final stepperProvider = Provider.of<Authprovider>(context, listen: false);
+    final authprovider = Provider.of<Authprovider>(context, listen: false);
 
     return SingleChildScrollView(
       child: Column(
@@ -63,8 +64,6 @@ class _LanguageSelectionState extends State<LanguageSelection> {
             'What languages do you speak?',
             textStyle: textStyle20SemiBold.copyWith(
               color: AppColors.redcolor,
-              fontSize: 30.sp,
-              fontWeight: FontWeight.w600,
             ),
           ),
           110.h.verticalSpace,
@@ -85,9 +84,12 @@ class _LanguageSelectionState extends State<LanguageSelection> {
                   dropDownList: ['English', 'Spanish', 'French', 'German']
                       .map((language) {
                     return DropdownMenuItem<String>(
-                      value: language,
-                      child: Text(language),
-                    );
+                        value: language,
+                        child: GlobalText(
+                          language,
+                          textStyle: textStyle16.copyWith(
+                              color: AppColors.textcolor, fontSize: 16.sp),
+                        ));
                   }).toList(),
                 ),
               );
@@ -107,20 +109,22 @@ class _LanguageSelectionState extends State<LanguageSelection> {
           20.h.verticalSpace,
           AppButton(
             onPressed: () {
-              stepperProvider.nextStep();
+              authprovider.nextStep();
             },
             text: "NEXT",
           ),
           10.h.verticalSpace,
           Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                authprovider.nextStep();
+              },
               child: GlobalText(
                 color: AppColors.greycolor,
                 'Skip',
                 textStyle: textStyle18SemiBold.copyWith(
                   decoration: TextDecoration.underline,
-                  decorationColor: AppColors.textcolor.withOpacity(0.8),
+                  decorationColor: AppColors.textcolor,
                   color: AppColors.textcolor.withOpacity(0.8),
                 ),
               ),
@@ -178,15 +182,15 @@ class SetName extends StatelessWidget {
             labelText: "Birth Time",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
-            hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
+            hintText: DateFormat('hh:mm a').format(stepperProvider.initialTime),
             suffixIcon: GestureDetector(
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
                   mode: CupertinoDatePickerMode.time,
-                  initialDateTime: stepperProvider.selectedDate,
+                  initialDateTime: stepperProvider.initialTime,
                   onDateTimeChanged: (value) {
-                    stepperProvider.updateDate(value);
+                    stepperProvider.updateTime(value);
                   },
                 );
               },
@@ -212,7 +216,7 @@ class SetName extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTap: () {
-                stepperProvider.jumpToStep(5);
+                stepperProvider.nextStep();
               },
               child: GlobalText(
                 color: AppColors.greycolor,
@@ -246,7 +250,7 @@ class _FavouritethingsState extends State<Favouritethings> {
     "HIKING",
     "BAKING",
     "GARDENING",
-    "YoGA",
+    "YOGA",
     "MOVIES",
     "FESTIVALS",
     "GALLERIES",
@@ -292,18 +296,23 @@ class _FavouritethingsState extends State<Favouritethings> {
         40.h.verticalSpace,
         AppButton(
           onPressed: () {
-            stepperProvider.nextStep();
+            context.pushNamed(AppRoute.thisorthatscreen.name);
           },
           text: "NEXT",
         ),
         20.h.verticalSpace,
-        GlobalText(
-          color: AppColors.greycolor,
-          'Skip',
-          textStyle: textStyle18SemiBold.copyWith(
-            decoration: TextDecoration.underline,
-            decorationColor: AppColors.textcolor.withOpacity(0.8),
-            color: AppColors.textcolor.withOpacity(0.8),
+        GestureDetector(
+          onTap: () {
+            stepperProvider.nextStep();
+          },
+          child: GlobalText(
+            color: AppColors.greycolor,
+            'Skip',
+            textStyle: textStyle18SemiBold.copyWith(
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.textcolor.withOpacity(0.8),
+              color: AppColors.textcolor.withOpacity(0.8),
+            ),
           ),
         ),
       ],
@@ -371,18 +380,23 @@ class _HolidaydestinationState extends State<Holidaydestination> {
         40.h.verticalSpace,
         AppButton(
           onPressed: () {
-            context.pushNamed(AppRoute.homescreen.name);
+            stepperProvider.nextStep();
           },
           text: "NEXT",
         ),
         20.h.verticalSpace,
-        GlobalText(
-          color: AppColors.greycolor,
-          'Skip',
-          textStyle: textStyle18SemiBold.copyWith(
-            decoration: TextDecoration.underline,
-            decorationColor: AppColors.textcolor.withOpacity(0.8),
-            color: AppColors.textcolor.withOpacity(0.8),
+        GestureDetector(
+          onTap: () {
+            stepperProvider.nextStep();
+          },
+          child: GlobalText(
+            color: AppColors.greycolor,
+            'Skip',
+            textStyle: textStyle18SemiBold.copyWith(
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.textcolor.withOpacity(0.8),
+              color: AppColors.textcolor.withOpacity(0.8),
+            ),
           ),
         ),
       ],

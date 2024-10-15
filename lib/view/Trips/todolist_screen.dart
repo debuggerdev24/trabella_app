@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_app/utils/app_colors.dart';
+import 'package:travel_app/utils/global_text.dart';
+import 'package:travel_app/utils/styles.dart';
 
 class TodolistScreen extends StatefulWidget {
   @override
@@ -46,7 +48,6 @@ class _TodolistScreenState extends State<TodolistScreen> {
 
   Widget _buildRadioItem(String value) {
     return RadioListTile<String>(
-   
         value: value,
         groupValue: selectedItem,
         onChanged: (String? newValue) {
@@ -54,7 +55,10 @@ class _TodolistScreenState extends State<TodolistScreen> {
             selectedItem = newValue!;
           });
         },
-        title: Text(value),
+        title: GlobalText(
+          value,
+          textStyle: textStyle18.copyWith(color: AppColors.textcolor),
+        ),
         activeColor: AppColors.darkredcolor);
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/provider/camera_provider.dart';
+import 'package:travel_app/provider/chat_provider.dart';
 import 'package:travel_app/provider/home_provider.dart';
 import 'package:travel_app/provider/trips_provider.dart';
 import 'package:travel_app/provider/wallet_provider.dart';
@@ -17,6 +18,7 @@ void main() {
         ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
         ChangeNotifierProvider<TripProvider>(create: (_) => TripProvider()),
         ChangeNotifierProvider<WalletProvider>(create: (_) => WalletProvider()),
+        ChangeNotifierProvider<ChatProvider>(create: (_) => ChatProvider()),
       ],
       child: const MyApp(),
     ),

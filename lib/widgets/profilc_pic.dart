@@ -1,27 +1,25 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:travel_app/utils/app_assets.dart';
+import 'package:travel_app/utils/app_colors.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic(
-      {super.key,
-      required this.image,
-      required this.icon,
-      this.isVerified = false,
-      this.file});
+      {super.key, required this.image, this.isVerified = false, this.file});
 
   final String image;
   final File? file;
-  final Widget icon;
   final bool isVerified;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 130,
-      width: 130,
+      height: 120.h,
+      width: 130.h,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           if (file != null)
             Container(
@@ -36,15 +34,22 @@ class ProfilePic extends StatelessWidget {
           if (file == null)
             Container(
               height: 120.h,
-              width: 200.w,
-              margin: EdgeInsets.symmetric(horizontal: 12.h),
+              width: 220.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                image: DecorationImage(image: AssetImage(image)),
+                image: DecorationImage(
+                    image: AssetImage(image), fit: BoxFit.cover),
               ),
             ),
-          if (icon != null)
-            Positioned(bottom: 0, right: 25, top: 70, child: icon)
+          Positioned(
+            bottom: 0,
+            right: -10.r,
+            child: CircleAvatar(
+              backgroundColor: AppColors.darkredcolor,
+              radius: 22.0.r,
+              child: Icon(Icons.edit_outlined, color: Colors.white, size: 25.0),
+            ),
+          ),
         ],
       ),
     );

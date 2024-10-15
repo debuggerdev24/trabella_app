@@ -28,7 +28,7 @@ class HorizontalStepper extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroungcolor,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40.r),
+        padding: EdgeInsets.symmetric(horizontal: 40.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,23 +44,20 @@ class HorizontalStepper extends StatelessWidget {
             ),
             60.h.verticalSpace,
             Expanded(
-              child: Container(
-                height: double.infinity,
-                child: PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    stepperProvider.jumpToStep(index);
-                  },
-                  children: [
-                    Setpassword(),
-                    _confirmpassword(context),
-                    _name(context),
-                    _nickname(context),
-                    const Setbirthday(),
-                    const Setlocation(),
-                  ],
-                ),
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                onPageChanged: (index) {
+                  stepperProvider.jumpToStep(index);
+                },
+                children: [
+                  Setpassword(),
+                  _confirmpassword(context),
+                  _name(context),
+                  _nickname(context),
+                  const Setbirthday(),
+                  const Setlocation(),
+                ],
               ),
             ),
           ],
@@ -78,13 +75,12 @@ class HorizontalStepper extends StatelessWidget {
           GlobalText(
             'Let’s see if you\nremember your\nmagic word',
             textStyle: textStyle20SemiBold.copyWith(
-                color: AppColors.redcolor,
-                fontSize: 30.sp,
-                fontWeight: FontWeight.w600),
+              color: AppColors.redcolor,
+            ),
           ),
           150.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             hintText: "Confirm your password",
             suffixIcon: Image.asset(AppAssets.password),
             onChanged: (value) {
@@ -118,8 +114,8 @@ class HorizontalStepper extends StatelessWidget {
           ),
           148.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
-            labelText: "First name",
+            fillcolor: Colors.transparent,
+            labelText: "First Name",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: "Trabella",
@@ -129,7 +125,7 @@ class HorizontalStepper extends StatelessWidget {
           ),
           20.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelText: "Last Name",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -159,16 +155,13 @@ class HorizontalStepper extends StatelessWidget {
           GlobalText(
             'What shall we call you?',
             textStyle: textStyle20SemiBold.copyWith(
-                color: AppColors.redcolor,
-                fontSize: 30.sp,
-                fontWeight: FontWeight.w600),
+              color: AppColors.redcolor,
+            ),
           ),
           149.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelText: "Nickname",
-            labelStyle:
-                textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: "Trabella",
             onChanged: (value) {
               stepperProvider.updateNickname(value ?? "");

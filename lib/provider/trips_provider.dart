@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/utils/enum/top_up_enum.dart';
 import 'package:travel_app/utils/enum/trip_tab_enum.dart';
 
 class TripProvider with ChangeNotifier {
@@ -8,6 +9,8 @@ class TripProvider with ChangeNotifier {
   DateTime? _toDate;
   bool tripcreated = true;
   TripTabEnum _currentTripTab = TripTabEnum.calender;
+
+
 
   bool _isShowSaved = false;
   List<Map<String, dynamic>> _destinations = [
@@ -22,12 +25,14 @@ class TripProvider with ChangeNotifier {
   List<Map<String, dynamic>> get itinereydata => _itinereydata;
   TripTabEnum get currentTripTab => _currentTripTab;
 
+
   bool get isShowSaved => _isShowSaved;
 
   void chnageTripTab(TripTabEnum value) {
     _currentTripTab = value;
     notifyListeners();
   }
+
 
   void chnageShowSaved() {
     _isShowSaved = !_isShowSaved;
@@ -78,7 +83,7 @@ class TripProvider with ChangeNotifier {
     }
   }
 
-  // Optional: Clear All Data
+
   void clearAll() {
     _destinations.clear();
     _flightAttendances.clear();

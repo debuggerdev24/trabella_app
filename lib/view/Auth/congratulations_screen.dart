@@ -52,9 +52,8 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
                 child: GlobalText(
                   'Congratulations!',
                   textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.backgroungcolor,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.backgroungcolor,
+                  ),
                 ),
               ),
               Padding(
@@ -63,14 +62,14 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
                 ),
                 child: GlobalText(
                   'You’vee signed up successfully. Time to explore the Trabella’s world!',
-                  textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.backgroungcolor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w300),
+                  textStyle: textStyle18.copyWith(
+                    color: AppColors.backgroungcolor,
+                    fontSize: 18.sp,
+                  ),
                 ),
               ),
               60.h.verticalSpace,
-              Bottombar(context),
+              bottomBar(context),
             ],
           ),
         ],
@@ -78,7 +77,7 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
     );
   }
 
-  Widget Bottombar(BuildContext context) {
+  Widget bottomBar(BuildContext context) {
     return Container(
       height: 300.h,
       width: double.infinity,
@@ -91,7 +90,7 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
         children: [
           GlobalText("Let’s set up your profile!",
               textStyle: textStyle18SemiBold.copyWith(
-                  color: AppColors.backgroungcolor, fontSize: 20.sp)),
+                  color: AppColors.backgroungcolor, fontSize: 24.sp)),
           AppButton(
               colorType: AppButtonColorType.secondary,
               onPressed: () {
@@ -99,13 +98,18 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
               },
               text: "SURE!",
               textStyle: const TextStyle(color: AppColors.backgroungcolor)),
-          GlobalText(
-            color: AppColors.backgroungcolor,
-            'Maybe Later!',
-            textStyle: textStyle18SemiBold.copyWith(
-                decorationColor: AppColors.backgroungcolor,
-                decoration: TextDecoration.underline,
-                color: AppColors.backgroungcolor),
+          GestureDetector(
+            onTap: () {
+              context.pushNamed(AppRoute.setcityscreen.name);
+            },
+            child: GlobalText(
+              color: AppColors.backgroungcolor,
+              'Maybe Later!',
+              textStyle: textStyle18SemiBold.copyWith(
+                  decorationColor: AppColors.backgroungcolor,
+                  decoration: TextDecoration.underline,
+                  color: AppColors.backgroungcolor),
+            ),
           ),
         ],
       ),

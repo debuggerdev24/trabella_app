@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_app/utils/app_colors.dart';
+import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/styles.dart';
 
 class AppChip extends StatelessWidget {
@@ -21,7 +22,7 @@ class AppChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: IntrinsicWidth(
         child: Container(
@@ -32,17 +33,18 @@ class AppChip extends StatelessWidget {
             border: Border.all(
               color: isSelected ? AppColors.darkredcolor : AppColors.textcolor,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(12.r),
           ),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
-                  child: Text(
-                    maxLines: 10,
+                  child: GlobalText(
+                    maxLine: 10,
                     text,
-                    style: textStyle16.copyWith(
+                    textStyle: textStyle16.copyWith(
+                      fontWeight: FontWeight.w600,
                       color: isSelected
                           ? AppColors.darkredcolor
                           : AppColors.greycolor,

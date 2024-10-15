@@ -38,7 +38,7 @@ class _SetbirthdayState extends State<Setbirthday> {
           ),
           149.h.verticalSpace,
           AppTextField(
-              fillcolor: Colors.transparent,
+            fillcolor: Colors.transparent,
             labelText: "Date of Birth",
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -103,6 +103,7 @@ class _SetpasswordState extends State<Setpassword> {
 
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GlobalText(
             'Secure the account\nwith your secret word\nand number',
@@ -157,9 +158,10 @@ class _SetlocationState extends State<Setlocation> {
   Widget build(BuildContext context) {
     final stepperProvider = Provider.of<Authprovider>(context, listen: false);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GlobalText(
-          'Where do you live,Thalia?',
+          'Where do you live,\nThalia?',
           textStyle: textStyle20SemiBold.copyWith(
               color: AppColors.redcolor,
               fontSize: 30.sp,
@@ -167,7 +169,7 @@ class _SetlocationState extends State<Setlocation> {
         ),
         110.h.verticalSpace,
         AppTextField(
-            fillcolor: Colors.transparent,
+          fillcolor: Colors.transparent,
           labelText: "Location",
           labelStyle: textStyle18SemiBold.copyWith(color: AppColors.blackColor),
           hintText: "Enter your location",

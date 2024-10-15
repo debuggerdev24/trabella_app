@@ -16,10 +16,25 @@ class AppAssets {
   static const String profilecard1 = "assets/profile1.png";
   static const String profilecard2 = "assets/profile2.png";
   static const String myprofile2 = "assets/profie.png";
-  static const String profileedit = "assets/profile_edit.png";
+  static const String dog = "assets/dog.png";
+  static const String cat = "assets/cat.png";
+  static const String beer = "assets/beer.png";
+  static const String wine = "assets/wine.png";
+  static const String chocolate = "assets/chocolate.png";
+  static const String pretzel = "assets/pretzel.png";
+  static const String restaurant = "assets/restaurant.png";
+  static const String streetfood = "assets/streetfood.png";
+  static const String diving = "assets/driving.png";
+  static const String flying = "assets/flying.png";
+  static const String asia = "assets/asia.png";
+  static const String europe = "assets/europe.png";
+  static const String hotel = "assets/hotel.png";
+  static const String villa = "assets/villa.png";
+  static const String city = "assets/city.png";
+  static const String country = "assets/country.png";
   static const String profile2 = "assets/profile2.png";
-  static const String tripbackground = "assets\tripbackground.png";
   static const String chatuser = "assets/chat.png";
+  static const String steeper = "assets/steeper.png";
 
   static const String apple = "assets/icons/apple.svg";
   static const String google = "assets/icons/google.svg";
@@ -62,6 +77,10 @@ class AppAssets {
   static const String splits = "assets/icons/split.svg";
   static const String phone = "assets/icons/phone.svg";
   static const String videocall = "assets/icons/video.svg";
+  static const String profileedit = "assets/icons/profileedit.svg";
+  static const String read = "assets/icons/read.svg";
+  static const String share = "assets/icons/share.svg";
+  static const String microphone = "assets/icons/Microphone.svg";
 
   // Tabs//
   static const String home = "assets/icons/home.svg";
@@ -74,10 +93,12 @@ class AppAssets {
   static const String walletfill = "assets/icons/walletfill.svg";
   static const String chatsfill = "assets/icons/chatfill.svg";
   static const String profilefill = "assets/icons/profilefill.svg";
+  static const String fontbig = "assets/icons/fontbig.svg";
+  static const String fontsmall = "assets/icons/fontsmall.svg";
 }
 
 class SvgIcon extends StatelessWidget {
-  const SvgIcon(this.iconPath, {super.key, double size = 14, this.color})
+  const SvgIcon(this.iconPath, {super.key, double size = 12, this.color})
       : width = size,
         height = size;
   final String iconPath;

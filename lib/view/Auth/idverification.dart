@@ -8,7 +8,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Auth/verifiaction_screen.dart';
+import 'package:travel_app/view/Auth/take_photo_screen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/back_button.dart';
 
@@ -44,17 +44,15 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 GlobalText(
                   'Help us secure the Trabella community by verifying your ID',
                   textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.redcolor,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.redcolor,
+                  ),
                 ),
                 10.h.verticalSpace,
                 GlobalText(
                   'Please take a photo of your ID so we can verify it’s you',
                   textStyle: textStyle16.copyWith(
-                      color: AppColors.textcolor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.textcolor,
+                  ),
                 ),
                 50.h.verticalSpace,
                 AppButton(
@@ -89,11 +87,10 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Align(
-                      alignment: Alignment.topRight,
+                    Padding(
+                      padding: EdgeInsets.only(top: 13.r),
                       child: GestureDetector(
                           onTap: () {
-                            context.pop();
                             context.pushNamed(AppRoute.takephotoscreen.name);
                           },
                           child: SvgPicture.asset(AppAssets.cancel)),
@@ -104,9 +101,9 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 GlobalText(
                   "ID we accept are:",
                   textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600),
+                    color: AppColors.darkredcolor,
+                    fontSize: 18.sp,
+                  ),
                 ),
                 10.h.verticalSpace,
                 reqiredfiled("Password"),
@@ -116,7 +113,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 reqiredfiled("EU Nationality Card"),
                 32.h.verticalSpace,
                 GlobalText(
-                  "Tips:",
+                  "Tips",
                   textStyle: textStyle20SemiBold.copyWith(
                       color: AppColors.darkredcolor,
                       fontSize: 18.sp,
@@ -131,7 +128,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 8.h.verticalSpace,
                 reqiredfiled(
                     "Check we can see all the details of\n your ID clearly"),
-                32.h.verticalSpace
+                35.h.verticalSpace
               ],
             ),
           );
@@ -145,7 +142,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
         10.w.horizontalSpace,
         GlobalText(text,
             textStyle: textStyle14.copyWith(
-                color: AppColors.textcolor.withOpacity(0.9))),
+                fontSize: 16.sp, color: AppColors.textcolor.withOpacity(0.9))),
       ],
     );
   }

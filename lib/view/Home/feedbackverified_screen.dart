@@ -36,8 +36,9 @@ class FeedbackverifiedScreen extends StatelessWidget {
             Center(
               child: GlobalText(
                 "We truly appreciate the time you took to share your thoughts and the insights you've provided!",
-                textStyle: textStyle16.copyWith(
-                    color: AppColors.backgroungcolor, fontSize: 15.sp),
+                textStyle: textStyle18.copyWith(
+                  color: AppColors.backgroungcolor,
+                ),
               ),
             ),
             80.h.verticalSpace,

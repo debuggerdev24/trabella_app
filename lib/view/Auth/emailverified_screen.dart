@@ -19,7 +19,7 @@ class VerifyScreen extends StatelessWidget {
       backgroundColor: AppColors.darkredcolor,
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 40.0,
+          horizontal: 37.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,12 +32,10 @@ class VerifyScreen extends StatelessWidget {
             60.h.verticalSpace,
             GlobalText(
               'Thank you, we’ve verified your email!',
-              textStyle: textStyle14SemiBold.copyWith(
-                  color: AppColors.backgroungcolor,
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w600),
+              textStyle: textStyle20SemiBold.copyWith(
+                  color: AppColors.backgroungcolor),
             ),
-            148.h.verticalSpace,
+            160.h.verticalSpace,
             AppButton(
               colorType: AppButtonColorType.secondary,
               onPressed: () {

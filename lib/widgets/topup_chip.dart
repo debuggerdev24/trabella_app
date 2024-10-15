@@ -1,52 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_app/utils/app_colors.dart';
+import 'package:travel_app/utils/enum/top_up_enum.dart';
 import 'package:travel_app/utils/styles.dart';
 
 class TopUpChip extends StatelessWidget {
-  const TopUpChip({
-    super.key,
-    required this.text,
-    this.backgroundColor,
-    this.isSelected = false,
-    this.onTap,
-    this.isnotselected = false,
-  });
+  const TopUpChip(
+      {required this.value, required this.currentValue, required this.ontap});
 
-  final String text;
-  final Color? backgroundColor;
-  final bool isSelected;
-  final VoidCallback? onTap;
-  final bool isnotselected;
+  final TopUpEnum value;
+  final TopUpEnum currentValue;
+  final Function(TopUpEnum) ontap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
-      child: IntrinsicWidth(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10),
-          // alignment: Alignment.center,
-          decoration: BoxDecoration(
+      onTap: () {
+        if (value == currentValue) return;
+        ontap(value);
+      },
+      borderRadius: BorderRadius.circular(30.r),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 48.h,
+        width: 140.w,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
             border: Border.all(
-              color: isSelected ? AppColors.darkredcolor : AppColors.textcolor,
+              color: value == currentValue
+                  ? AppColors.darkredcolor
+                  : AppColors.textcolor,
             ),
-            borderRadius: BorderRadius.circular(50.r),
-          ),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Expanded(
-              child: Text(
-                maxLines: 10,
-                text,
-                style: textStyle16SemiBold.copyWith(
-                  color:
-                      isSelected ? AppColors.darkredcolor : AppColors.greycolor,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-          ]),
-        ),
+            borderRadius: BorderRadius.circular(30.r)),
+        child: Text(value.getTitle(),
+            style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: value == currentValue
+                    ? AppColors.darkredcolor
+                    : AppColors.textcolor)),
       ),
     );
   }

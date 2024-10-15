@@ -26,7 +26,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          220.h.verticalSpace,
+          150.h.verticalSpace,
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 40.0,
@@ -34,11 +34,12 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                100.h.verticalSpace,
                 GlobalText(
                   'Ciao Bella!',
-                  textStyle: textStyle16SemiBold.copyWith(
+                  textStyle: textStyle18SemiBold.copyWith(
                       color: AppColors.darkredcolor,
-                      fontSize: 30.sp,
+                      fontSize: 40.sp,
                       fontWeight: FontWeight.bold),
                 ),
                 10.h.verticalSpace,
@@ -56,7 +57,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                     text: "SIGN UP WITH THE CODE",
                   ),
                 ),
-                30.h.verticalSpace,
+                61.h.verticalSpace,
                 Center(
                   child: Column(
                     children: [
@@ -76,7 +77,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                           SvgPicture.asset(AppAssets.email),
                         ],
                       ),
-                      120.h.verticalSpace,
+                      78.h.verticalSpace,
                     ],
                   ),
                 ),

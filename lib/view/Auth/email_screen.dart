@@ -110,7 +110,7 @@ class _EmailscreenState extends State<Emailscreen> {
           child: GlobalText(
         text,
         textStyle: textStyle16Bold.copyWith(
-            color: AppColors.textcolor.withOpacity(0.8), fontSize: 14.sp),
+            color: AppColors.textcolor.withOpacity(0.8), fontSize: 16.sp),
       )),
     );
   }

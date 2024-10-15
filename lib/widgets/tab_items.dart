@@ -5,6 +5,8 @@ import 'package:travel_app/provider/trips_provider.dart';
 import 'package:travel_app/utils/app_assets.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/enum/trip_tab_enum.dart';
+import 'package:travel_app/utils/global_text.dart';
+import 'package:travel_app/utils/styles.dart';
 import 'package:travel_app/view/Trips/map_screen.dart';
 import 'package:travel_app/view/Trips/todolist_screen.dart';
 import 'package:travel_app/widgets/calender_screen.dart';
@@ -24,7 +26,6 @@ class _TabItemsState extends State<TabItems>
     return Column(
       children: [
         Container(
-          height: 45.h,
           margin: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
           decoration: BoxDecoration(
               color: const Color(0xffE6E6E6),
@@ -87,8 +88,8 @@ class _TabItemsState extends State<TabItems>
                 ? AppColors.darkredcolor
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(10.r)),
-        child: Text(value.getTitle(),
-            style: TextStyle(
+        child: GlobalText(value.getTitle(),
+            textStyle: textStyle16.copyWith(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
                 color: value == currentValue

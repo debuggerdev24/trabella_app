@@ -32,7 +32,7 @@ class ThisOrThatScreen extends StatelessWidget {
             250.h.verticalSpace,
             GlobalText(
               'Let’s play “This or That”',
-              textStyle: textStyle14SemiBold.copyWith(
+              textStyle: textStyle16.copyWith(
                   color: AppColors.backgroungcolor,
                   fontSize: 30.sp,
                   fontWeight: FontWeight.w600),
@@ -41,7 +41,7 @@ class ThisOrThatScreen extends StatelessWidget {
             AppButton(
               colorType: AppButtonColorType.secondary,
               onPressed: () {
-                context.pushNamed(AppRoute.fortywaitinglistscreen.name);
+                context.pushNamed(AppRoute.catordogscreen.name);
               },
               text: "LETS!",
             ),

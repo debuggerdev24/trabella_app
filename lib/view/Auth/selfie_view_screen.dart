@@ -36,17 +36,14 @@ class SelfieviewScreen extends StatelessWidget {
                     color: AppColors.darkredcolor,
                     iconcolor: AppColors.backgroungcolor,
                   ),
-                  200.h.verticalSpace,
-                  SizedBox(
-                    width: 500.w,
-                    height: 300.h,
-                    child: ClipOval(
-                      child: Image.file(
-                        File(imagePath),
-                        fit: BoxFit.cover,
-                        width: 200.w,
-                        height: 210.w,
-                      ),
+                  150.h.verticalSpace,
+                  ClipOval(
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.file(
+                      File(imagePath),
+                      fit: BoxFit.cover,
+                      width: 500.w,
+                      height: 350.w,
                     ),
                   ),
                   100.h.verticalSpace,

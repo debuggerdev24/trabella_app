@@ -30,12 +30,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: <Widget>[
               Spacer(),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.symmetric(horizontal: 27.w),
                 child: GlobalText(
                   'Before we go ahead...\nTrabella is for women over 40 years old only.',
                   textAlign: TextAlign.center,
                   textStyle: textStyle14SemiBold.copyWith(
-                      color: AppColors.backgroungcolor, fontSize: 25.sp),
+                      color: AppColors.backgroungcolor, fontSize: 30.sp),
                 ),
               ),
               const Spacer(),
@@ -63,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Text(
                       'Terms and conditions and privacy policy.',
                       style: textStyle16.copyWith(
-                          color: AppColors.backgroungcolor, fontSize: 13.sp),
+                          color: AppColors.backgroungcolor, fontSize: 16.sp),
                     ),
                   ],
                 ),

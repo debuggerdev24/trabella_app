@@ -7,12 +7,14 @@ import 'package:travel_app/provider/wallet_provider.dart';
 import 'package:travel_app/utils/app_assets.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/enum/payment_methos_enum.dart';
+import 'package:travel_app/utils/enum/top_up_enum.dart';
 import 'package:travel_app/utils/enum/wallet_paymet_enum.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
+import 'package:travel_app/widgets/darwer_tile.dart';
 import 'package:travel_app/widgets/destination_chip.dart';
 import 'package:travel_app/widgets/dropdown_txt_filed.dart';
 import 'package:travel_app/widgets/paymet_optiontile.dart';
@@ -32,7 +34,7 @@ class _WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: drawers(),
+      drawer: CustomDrawer(),
       backgroundColor: AppColors.backgroungcolor,
       body: Consumer<WalletProvider>(builder: (context, walletprovider, _) {
         return SingleChildScrollView(
@@ -93,81 +95,7 @@ class _WalletScreenState extends State<WalletScreen> {
     );
   }
 
-  Widget drawers() {
-    return Drawer(
-      backgroundColor: AppColors.darkredcolor,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(color: AppColors.darkredcolor),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: SvgIcon(
-                  AppAssets.drawercancel,
-                  color: AppColors.whiteColor,
-                  size: 36.sp,
-                ),
-              ),
-            ),
-          ),
-          ListTile(
-              onTap: () {
-                context.pushNamed(AppRoute.myprofilescreen.name);
-              },
-              title: Text(
-                "My Profile",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.myprofile,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {},
-              title: Text(
-                "Invite Friends",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.invitefriend,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {
-                context.pushNamed(AppRoute.settingscreen.name);
-              },
-              title: Text(
-                "Settings",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.setting,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-          ListTile(
-              onTap: () {},
-              title: Text(
-                "Log out",
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
-              leading: SvgIcon(
-                AppAssets.logout,
-                color: AppColors.whiteColor,
-                size: 26,
-              )),
-        ],
-      ),
-    );
-  }
-
+ 
   void openAlertBox({required VoidCallback onCreditCard}) {
     showDialog(
       barrierDismissible: true,
@@ -459,10 +387,9 @@ class _WalletScreenState extends State<WalletScreen> {
   }
 
   Widget _topup() {
-    return Consumer<WalletProvider>(builder: (context, walletprovider, _) {
+    return Consumer<WalletProvider>(builder: (context, provider, _) {
       return SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
@@ -488,14 +415,15 @@ class _WalletScreenState extends State<WalletScreen> {
                 'Enter amount',
                 textStyle: textStyle16.copyWith(
                     color: AppColors.textcolor,
-                    fontSize: 25.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w600),
               ),
             ),
-            12.h.verticalSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: AppTextField(
+                contentPadding:
+                    REdgeInsets.symmetric(horizontal: 15.r, vertical: 10.r),
                 keyboardType: TextInputType.number,
                 fillcolor: AppColors.backgroungcolor,
                 textAlign: TextAlign.center,
@@ -504,23 +432,53 @@ class _WalletScreenState extends State<WalletScreen> {
                         color: AppColors.darkredcolor,
                         width: 2,
                         strokeAlign: 20)),
-                hintText: 'AUD 50.00',
+                hintText: 'AUD 00.00',
                 hintStyle:
                     textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
               ),
             ),
             30.h.verticalSpace,
-            const Wrap(
-              spacing: 5,
-              runSpacing: 20,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TopUpChip(text: "AUD 50"),
-                TopUpChip(text: "AUD 100"),
-                TopUpChip(text: "AUD 150"),
-                TopUpChip(text: "AUD 200")
+                TopUpChip(
+                  value: TopUpEnum.AUD100,
+                  currentValue: provider.topupamount,
+                  ontap: (value) {
+                    provider.changeTopup(value);
+                  },
+                ),
+                TopUpChip(
+                  value: TopUpEnum.AUD150,
+                  currentValue: provider.topupamount,
+                  ontap: (value) {
+                    provider.changeTopup(value);
+                  },
+                ),
               ],
             ),
-            50.h.verticalSpace,
+            10.h.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TopUpChip(
+                  value: TopUpEnum.AUD200,
+                  currentValue: provider.topupamount,
+                  ontap: (value) {
+                    provider.changeTopup(value);
+                  },
+                ),
+                10.h.verticalSpace,
+                TopUpChip(
+                  value: TopUpEnum.AUD50,
+                  currentValue: provider.topupamount,
+                  ontap: (value) {
+                    provider.changeTopup(value);
+                  },
+                ),
+              ],
+            ),
+            40.h.verticalSpace,
             AppButton(
                 onPressed: () {
                   context.pop();
@@ -628,14 +586,16 @@ class _WalletScreenState extends State<WalletScreen> {
                 'Enter amount',
                 textStyle: textStyle16.copyWith(
                   color: AppColors.textcolor,
-                  fontSize: 25.sp,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: AppTextField(
+                contentPadding:
+                    REdgeInsets.symmetric(horizontal: 15.r, vertical: 10.r),
                 keyboardType: TextInputType.number,
                 fillcolor: AppColors.backgroungcolor,
                 textAlign: TextAlign.center,
@@ -658,12 +618,13 @@ class _WalletScreenState extends State<WalletScreen> {
                 textStyle: textStyle14.copyWith(
                   color: AppColors.textcolor,
                   fontSize: 18.sp,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
             10.h.verticalSpace,
             CardDropDownField(
+              hintText: "Search",
               value: "Jordan",
               onChanged: (value) {},
               dropDownList: countrydropdownlist(),

@@ -20,11 +20,11 @@ final textStyle16Bold = TextStyle(
 );
 final textStyle16 = TextStyle(
   fontFamily: 'Roboto',
-  fontSize: 15.sp,
+  fontSize: 18.sp,
 );
 final textStyle14 = TextStyle(
   fontFamily: 'Roboto',
-  fontSize: 14.sp,
+  fontSize: 18.sp,
 );
 final textStyle14SemiBold = TextStyle(
   fontFamily: 'Roboto',
@@ -36,13 +36,17 @@ final textStyle12 = TextStyle(
   fontFamily: 'Roboto',
   fontSize: 12.sp,
 );
+final textStyle18 = TextStyle(
+  fontFamily: 'Roboto',
+  fontSize: 18.sp,
+);
 
 final textStyle18SemiBold = TextStyle(
     fontFamily: 'Roboto', fontSize: 18.sp, fontWeight: FontWeight.w600);
 
 final textStyle20SemiBold = TextStyle(
   fontFamily: 'Roboto',
-  fontSize: 20.sp,
+  fontSize: 30.sp,
   fontWeight: FontWeight.w600,
 );
 

@@ -11,6 +11,7 @@ import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
 import 'package:travel_app/widgets/app_button.dart';
+import 'package:travel_app/widgets/darwer_tile.dart';
 import 'package:travel_app/widgets/profie_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,78 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: AppColors.darkredcolor,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(color: AppColors.darkredcolor),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: SvgIcon(
-                    AppAssets.drawercancel,
-                    color: AppColors.whiteColor,
-                    size: 36.sp,
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-                onTap: () {
-                  context.pushNamed(AppRoute.myprofilescreen.name);
-                },
-                title: Text(
-                  "My Profile",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                leading: SvgIcon(
-                  AppAssets.myprofile,
-                  color: AppColors.whiteColor,
-                  size: 26,
-                )),
-            ListTile(
-                onTap: () {},
-                title: Text(
-                  "Invite Friends",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                leading: SvgIcon(
-                  AppAssets.invitefriend,
-                  color: AppColors.whiteColor,
-                  size: 26,
-                )),
-            ListTile(
-                onTap: () {
-                  context.pushNamed(AppRoute.settingscreen.name);
-                },
-                title: Text(
-                  "Settings",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                leading: SvgIcon(
-                  AppAssets.setting,
-                  color: AppColors.whiteColor,
-                  size: 26,
-                )),
-            ListTile(
-                onTap: () {},
-                title: Text(
-                  "Log out",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                leading: SvgIcon(
-                  AppAssets.logout,
-                  color: AppColors.whiteColor,
-                  size: 26,
-                )),
-          ],
-        ),
-      ),
+      drawer: CustomDrawer(),
       backgroundColor: AppColors.backgroungcolor,
       body: SingleChildScrollView(
         child: Column(
@@ -111,17 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextSpan(
                   text: "Your next trip to",
                   style: textStyle16.copyWith(
-                    fontSize: 24.sp,
-                    color: AppColors.textcolor,
-                    fontWeight: FontWeight.w600,
-                  ),
+                      fontSize: 24.sp,
+                      color: AppColors.textcolor,
+                      fontWeight: FontWeight.w600),
                   children: [
                     TextSpan(
                       text: "\nLisbon is in 24 days.",
                       style: textStyle16.copyWith(
-                        fontSize: 24.sp,
-                        color: AppColors.darkredcolor,
-                      ),
+                          fontSize: 24.sp,
+                          color: AppColors.darkredcolor,
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -130,14 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                50.h.verticalSpace,
+                40.h.verticalSpace,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40.r),
                   child: GlobalText(
                     "Explore Trabellas around you",
                     textStyle: textStyle16SemiBold.copyWith(
                       color: AppColors.darkredcolor,
-                      fontSize: 20.sp,
+                      fontSize: 24.sp,
                     ),
                   ),
                 ),
@@ -148,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Travelling to your destination the same time",
                     textStyle: textStyle16SemiBold.copyWith(
                       color: AppColors.textcolor,
-                      fontSize: 20.sp,
+                      fontSize: 18.sp,
                     ),
                   ),
                 ),
@@ -162,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         const ProfieCard(
                           image: AppAssets.profilecard1,
-                          name: "Maya",
+                          name: "Maya 41",
                           country: "Italy",
                         ),
                         25.w.horizontalSpace,
@@ -186,10 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 40.r),
                   child: GlobalText(
                     "Near your current location",
-                    textStyle: textStyle16SemiBold.copyWith(
-                      color: AppColors.textcolor,
-                      fontSize: 20.sp,
-                    ),
+                    textStyle: textStyle18.copyWith(
+                        color: AppColors.textcolor,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 20.h.verticalSpace,
@@ -227,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: GlobalText("Complete your profile",
                       textStyle: textStyle16SemiBold.copyWith(
                         color: AppColors.darkredcolor,
-                        fontSize: 20.sp,
+                        fontSize: 24.sp,
                       )),
                 ),
                 10.h.verticalSpace,
@@ -237,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Who's travelling to your destination the same time",
                     textStyle: textStyle16SemiBold.copyWith(
                       color: AppColors.textcolor.withOpacity(0.8),
-                      fontSize: 17.sp,
+                      fontSize: 18.sp,
                     ),
                   ),
                 ),
@@ -269,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: GlobalText("Tell us about your friends",
                       textStyle: textStyle16SemiBold.copyWith(
                         color: AppColors.darkredcolor,
-                        fontSize: 20.sp,
+                        fontSize: 24.sp,
                       )),
                 ),
                 10.h.verticalSpace,
@@ -279,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Endorse your friends so other Trabellas know about them",
                     textStyle: textStyle16SemiBold.copyWith(
                       color: AppColors.textcolor.withOpacity(0.8),
-                      fontSize: 16.sp,
+                      fontSize: 18.sp,
                     ),
                   ),
                 ),
@@ -289,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child:
                       AppButton(onPressed: () {}, text: "ENDORSE YOUR FRIENDS"),
                 ),
-                20.h.verticalSpace,
+                30.h.verticalSpace,
               ],
             ),
           ],
@@ -374,10 +302,9 @@ class _HomeScreenState extends State<HomeScreen> {
           GlobalText(
             text,
             textAlign: TextAlign.center,
-            textStyle: textStyle14SemiBold.copyWith(
-                fontSize: 14.sp,
-                color: AppColors.textcolor,
-                fontWeight: FontWeight.w600),
+            textStyle: textStyle18SemiBold.copyWith(
+              color: AppColors.textcolor,
+            ),
           ),
         ],
       ),
