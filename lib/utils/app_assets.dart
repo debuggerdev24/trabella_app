@@ -35,6 +35,13 @@ class AppAssets {
   static const String profile2 = "assets/profile2.png";
   static const String chatuser = "assets/chat.png";
   static const String steeper = "assets/steeper.png";
+  static const String slider1 = "assets/silder1.png";
+  static const String slider2 = "assets/slider2.png";
+  static const String slider3 = "assets/slider3.png";
+ static const String stemp1 = "assets/stamp1.png";
+  static const String stemp2 = "assets/stamp2.png";
+  static const String stemp3 = "assets/stamp3.png";
+  static const String stemp4 = "assets/stamp4.png";
 
   static const String apple = "assets/icons/apple.svg";
   static const String google = "assets/icons/google.svg";
@@ -81,6 +88,13 @@ class AppAssets {
   static const String read = "assets/icons/read.svg";
   static const String share = "assets/icons/share.svg";
   static const String microphone = "assets/icons/Microphone.svg";
+  static const String profilecheck = "assets/icons/profilecheck.svg";
+  static const String language = "assets/icons/language.svg";
+  static const String wine1 = "assets/icons/wine.svg";
+  static const String cigerette = "assets/icons/cigerette.svg";
+  static const String sagittarius = "assets/icons/sagittarius.svg";
+  static const String  aquarius = "assets/icons/aquarius.svg";
+  static const String taurus = "assets/icons/taurus.svg";
 
   // Tabs//
   static const String home = "assets/icons/home.svg";

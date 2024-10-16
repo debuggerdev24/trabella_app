@@ -76,7 +76,7 @@ class Calendar extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 40.r),
               child: ListTile(
                 leading: SvgPicture.asset(AppAssets.germany),
-                title: Text('Germany'),
+                title: const Text('Germany'),
               ),
             ),
             20.h.verticalSpace,

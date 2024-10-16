@@ -7,9 +7,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
+import 'package:travel_app/provider/profile_provider.dart';
 import 'package:travel_app/tabs/tabs.dart';
 import 'package:travel_app/utils/app_assets.dart';
 import 'package:travel_app/utils/app_colors.dart';
+import 'package:travel_app/utils/enum/edit_profie_tab_enum.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
@@ -34,8 +36,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroungcolor,
-      body: Consumer2<Authprovider, HomeProvider>(
-          builder: (context, authProvider, homeProvider, _) {
+      body: Consumer3<Authprovider, HomeProvider, ProfileProvider>(
+          builder: (context, authProvider, homeProvider, profileprovider, _) {
         return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -62,6 +64,28 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                     image: AppAssets.myprofile2,
                   ),
                 ),
+                81.h.verticalSpace,
+                Row(
+                  children: [
+                    Expanded(
+                      child: profileTab(
+                          value: EditProfileEnum.edit,
+                          currentValue: profileprovider.currentEditTab,
+                          onTap: (value) {
+                            profileprovider.changeProfileTab(value);
+                          }),
+                    ),
+                    Expanded(
+                      child: profileTab(
+                          value: EditProfileEnum.preview,
+                          currentValue: profileprovider.currentEditTab,
+                          onTap: (value) {
+                            profileprovider.changeProfileTab(value);
+                          }),
+                    ),
+                  ],
+                ),
+                20.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   labelText: "Name",
@@ -192,4 +216,34 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
             ),
           )
           .toList();
+
+  Widget profileTab(
+      {required EditProfileEnum value,
+      required EditProfileEnum currentValue,
+      required Function(EditProfileEnum) onTap}) {
+    return InkWell(
+      onTap: () {
+        if (value == currentValue) return;
+        onTap(value);
+      },
+      borderRadius: BorderRadius.circular(10.r),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 43,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: value == currentValue
+                ? AppColors.darkredcolor
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(10.r)),
+        child: GlobalText(value.getTitle(),
+            textStyle: textStyle16.copyWith(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: value == currentValue
+                    ? AppColors.whiteColor
+                    : AppColors.textcolor)),
+      ),
+    );
+  }
 }

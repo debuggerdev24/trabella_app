@@ -5,7 +5,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Auth/take_photo_screen.dart';
+import 'package:travel_app/view/auth/take_photo_screen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 
 class Waitinglist extends StatelessWidget {

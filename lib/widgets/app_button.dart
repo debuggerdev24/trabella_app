@@ -23,6 +23,7 @@ class AppButton extends StatelessWidget {
     this.radius = 30,
     this.icon,
     this.textStyle,
+    this.borderRadius,
   });
 
   final VoidCallback? onPressed;
@@ -36,6 +37,7 @@ class AppButton extends StatelessWidget {
   final double? radius;
   final double? elevation;
   final TextStyle? textStyle;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class AppButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         disabledBackgroundColor: AppColors.backgroungcolor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
+          borderRadius: borderRadius ?? BorderRadius.circular(30.r),
         ),
         backgroundColor: backgroundColor ??
             (colorType == AppButtonColorType.primary

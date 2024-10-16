@@ -11,7 +11,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Trips/trip_createscreen.dart';
+import 'package:travel_app/view/trips/trip_createscreen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_txt_field.dart';
 import 'package:travel_app/widgets/calender_screen.dart';

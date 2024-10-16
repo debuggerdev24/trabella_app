@@ -7,8 +7,8 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/enum/trip_tab_enum.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Trips/map_screen.dart';
-import 'package:travel_app/view/Trips/todolist_screen.dart';
+import 'package:travel_app/view/trips/map_screen.dart';
+import 'package:travel_app/view/trips/todolist_screen.dart';
 import 'package:travel_app/widgets/calender_screen.dart';
 
 class TabItems extends StatefulWidget {

@@ -51,6 +51,8 @@ dependencies:
   google_maps_flutter: ^2.9.0
   syncfusion_flutter_datepicker: ^27.1.52
   flutter_rating_bar: ^4.0.1
+  carousel_slider: ^5.0.0
+  dots_indicator: ^3.0.0
   
 
 

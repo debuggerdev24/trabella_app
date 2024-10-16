@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/utils/app_colors.dart';
-import 'package:travel_app/view/Auth/setcity/citywidgets.dart';
+import 'package:travel_app/view/auth/setcity/citywidgets.dart';
 
 import 'package:travel_app/widgets/back_button.dart';
 import 'package:travel_app/widgets/steeper.dart';

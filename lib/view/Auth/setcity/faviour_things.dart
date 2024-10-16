@@ -7,7 +7,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
-import 'package:travel_app/view/Auth/take_photo_screen.dart';
+import 'package:travel_app/view/auth/take_photo_screen.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/destination_chip.dart';
 
@@ -45,7 +45,7 @@ class _FavouritethingsState extends State<Favouritethings> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GlobalText(
-          'Choose 5 things you’re really into',
+          'Choose 5 thingsyou’re really into',
           textStyle: textStyle20SemiBold.copyWith(
             color: AppColors.redcolor,
           ),

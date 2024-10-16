@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_app/provider/camera_provider.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/routes/route.dart';
-import 'package:travel_app/view/Auth/selfie_screen.dart';
+import 'package:travel_app/view/auth/selfie_screen.dart';
 
 class ClickingProfilePickView extends StatefulWidget {
   const ClickingProfilePickView(
