@@ -52,6 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Checkbox(
+                      focusColor: AppColors.backgroungcolor,
                       value: isChecked,
                       onChanged: (bool? value) {
                         setState(() {
@@ -59,6 +60,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         });
                       },
                       activeColor: AppColors.darkredcolor,
+                      side: MaterialStateBorderSide.resolveWith(
+                        (Set<MaterialState> states) {
+                          if (!states.contains(MaterialState.selected)) {
+                            return BorderSide(
+                                width: 1.w,
+                                color: AppColors
+                                    .backgroungcolor); // Border when unchecked
+                          }
+                        },
+                      ),
                     ),
                     Text(
                       'Terms and conditions and privacy policy.',

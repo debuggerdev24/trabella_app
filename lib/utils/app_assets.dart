@@ -38,7 +38,7 @@ class AppAssets {
   static const String slider1 = "assets/silder1.png";
   static const String slider2 = "assets/slider2.png";
   static const String slider3 = "assets/slider3.png";
- static const String stemp1 = "assets/stamp1.png";
+  static const String stemp1 = "assets/stamp1.png";
   static const String stemp2 = "assets/stamp2.png";
   static const String stemp3 = "assets/stamp3.png";
   static const String stemp4 = "assets/stamp4.png";
@@ -93,7 +93,7 @@ class AppAssets {
   static const String wine1 = "assets/icons/wine.svg";
   static const String cigerette = "assets/icons/cigerette.svg";
   static const String sagittarius = "assets/icons/sagittarius.svg";
-  static const String  aquarius = "assets/icons/aquarius.svg";
+  static const String aquarius = "assets/icons/aquarius.svg";
   static const String taurus = "assets/icons/taurus.svg";
 
   // Tabs//
@@ -124,6 +124,7 @@ class SvgIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     const Color srcColor = AppColors.blackColor;
     return SvgPicture.asset(iconPath,
+        alignment: Alignment.center,
         width: width,
         height: height,
         colorFilter: ColorFilter.mode(color ?? srcColor, BlendMode.srcIn));

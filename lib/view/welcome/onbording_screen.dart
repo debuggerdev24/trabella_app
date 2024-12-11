@@ -26,29 +26,54 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          150.h.verticalSpace,
+          120.h.verticalSpace,
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 40.0,
+            padding: EdgeInsets.symmetric(
+              horizontal: 40.w,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 100.h.verticalSpace,
-                GlobalText(
-                  'Ciao Bella!',
-                  textStyle: textStyle18SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 40.sp,
-                      fontWeight: FontWeight.bold),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Ciao Bella',
+                        style: textStyle18SemiBold.copyWith(
+                          color: AppColors.darkredcolor,
+                          fontSize: 40.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: '!',
+                        style: textStyle18SemiBold.copyWith(
+                          color: AppColors.darkredcolor,
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                // GlobalText(
+                //   'Ciao Bella!',
+                //   textStyle: textStyle18SemiBold.copyWith(
+                //       color: AppColors.darkredcolor,
+                //       fontSize: 40.sp,
+                //       fontWeight: FontWeight.w600
+                //       // fontWeight: FontWeight.w900
+                //       ),
+                // ),
+
                 10.h.verticalSpace,
                 GlobalText(
                     'Sign up with a referral code or log in to start connecting with Trabellas around the world!',
                     textStyle: textStyle16.copyWith(
                         color: AppColors.textcolor.withOpacity(0.93),
-                        fontSize: 15.sp)),
-                60.h.verticalSpace,
+                        fontSize: 17.5.sp)),
+                50.h.verticalSpace,
                 Center(
                   child: AppButton(
                     onPressed: () {

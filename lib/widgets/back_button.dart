@@ -32,7 +32,7 @@ class KBackButton extends StatelessWidget {
       child: Container(
         width: 40.w,
         height: 40.h,
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.only(top: 8.sp, bottom: 8.sp, right: 3.sp),
         decoration: BoxDecoration(
           color: color,
           shape: BoxShape.circle,
@@ -40,7 +40,7 @@ class KBackButton extends StatelessWidget {
         child: SvgIcon(
           AppAssets.backbutton,
           color: iconcolor,
-          size: size ?? 20.w,
+          size: size ?? 16.w,
         ),
       ),
     );

@@ -38,7 +38,7 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
                   ),
                   50.h.verticalSpace,
                   GlobalText(
-                    'Enter your referral code',
+                    'Enter your referral code',
                     textStyle: textStyle20SemiBold.copyWith(
                         color: AppColors.redcolor, fontWeight: FontWeight.w600),
                   ),
@@ -62,13 +62,31 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
           ),
           SliverFillRemaining(
             hasScrollBody: false,
-            child: Waitinglist(
-              title: "Don’t have the code?",
-              subtitle: "",
-              text: "JOIN OUR WATING LIST ",
-              onpressed: () {
-                context.pushNamed(AppRoute.fortywaitinglistscreen.name);
-              },
+            child: Container(
+              height: 288.h,
+              width: double.infinity,
+              padding: EdgeInsets.all(20.r),
+              decoration: const BoxDecoration(
+                color: AppColors.darkredcolor,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  20.h.verticalSpace,
+                  GlobalText('Don’t have the code?',
+                      textStyle: textStyle18SemiBold.copyWith(
+                          color: AppColors.backgroungcolor, fontSize: 24.sp)),
+                  40.h.verticalSpace,
+                  AppButton(
+                      colorType: AppButtonColorType.secondary,
+                      onPressed: () {
+                        context.pushNamed(AppRoute.fortywaitinglistscreen.name);
+                      },
+                      text: 'JOIN OUR WATING LIST',
+                      textStyle:
+                          const TextStyle(color: AppColors.darkredcolor)),
+                ],
+              ),
             ),
           )
         ]));

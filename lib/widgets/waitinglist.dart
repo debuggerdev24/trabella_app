@@ -12,7 +12,7 @@ class Waitinglist extends StatelessWidget {
   const Waitinglist({
     super.key,
     required this.title,
-     this.subtitle,
+    this.subtitle,
     required this.text,
     this.onpressed,
   });
@@ -49,9 +49,10 @@ class Waitinglist extends StatelessWidget {
               colorType: AppButtonColorType.secondary,
               onPressed: onpressed,
               text: text,
-              textStyle: const TextStyle(color: AppColors.darkredcolor))
+              textStyle: const TextStyle(color: AppColors.darkredcolor)),
         ],
       ),
     );
+  
   }
 }
