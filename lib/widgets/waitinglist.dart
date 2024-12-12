@@ -41,7 +41,7 @@ class Waitinglist extends StatelessWidget {
           12.h.verticalSpace,
           GlobalText(subtitle ?? "",
               textAlign: TextAlign.center,
-              textStyle: textStyle16.copyWith(
+              textStyle: textStyle18.copyWith(
                 color: AppColors.backgroungcolor,
               )),
           34.h.verticalSpace,

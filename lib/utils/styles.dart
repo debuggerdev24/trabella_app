@@ -50,6 +50,12 @@ final textStyle20SemiBold = TextStyle(
   fontWeight: FontWeight.w600,
 );
 
+final textstyle30semiBold = TextStyle(
+  fontFamily: 'Roboto',
+  fontSize: 30.sp,
+  fontWeight: FontWeight.w600,
+);
+
 final primaryTextButtonTheme = TextButton.styleFrom(
   backgroundColor: AppColors.blackColor,
   foregroundColor: Colors.white,

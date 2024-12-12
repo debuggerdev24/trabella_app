@@ -44,7 +44,8 @@ class AppButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: AppColors.backgroungcolor,
+        shadowColor: Colors.transparent,
+        // disabledBackgroundColor: AppColors.backgroungcolor,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.circular(30.r),
         ),
@@ -64,7 +65,8 @@ class AppButton extends StatelessWidget {
       ),
       label: GlobalText(
         text,
-        textStyle: textStyle16.copyWith(fontSize: 18.sp),
+        textStyle:
+            textStyle16.copyWith(fontSize: 18.sp, fontWeight: FontWeight.w600),
       ),
     );
   }

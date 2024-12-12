@@ -39,8 +39,9 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
                   50.h.verticalSpace,
                   GlobalText(
                     'Enter your referral code',
-                    textStyle: textStyle20SemiBold.copyWith(
-                        color: AppColors.redcolor, fontWeight: FontWeight.w600),
+                    textStyle: textstyle30semiBold.copyWith(
+                      color: AppColors.redcolor,
+                    ),
                   ),
                   100.h.verticalSpace,
                   AppTextField(
@@ -63,7 +64,7 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-              height: 288.h,
+              height: 200.h,
               width: double.infinity,
               padding: EdgeInsets.all(20.r),
               decoration: const BoxDecoration(
