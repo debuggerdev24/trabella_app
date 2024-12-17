@@ -31,12 +31,12 @@ class SelfieviewScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  100.h.verticalSpace,
+                  150.h.verticalSpace,
                   const KBackButton(
                     color: AppColors.darkredcolor,
                     iconcolor: AppColors.backgroungcolor,
                   ),
-                  150.h.verticalSpace,
+                  130.h.verticalSpace,
                   ClipOval(
                     clipBehavior: Clip.antiAlias,
                     child: Image.file(
@@ -46,7 +46,7 @@ class SelfieviewScreen extends StatelessWidget {
                       height: 350.w,
                     ),
                   ),
-                  100.h.verticalSpace,
+                  90.h.verticalSpace,
                   AppButton(
                     onPressed: () {
                       context.pushNamed(AppRoute.authcompletescreen.name);

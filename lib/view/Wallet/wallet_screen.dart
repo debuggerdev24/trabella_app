@@ -42,51 +42,40 @@ class _WalletScreenState extends State<WalletScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TopBar(),
-              Center(
-                child: Switch.adaptive(
-                  value: cardadding,
-                  onChanged: (bool value) {
-                    setState(() {
-                      cardadding = value;
-                    });
-                  },
-                  activeColor: AppColors.darkredcolor,
-                ),
-              ),
               100.h.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: GlobalText(
                   textAlign: TextAlign.start,
                   'Wallet',
-                  textStyle: textStyle20SemiBold.copyWith(
+                  textStyle: textStyle18SemiBold.copyWith(
                       color: AppColors.redcolor,
-                      fontSize: 30.sp,
+                      fontSize: 35.sp,
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              10.h.verticalSpace,
+              15.h.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: GlobalText(
                   'Trabella wallet makes it easier for you to transfer and split fares with other Trabellas.',
                   textStyle: textStyle16.copyWith(
                     color: AppColors.textcolor,
-                    fontSize: 15.sp,
+                    fontSize: 17.sp,
                   ),
                 ),
               ),
               30.h.verticalSpace,
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40.w),
-                  child: cardadding
+                  child: !cardadding
                       ? AppButton(
                           onPressed: () {
                             openAlertBox(onCreditCard: () {
                               _cardPayment();
                             });
                           },
-                          text: "ADD CARD")
+                          text: "ADD MONEY")
                       : _transfer()),
             ],
           ),
@@ -95,7 +84,6 @@ class _WalletScreenState extends State<WalletScreen> {
     );
   }
 
- 
   void openAlertBox({required VoidCallback onCreditCard}) {
     showDialog(
       barrierDismissible: true,
@@ -349,7 +337,7 @@ class _WalletScreenState extends State<WalletScreen> {
           onTap: onTap,
           child: CircleAvatar(
             backgroundColor: AppColors.darkredcolor,
-            radius: 25.0,
+            radius: 23.0,
             child: SvgPicture.asset(
               value.getIcon(),
             ),
@@ -360,7 +348,7 @@ class _WalletScreenState extends State<WalletScreen> {
           textAlign: TextAlign.start,
           value.getTitle(),
           textStyle: textStyle20SemiBold.copyWith(
-              fontSize: 18.sp,
+              fontSize: 17.9.sp,
               color: AppColors.redcolor,
               fontWeight: FontWeight.w600),
         ),

@@ -199,10 +199,10 @@ class _CatOrDogScreenState extends State<CatOrDogScreen> {
                     text: "City or Country?",
                     pagecontroller: _pageController,
                     ontap: () {
-                      context.pushNamed(AppRoute.homescreen.name);
+                      context.goNamed(AppRoute.homescreen.name);
                     },
                     onpressed: () {
-                      context.pushNamed(AppRoute.homescreen.name);
+                      context.goNamed(AppRoute.homescreen.name);
                     },
                   ),
                 ],

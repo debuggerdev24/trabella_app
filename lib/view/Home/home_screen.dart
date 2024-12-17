@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path/path.dart';
 import 'package:travel_app/tabs/tabs.dart';
 import 'package:travel_app/utils/app_assets.dart';
 import 'package:travel_app/utils/app_colors.dart';
@@ -32,124 +33,146 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Topbar(),
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 40.h),
+            //   width: double.infinity,
+            //   height: 150.h,
+            //   color: AppColors.background,
+            //   child: Text.rich(
+            //     TextSpan(
+            //       text: "No upcoming trips yet.",
+            //       style: textStyle16.copyWith(
+            //           fontSize: 24.sp,
+            //           color: AppColors.textcolor,
+            //           fontWeight: FontWeight.w600),
+            //       children: [
+            //         // TextSpan(
+            //         //   text: "\nLisbon is in 24 days.",
+            //         //   style: textStyle16.copyWith(
+            //         //       fontSize: 24.sp,
+            //         //       color: AppColors.darkredcolor,
+            //         //       fontWeight: FontWeight.w600),
+            //         // ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 40.h),
+              padding: EdgeInsets.symmetric(horizontal: 39.w, vertical: 40.h),
               width: double.infinity,
-              height: 150.h,
-              color: AppColors.textcolor.withOpacity(0.1),
-              child: Text.rich(
-                TextSpan(
-                  text: "Your next trip to",
-                  style: textStyle16.copyWith(
-                      fontSize: 24.sp,
-                      color: AppColors.textcolor,
-                      fontWeight: FontWeight.w600),
-                  children: [
-                    TextSpan(
-                      text: "\nLisbon is in 24 days.",
-                      style: textStyle16.copyWith(
-                          fontSize: 24.sp,
-                          color: AppColors.darkredcolor,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
+              height: 224.h,
+              color: AppColors.background,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  20.h.verticalSpace,
+                  GlobalText(
+                    "No upcoming trips yet.",
+                    textStyle: textStyle16.copyWith(
+                        fontSize: 24.sp,
+                        color: AppColors.textcolor,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  12.h.verticalSpace,
+                  AppButton(onPressed: () {}, text: "PLAN YOUR NEXT TRIP")
+                ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                40.h.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.r),
-                  child: GlobalText(
-                    "Explore Trabellas around you",
-                    textStyle: textStyle16SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 24.sp,
-                    ),
-                  ),
-                ),
-                10.h.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.r),
-                  child: GlobalText(
-                    "Travelling to your destination the same time",
-                    textStyle: textStyle16SemiBold.copyWith(
-                      color: AppColors.textcolor,
-                      fontSize: 18.sp,
-                    ),
-                  ),
-                ),
-                20.h.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.only(left: 40.r),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const ProfieCard(
-                          image: AppAssets.profilecard1,
-                          name: "Maya 41",
-                          country: "Italy",
-                        ),
-                        25.w.horizontalSpace,
-                        const ProfieCard(
-                          image: AppAssets.profilecard2,
-                          name: "Mayu, 43",
-                          country: "Japan",
-                        ),
-                        25.w.horizontalSpace,
-                        const ProfieCard(
-                          image: AppAssets.profilecard1,
-                          name: "Sthopia",
-                          country: "France",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                20.h.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.r),
-                  child: GlobalText(
-                    "Near your current location",
-                    textStyle: textStyle18.copyWith(
-                        color: AppColors.textcolor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-                20.h.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.only(left: 40.r),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const ProfieCard(
-                          image: AppAssets.profilecard1,
-                          name: "Maya",
-                          country: "Italy",
-                        ),
-                        25.w.horizontalSpace,
-                        const ProfieCard(
-                          image: AppAssets.profilecard2,
-                          name: "Mayu, 43",
-                          country: "Japan",
-                        ),
-                        25.w.horizontalSpace,
-                        const ProfieCard(
-                          image: AppAssets.profilecard1,
-                          name: "Sthopia",
-                          country: "France",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                30.h.verticalSpace,
+                // 40.h.verticalSpace,
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 40.r),
+                //   child: GlobalText(
+                //     "Explore Trabellas around you",
+                //     textStyle: textStyle16SemiBold.copyWith(
+                //       color: AppColors.darkredcolor,
+                //       fontSize: 24.sp,
+                //     ),
+                //   ),
+                // ),
+                // 10.h.verticalSpace,
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 40.r),
+                //   child: GlobalText(
+                //     "Travelling to your destination the same time",
+                //     textStyle: textStyle16SemiBold.copyWith(
+                //       color: AppColors.textcolor,
+                //       fontSize: 18.sp,
+                //     ),
+                //   ),
+                // ),
+                // 20.h.verticalSpace,
+                // Padding(
+                //   padding: EdgeInsets.only(left: 40.r),
+                //   child: SingleChildScrollView(
+                //     scrollDirection: Axis.horizontal,
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.min,
+                //       children: [
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard1,
+                //           name: "Maya 41",
+                //           country: "Italy",
+                //         ),
+                //         25.w.horizontalSpace,
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard2,
+                //           name: "Mayu, 43",
+                //           country: "Japan",
+                //         ),
+                //         25.w.horizontalSpace,
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard1,
+                //           name: "Sthopia",
+                //           country: "France",
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                // 20.h.verticalSpace,
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 40.r),
+                //   child: GlobalText(
+                //     "Near your current location",
+                //     textStyle: textStyle18.copyWith(
+                //         color: AppColors.textcolor,
+                //         fontWeight: FontWeight.w600),
+                //   ),
+                // ),
+                // 20.h.verticalSpace,
+                // Padding(
+                //   padding: EdgeInsets.only(left: 40.r),
+                //   child: SingleChildScrollView(
+                //     scrollDirection: Axis.horizontal,
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.min,
+                //       children: [
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard1,
+                //           name: "Maya",
+                //           country: "Italy",
+                //         ),
+                //         25.w.horizontalSpace,
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard2,
+                //           name: "Mayu, 43",
+                //           country: "Japan",
+                //         ),
+                //         25.w.horizontalSpace,
+                //         const ProfieCard(
+                //           image: AppAssets.profilecard1,
+                //           name: "Sthopia",
+                //           country: "France",
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                58.h.verticalSpace,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40.r),
                   child: GlobalText("Complete your profile",
@@ -180,8 +203,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     childAspectRatio: 0.9,
                     physics: NeverScrollableScrollPhysics(),
                     children: [
-                      ProfileOptionButton(
-                          AppAssets.thisorthat, "PLAY\nTHIS OR THAT"),
+                      GestureDetector(
+                        onTap: () {
+                          context.pushNamed(AppRoute.thisorthatscreen.name);
+                        },
+                        child: ProfileOptionButton(
+                            AppAssets.thisorthat, "PLAY\nTHIS OR THAT"),
+                      ),
                       ProfileOptionButton(
                           AppAssets.stamps, "ADD\nTRAVEL STAMPS"),
                       ProfileOptionButton(AppAssets.instagramwhite,
@@ -192,6 +220,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 20.h.verticalSpace,
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40.r),
+                    child: AppButton(onPressed: () {}, text: "EDIT PROFILE")),
+                61.h.verticalSpace,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40.r),
                   child: GlobalText("Tell us about your friends",
@@ -250,6 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: SvgPicture.asset(
                       AppAssets.message,
+                      width: 46.w,
                     ),
                   );
                 },
@@ -257,6 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Spacer(),
               SvgPicture.asset(
                 AppAssets.notification,
+                width: 46.w,
               ),
             ],
           ),

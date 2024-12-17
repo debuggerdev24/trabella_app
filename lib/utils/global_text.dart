@@ -15,6 +15,7 @@ class GlobalText extends StatelessWidget {
   final int? maxLine;
   final List<Shadow>? shadows;
   final TextStyle? textStyle;
+  final bool? softWrap;
   const GlobalText(
     this.text, {
     Key? key,
@@ -31,6 +32,7 @@ class GlobalText extends StatelessWidget {
     this.maxLine,
     this.shadows,
     this.textStyle,
+    this.softWrap
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class GlobalText extends StatelessWidget {
       fontStyle: fontStyle,
       letterSpacing: letterSpacing,
       shadows: shadows,
+      
     );
     return Text(
       text,
@@ -52,6 +55,7 @@ class GlobalText extends StatelessWidget {
       maxLines: maxLine,
       locale: Locale('ar', 'sa'),
       style: textStyle ?? fontTextStyle,
+      softWrap: softWrap,
     );
   }
 }

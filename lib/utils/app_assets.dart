@@ -9,7 +9,10 @@ class AppAssets {
   static const String appname = "assets/appname.png";
   static const String welcome = "assets/splash.png";
   static const String password = "assets/password.png";
-  static const String datepicker = "assets/date.png";
+  static const String datepicker = "assets/date1.png";
+  static const String birthDate = "assets/birthDate.png";
+  static const String birthTime = "assets/birthTime.png";
+
   static const String congratulation = "assets/congratulation.png";
   static const String date = "assets/date.png";
   static const String homebackground = "assets/homebackground.png";
@@ -53,7 +56,7 @@ class AppAssets {
   static const String takephoto = "assets/icons/takephoto.svg";
   static const String facebookbutton = "assets/icons/facebookbutton.svg";
   static const String instagram = "assets/icons/instagram.svg";
-  static const String tripadvisor = "assets/icons/tripadvisor.svg";
+  static const String tripadvisor = "assets/icons/whatsapp.svg";
   static const String check = "assets/icons/check.svg";
   static const String addlanguage = "assets/icons/addlanguahe.svg";
   static const String message = "assets/icons/messages.svg";
@@ -95,6 +98,8 @@ class AppAssets {
   static const String sagittarius = "assets/icons/sagittarius.svg";
   static const String aquarius = "assets/icons/aquarius.svg";
   static const String taurus = "assets/icons/taurus.svg";
+  static const String media = "assets/icons/media.svg";
+  static const String doubleCheck = "assets/icons/doubleCheck.svg";
 
   // Tabs//
   static const String home = "assets/icons/home.svg";

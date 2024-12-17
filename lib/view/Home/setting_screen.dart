@@ -33,7 +33,7 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  120.h.verticalSpace,
+                  130.h.verticalSpace,
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12.0),
                     child: KBackButton(
@@ -70,21 +70,35 @@ class _SettingScreenState extends State<SettingScreen> {
 
   Widget _buildSettingsOption(String title, {bool isSwitch = false}) {
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+      minTileHeight: 46.sp,
       title: GlobalText(
         title,
         textStyle: textStyle18SemiBold,
+        fontSize: 20.sp,
       ),
       trailing: isSwitch
-          ? Switch.adaptive(
-              value: _notificationsEnabled,
-              onChanged: (bool value) {
-                setState(() {
-                  _notificationsEnabled = value;
-                });
-              },
-              activeColor: AppColors.darkredcolor,
+          ? Transform.scale(
+              scaleX: 0.8,
+              scaleY: 0.8,
+              child: Switch.adaptive(
+                applyCupertinoTheme: true,
+                inactiveTrackColor: AppColors.blackColor,
+                inactiveThumbColor: AppColors.redcolor,
+                trackOutlineWidth: MaterialStateProperty.all(0),
+                value: _notificationsEnabled,
+                onChanged: (bool value) {
+                  setState(() {
+                    _notificationsEnabled = value;
+                  });
+                },
+                activeColor: AppColors.darkredcolor,
+              ),
             )
-          : Icon(Icons.chevron_right),
+          : Icon(
+              Icons.chevron_right,
+              size: 34.sp,
+            ),
     );
   }
 }

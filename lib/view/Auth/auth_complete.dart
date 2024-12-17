@@ -41,12 +41,12 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              100.h.verticalSpace,
+              150.h.verticalSpace,
               const KBackButton(
                 color: AppColors.backgroungcolor,
                 iconcolor: AppColors.darkredcolor,
               ),
-              178.h.verticalSpace,
+              170.h.verticalSpace,
               GlobalText(
                 'Hold tight, we’re checking the details.',
                 textStyle: textStyle20SemiBold.copyWith(
@@ -76,10 +76,17 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                     size: 68.w,
                   ),
                   10.w.horizontalSpace,
-                  SvgIcon(
-                    AppAssets.tripadvisor,
-                    color: AppColors.backgroungcolor,
-                    size: 70.w,
+                  Container(
+                    padding: EdgeInsets.all(13.r),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: AppColors.whiteColor, width: 1.3)),
+                    child: SvgIcon(
+                      AppAssets.tripadvisor,
+                      color: AppColors.backgroungcolor,
+                      size: 42.w,
+                    ),
                   ),
                   10.w.horizontalSpace,
                   SvgIcon(

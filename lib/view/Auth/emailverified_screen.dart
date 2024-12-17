@@ -24,15 +24,15 @@ class VerifyScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            120.h.verticalSpace,
+            150.h.verticalSpace,
             KBackButton(
               color: AppColors.backgroungcolor,
               iconcolor: AppColors.darkredcolor,
             ),
-            60.h.verticalSpace,
+            70.h.verticalSpace,
             GlobalText(
-              'Thank you, we’ve verified your email!',
-              textStyle: textStyle20SemiBold.copyWith(
+              'Thank you, we’ve verified your email !',
+              textStyle: textstyle30semiBold.copyWith(
                   color: AppColors.backgroungcolor),
             ),
             160.h.verticalSpace,

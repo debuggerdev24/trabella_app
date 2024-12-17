@@ -32,15 +32,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                100.h.verticalSpace,
+                150.h.verticalSpace,
                 const KBackButton(
                   color: AppColors.darkredcolor,
                   iconcolor: AppColors.backgroungcolor,
                 ),
-                60.h.verticalSpace,
+                70.h.verticalSpace,
                 GlobalText(
                   'We’ll let you know when you have  Trabellas near you.',
-                  textStyle: textStyle20SemiBold.copyWith(
+                  textStyle: textstyle30semiBold.copyWith(
                       color: AppColors.redcolor,
                       fontSize: 30.sp,
                       fontWeight: FontWeight.w600),

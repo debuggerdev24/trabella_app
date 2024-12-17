@@ -22,12 +22,16 @@ class AppChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double chipWidth = (MediaQuery.of(context).size.width / 2) -
+        20; // Half width minus padding
+
     return GestureDetector(
       onTap: onTap,
       child: IntrinsicWidth(
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10),
+          padding:
+              EdgeInsets.only(left: 10.w, top: 10, bottom: 10, right: 10.w),
           // alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border.all(
@@ -37,11 +41,12 @@ class AppChip extends StatelessWidget {
           ),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: GlobalText(
                     maxLine: 10,
+                    textAlign: TextAlign.center,
                     text,
                     textStyle: textStyle16.copyWith(
                       fontWeight: FontWeight.w600,

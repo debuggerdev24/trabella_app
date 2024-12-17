@@ -31,32 +31,32 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  100.h.verticalSpace,
+                  150.h.verticalSpace,
                   const KBackButton(
                     color: AppColors.darkredcolor,
                     iconcolor: AppColors.backgroungcolor,
                   ),
-                  50.h.verticalSpace,
+                  70.h.verticalSpace,
                   GlobalText(
                     'Enter your referral code',
                     textStyle: textstyle30semiBold.copyWith(
                       color: AppColors.redcolor,
                     ),
                   ),
-                  100.h.verticalSpace,
+                  150.h.verticalSpace,
                   AppTextField(
                     fillcolor: Colors.transparent,
                     controller: _referralcontroller,
                     hintText: "Enter your 6 digit code here",
                   ),
-                  100.h.verticalSpace,
+                  50.h.verticalSpace,
                   AppButton(
                     onPressed: () {
                       context.pushNamed(AppRoute.emailscreen.name);
                     },
                     text: "SUBMIT",
                   ),
-                  120.h.verticalSpace,
+                  95.h.verticalSpace,
                 ],
               ),
             ),
@@ -64,7 +64,6 @@ class _ReferralCodeScreernState extends State<ReferralCodeScreern> {
           SliverFillRemaining(
             hasScrollBody: false,
             child: Container(
-              height: 200.h,
               width: double.infinity,
               padding: EdgeInsets.all(20.r),
               decoration: const BoxDecoration(

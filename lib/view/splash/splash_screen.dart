@@ -20,11 +20,10 @@ class _SplashScreenState extends State<SplashScreen> {
     startTimer();
   }
 
-   @override
-    void dispose() {
-      super.dispose();
-    }
-
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +59,8 @@ class _SplashScreenState extends State<SplashScreen> {
       duration,
       () {
         context.goNamed(AppRoute.welcomescreen.name);
+
+        // context.goNamed(AppRoute.homescreen.name);
       },
     );
   }

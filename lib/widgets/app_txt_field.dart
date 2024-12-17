@@ -109,8 +109,10 @@ class AppTextField extends StatelessWidget {
               autoValidateMode ?? AutovalidateMode.onUserInteraction,
           obscureText: obSecureText ?? false,
           cursorColor: AppColors.blackColor,
-          cursorHeight: 30,
-          style: textStyle16.copyWith(color: AppColors.blackColor),
+          cursorHeight: 20,
+          style: textStyle16.copyWith(
+            color: AppColors.blackColor,
+          ),
           onTap: onTap,
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
@@ -125,7 +127,10 @@ class AppTextField extends StatelessWidget {
             hintText: hintText,
             fillColor: fillcolor,
             filled: true,
-            hintStyle: hintStyle ?? textStyle14.copyWith(color: Colors.grey),
+            hintStyle: hintStyle ??
+                textStyle14.copyWith(
+                  color: Colors.grey,
+                ),
             contentPadding: contentPadding ??
                 REdgeInsets.symmetric(horizontal: 15.r, vertical: 23.r),
             disabledBorder: border ??

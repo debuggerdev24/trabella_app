@@ -25,6 +25,7 @@ class TopBar extends StatelessWidget {
                 },
                 child: SvgPicture.asset(
                   AppAssets.message,
+                  width: 46.w,
                 ),
               );
             },
@@ -32,6 +33,7 @@ class TopBar extends StatelessWidget {
           const Spacer(),
           SvgPicture.asset(
             AppAssets.notification,
+            width: 46.w,
           ),
         ],
       ),

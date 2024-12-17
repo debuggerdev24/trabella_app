@@ -35,18 +35,18 @@ class _OtpScreenState extends State<OtpScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  100.h.verticalSpace,
+                  150.h.verticalSpace,
                   const KBackButton(
                     color: AppColors.darkredcolor,
                     iconcolor: AppColors.backgroungcolor,
                   ),
-                  60.h.verticalSpace,
+                  70.h.verticalSpace,
                   GlobalText(
                     'We’ve emailed you a verification code',
                     textStyle: textStyle20SemiBold.copyWith(
                         color: AppColors.redcolor, fontWeight: FontWeight.w600),
                   ),
-                  146.h.verticalSpace,
+                  150.h.verticalSpace,
                   _buildOtpInput(),
                   40.h.verticalSpace,
                   AppButton(

@@ -19,39 +19,79 @@ class Emailscreen extends StatefulWidget {
 }
 
 class _EmailscreenState extends State<Emailscreen> {
+  final ScrollController _scrollController = ScrollController();
+  bool _isScrolled = false;
+
   @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 0 && !_isScrolled) {
+        setState(() {
+          _isScrolled = true;
+        });
+      } else if (_scrollController.offset <= 0 && _isScrolled) {
+        setState(() {
+          _isScrolled = false;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroungcolor,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 40.0,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              120.h.verticalSpace,
-              const KBackButton(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            150.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.w,
+              ),
+              child: const KBackButton(
                 color: AppColors.darkredcolor,
                 iconcolor: AppColors.backgroungcolor,
               ),
-              50.h.verticalSpace,
-              GlobalText(
-                'Let’s start with your email',
-                textStyle: textStyle20SemiBold.copyWith(
+            ),
+            70.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.w,
+              ),
+              child: GlobalText(
+                'Let’s start with your email',
+                textStyle: textstyle30semiBold.copyWith(
+                    fontSize: 29.99.sp,
                     color: AppColors.redcolor,
-                    fontSize: 30.sp,
                     fontWeight: FontWeight.w600),
               ),
-              100.h.verticalSpace,
-              const AppTextField(
+            ),
+            150.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.w,
+              ),
+              child: AppTextField(
                 fillcolor: Colors.transparent,
                 hintText: "trabella@travel.com",
               ),
-              30.h.verticalSpace,
-              SingleChildScrollView(
+            ),
+            30.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.only(
+                left: _isScrolled ? 0 : 40.w,
+              ),
+              child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                controller: _scrollController,
                 child: Row(
                   children: [
                     suggestionButton('@GMAIL.COM'),
@@ -62,37 +102,42 @@ class _EmailscreenState extends State<Emailscreen> {
                   ],
                 ),
               ),
-              60.h.verticalSpace,
-              AppButton(
+            ),
+            60.h.verticalSpace,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.w,
+              ),
+              child: AppButton(
                   onPressed: () {
                     context.pushNamed(AppRoute.otpscreen.name);
                   },
                   text: "CHECK YOUR EMAIL"),
-              50.h.verticalSpace,
-              Center(
-                child: Column(
-                  children: [
-                    50.h.verticalSpace,
-                    GlobalText('or sign up with',
-                        textStyle: textStyle14.copyWith(
-                            color: AppColors.textcolor.withOpacity(0.9))),
-                    20.h.verticalSpace,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(AppAssets.apple),
-                        10.w.horizontalSpace,
-                        SvgPicture.asset(AppAssets.google),
-                        10.w.horizontalSpace,
-                        SvgPicture.asset(AppAssets.facebook),
-                      ],
-                    ),
-                  ],
-                ),
+            ),
+            50.h.verticalSpace,
+            Center(
+              child: Column(
+                children: [
+                  50.h.verticalSpace,
+                  GlobalText('or sign up with',
+                      textStyle: textStyle14.copyWith(
+                          color: AppColors.textcolor.withOpacity(0.9))),
+                  20.h.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(AppAssets.apple),
+                      10.w.horizontalSpace,
+                      SvgPicture.asset(AppAssets.google),
+                      10.w.horizontalSpace,
+                      SvgPicture.asset(AppAssets.facebook),
+                    ],
+                  ),
+                ],
               ),
-              50.h.verticalSpace
-            ],
-          ),
+            ),
+            50.h.verticalSpace
+          ],
         ),
       ),
     );

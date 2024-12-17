@@ -25,6 +25,7 @@ final textStyle16 = TextStyle(
 final textStyle14 = TextStyle(
   fontFamily: 'Roboto',
   fontSize: 18.sp,
+  
 );
 final textStyle14SemiBold = TextStyle(
   fontFamily: 'Roboto',

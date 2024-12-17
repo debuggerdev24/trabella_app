@@ -25,32 +25,32 @@ class ImageviewsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    100.h.verticalSpace,
+                    140.h.verticalSpace,
                     const KBackButton(
                       color: AppColors.darkredcolor,
                       iconcolor: AppColors.backgroungcolor,
                     ),
-                    100.h.verticalSpace,
+                    200.h.verticalSpace,
                     ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
                         child: Image.file(
                           fit: BoxFit.fill,
                           File(imagePath),
                           width: double.infinity,
-                          height: 350.h,
+                          height: 260.h,
                         )),
 
                     // SizedBox(
                     //     height: 300.h,
                     //     width: double.infinity,
                     //     child: Image.file(File(imagePath))),
-                    100.h.verticalSpace,
+                    70.h.verticalSpace,
                     AppButton(
                       onPressed: () {
                         context.pushNamed(AppRoute.selfiescren.name);

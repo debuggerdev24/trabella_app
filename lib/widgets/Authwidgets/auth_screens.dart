@@ -22,6 +22,8 @@ class Setbirthday extends StatefulWidget {
 }
 
 class _SetbirthdayState extends State<Setbirthday> {
+  final TextEditingController _dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final stepperProvider = Provider.of<Authprovider>(context);
@@ -31,15 +33,17 @@ class _SetbirthdayState extends State<Setbirthday> {
         children: [
           GlobalText(
             'When is your birthday, Trabella?',
-            textStyle: textStyle20SemiBold.copyWith(
+            textStyle: textstyle30semiBold.copyWith(
                 color: AppColors.redcolor,
                 fontSize: 30.sp,
                 fontWeight: FontWeight.w600),
           ),
           149.h.verticalSpace,
           AppTextField(
+            controller: _dateController,
             fillcolor: Colors.transparent,
             labelText: "Date of Birth",
+            style: TextStyle(color: AppColors.textcolor),
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
@@ -51,10 +55,19 @@ class _SetbirthdayState extends State<Setbirthday> {
                   initialDateTime: stepperProvider.selectedDate,
                   onDateTimeChanged: (value) {
                     stepperProvider.updateDate(value);
+                    setState(() {
+                      _dateController.text = "${value.toLocal()}".split(' ')[0];
+                    });
                   },
                 );
               },
-              child: Image.asset(AppAssets.datepicker),
+              child: Padding(
+                padding: EdgeInsets.all(8.sp),
+                child: Image.asset(
+                  AppAssets.datepicker,
+                  height: 10.sp,
+                ),
+              ),
             ),
           ),
           36.h.verticalSpace,
@@ -107,7 +120,7 @@ class _SetpasswordState extends State<Setpassword> {
         children: [
           GlobalText(
             'Secure the account\nwith your secret word\nand number',
-            textStyle: textStyle20SemiBold.copyWith(
+            textStyle: textstyle30semiBold.copyWith(
                 color: AppColors.redcolor,
                 fontSize: 30.sp,
                 fontWeight: FontWeight.w600),
@@ -162,12 +175,12 @@ class _SetlocationState extends State<Setlocation> {
       children: [
         GlobalText(
           'Where do you live,\nThalia?',
-          textStyle: textStyle20SemiBold.copyWith(
+          textStyle: textstyle30semiBold.copyWith(
               color: AppColors.redcolor,
               fontSize: 30.sp,
               fontWeight: FontWeight.w600),
         ),
-        110.h.verticalSpace,
+        145.h.verticalSpace,
         AppTextField(
           fillcolor: Colors.transparent,
           labelText: "Location",
@@ -181,13 +194,16 @@ class _SetlocationState extends State<Setlocation> {
         AppButton(
           onPressed: () {
             context.pushNamed(AppRoute.notifictionscreen.name);
+            stepperProvider.jumpToStep(0);
           },
           text: "NEXT",
         ),
+        10.h.verticalSpace,
         Center(
           child: GestureDetector(
             onTap: () {
               context.pushNamed(AppRoute.notifictionscreen.name);
+              stepperProvider.jumpToStep(0);
             },
             child: GlobalText(
               color: AppColors.greycolor,

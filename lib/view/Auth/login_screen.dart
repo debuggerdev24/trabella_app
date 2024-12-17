@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            100.h.verticalSpace,
+            120.h.verticalSpace,
             KBackButton(
                 color: AppColors.darkredcolor,
                 iconcolor: AppColors.backgroungcolor),

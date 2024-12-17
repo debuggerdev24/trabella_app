@@ -47,7 +47,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                 child: Stack(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(30.sp),
                       child: Align(
                         alignment: Alignment.center,
                         child: DottedBorder(
@@ -73,27 +73,31 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                           ? GlobalText(
                               'MOVE YOUR ID INSIDE THE BORDER',
                               textStyle: textStyle18SemiBold.copyWith(
+                                fontSize: 20.sp,
                                 color: AppColors.backgroungcolor,
                               ),
                             )
                           : Container(),
                     ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: GestureDetector(
-                        onTap: () async {
-                          await cameraProvider.takePhoto();
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 90.h),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () async {
+                            await cameraProvider.takePhoto();
 
-                          context.pushNamed(
-                            AppRoute.imageviewscreen.name,
-                            extra: {
-                              'imagePath': cameraProvider.imageFile!.path,
-                            },
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SvgPicture.asset(AppAssets.takephoto),
+                            context.pushNamed(
+                              AppRoute.imageviewscreen.name,
+                              extra: {
+                                'imagePath': cameraProvider.imageFile!.path,
+                              },
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: SvgPicture.asset(AppAssets.takephoto),
+                          ),
                         ),
                       ),
                     ),

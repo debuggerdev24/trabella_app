@@ -7,6 +7,7 @@ import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
 import 'package:travel_app/utils/styles.dart';
+import 'package:travel_app/view/Auth/idverification.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/back_button.dart';
 
@@ -33,12 +34,12 @@ class _selfieScreenState extends State<selfieScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                100.h.verticalSpace,
+                150.h.verticalSpace,
                 const KBackButton(
                   color: AppColors.darkredcolor,
                   iconcolor: AppColors.backgroungcolor,
                 ),
-                60.h.verticalSpace,
+                70.h.verticalSpace,
                 GlobalText(
                   'It’s time for a selfie.Smile!',
                   textStyle: textStyle20SemiBold.copyWith(
@@ -76,7 +77,7 @@ class _selfieScreenState extends State<selfieScreen> {
             backgroundColor: AppColors.backgroungcolor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12.r))),
-            contentPadding: EdgeInsets.symmetric(horizontal: 30.h),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.h),
             content: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,7 +87,7 @@ class _selfieScreenState extends State<selfieScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(top: 13.r),
+                      padding: EdgeInsets.only(top: 12.r),
                       child: GestureDetector(
                           onTap: () {
                             context.pop();
@@ -96,41 +97,20 @@ class _selfieScreenState extends State<selfieScreen> {
                     ),
                   ],
                 ),
-                GlobalText(
-                  "Tips",
-                  textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600),
-                ),
+                const TitleField(text: 'Tips'),
                 10.h.verticalSpace,
-                reqiredfiled("Make sure we can see you clearly"),
-                8.h.verticalSpace,
-                reqiredfiled(
-                    "Keep your face free of anything that hides it (glasses are fine,but no sunnies)"),
-                8.h.verticalSpace,
-                reqiredfiled("Look straight at the camera"),
-                8.h.verticalSpace,
-                reqiredfiled("Take a live picture - old photoswon’t work"),
-                32.h.verticalSpace,
+                const BulletList(strings: [
+                  'Make sure we can see you clearly',
+                  'Keep your face free of anything that hides it (glasses are fine,but no sunnies)',
+                  'Look straight at the camera',
+                  'Take a live picture - old photoswon’t work'
+                ]),
+                22.h.verticalSpace,
               ],
             ),
           );
         });
   }
 
-  Widget reqiredfiled(String text) {
-    return Row(
-      children: [
-        SvgPicture.asset(AppAssets.bulletpoint),
-        10.w.horizontalSpace,
-        Expanded(
-          child: GlobalText(text,
-              textStyle: textStyle14.copyWith(
-                  fontSize: 16.sp,
-                  color: AppColors.textcolor.withOpacity(0.9))),
-        ),
-      ],
-    );
-  }
+ 
 }

@@ -23,30 +23,34 @@ class FeedbackScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              40.verticalSpace,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const KBackButton(
+                    
                       color: AppColors.backgroungcolor,
                       iconcolor: AppColors.darkredcolor),
                   Spacer(),
-                  SvgPicture.asset(AppAssets.appicon),
+                  SvgPicture.asset(
+                    AppAssets.appicon,
+                    height: 125.h,
+                  ),
                 ],
               ),
               100.h.verticalSpace,
               GlobalText(
                 "Share feedback",
-                textStyle: textStyle16.copyWith(
+                textStyle: textStyle18SemiBold.copyWith(
                     color: AppColors.backgroungcolor,
-                    fontSize: 24.sp,
+                    fontSize: 25.sp,
                     fontWeight: FontWeight.w600),
               ),
-              10.h.verticalSpace,
+              15.h.verticalSpace,
               GlobalText(
-                "Your feedback and ideas are incredibly valuable to us.",
+                "Your feedback and ideas are incredibly valuable to us, please leave your comment below:",
                 textStyle: textStyle18.copyWith(
-                  color: AppColors.backgroungcolor,
-                ),
+                    color: AppColors.backgroungcolor, fontSize: 19.5.sp),
               ),
               30.h.verticalSpace,
               AppTextField(
@@ -54,6 +58,8 @@ class FeedbackScreen extends StatelessWidget {
                 hintText: "Type here...",
                 maxLines: 3,
                 fillcolor: AppColors.backgroungcolor,
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent)),
               ),
               50.verticalSpace,
               AppButton(

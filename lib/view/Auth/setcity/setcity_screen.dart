@@ -28,9 +28,12 @@ class SetcityScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            70.h.verticalSpace,
-            const Customstepper(),
-            38.h.verticalSpace,
+            100.h.verticalSpace,
+            // const Customstepper(
+            //     // stepCount: 6,
+            //     ),
+            const Customstepper1(stepCount: 5),
+            60.h.verticalSpace,
             KBackButton(
               onBackClick: () {
                 stepperProvider.previousStep();
@@ -51,7 +54,7 @@ class SetcityScreen extends StatelessWidget {
                   children: [
                     LanguageSelection(),
                     const SetName(),
-                     const Holidaydestination(),
+                    const Holidaydestination(),
                     Favouritethings(),
                   ],
                 ),

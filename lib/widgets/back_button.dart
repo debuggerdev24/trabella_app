@@ -21,7 +21,7 @@ class KBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         if (onBackClick != null) {
           onBackClick!();

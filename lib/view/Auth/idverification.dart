@@ -35,26 +35,26 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                100.h.verticalSpace,
+                150.h.verticalSpace,
                 const KBackButton(
                   color: AppColors.darkredcolor,
                   iconcolor: AppColors.backgroungcolor,
                 ),
-                60.h.verticalSpace,
+                70.h.verticalSpace,
                 GlobalText(
                   'Help us secure the Trabella community by verifying your ID',
-                  textStyle: textStyle20SemiBold.copyWith(
+                  textStyle: textstyle30semiBold.copyWith(
                     color: AppColors.redcolor,
                   ),
                 ),
-                10.h.verticalSpace,
+                15.h.verticalSpace,
                 GlobalText(
                   'Please take a photo of your ID so we can verify it’s you',
                   textStyle: textStyle16.copyWith(
                     color: AppColors.textcolor,
                   ),
                 ),
-                50.h.verticalSpace,
+                60.h.verticalSpace,
                 AppButton(
                   onPressed: () {
                     openAlertBox();
@@ -78,7 +78,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
             backgroundColor: AppColors.backgroungcolor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12.r))),
-            contentPadding: EdgeInsets.symmetric(horizontal: 30.h),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.h),
             content: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -88,7 +88,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(top: 13.r),
+                      padding: EdgeInsets.only(top: 12.sp),
                       child: GestureDetector(
                           onTap: () {
                             context.pushNamed(AppRoute.takephotoscreen.name);
@@ -98,52 +98,96 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                   ],
                 ),
                 19.h.verticalSpace,
-                GlobalText(
-                  "ID we accept are:",
-                  textStyle: textStyle20SemiBold.copyWith(
-                    color: AppColors.darkredcolor,
-                    fontSize: 18.sp,
-                  ),
+                const TitleField(text: 'ID we accept are:'),
+                2.h.verticalSpace,
+                const BulletList(
+                  strings: [
+                    'Passport',
+                    'Driver’s Licence',
+                    'EU Nationality Card'
+                  ],
                 ),
-                10.h.verticalSpace,
-                reqiredfiled("Password"),
-                8.h.verticalSpace,
-                reqiredfiled("Driver’s Licence"),
-                8.h.verticalSpace,
-                reqiredfiled("EU Nationality Card"),
                 32.h.verticalSpace,
-                GlobalText(
-                  "Tips",
-                  textStyle: textStyle20SemiBold.copyWith(
-                      color: AppColors.darkredcolor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600),
-                ),
-                10.h.verticalSpace,
-                reqiredfiled("Make sure you’re in a well-lit room"),
-                8.h.verticalSpace,
-                reqiredfiled("Check there’s no glare on your ID"),
-                8.h.verticalSpace,
-                reqiredfiled("Put your ID on a plain, dark surface"),
-                8.h.verticalSpace,
-                reqiredfiled(
-                    "Check we can see all the details of\n your ID clearly"),
-                35.h.verticalSpace
+                const TitleField(text: 'Tips'),
+                2.h.verticalSpace,
+                const BulletList(strings: [
+                  'Make sure you’re in a well-lit room',
+                  'Check we can see all the details of\n your ID clearly',
+                  'Put your ID on a plain, dark surface',
+                  'Check we can see all the details of\n your ID clearly'
+                ]),
+                35.h.verticalSpace,
               ],
             ),
           );
         });
   }
+}
 
-  Widget reqiredfiled(String text) {
-    return Row(
-      children: [
-        SvgPicture.asset(AppAssets.bulletpoint),
-        10.w.horizontalSpace,
-        GlobalText(text,
-            textStyle: textStyle14.copyWith(
-                fontSize: 16.sp, color: AppColors.textcolor.withOpacity(0.9))),
-      ],
+class TitleField extends StatelessWidget {
+  final String text;
+  const TitleField({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.sp),
+      child: GlobalText(
+        text,
+        textStyle: textStyle20SemiBold.copyWith(
+          color: AppColors.darkredcolor,
+          fontSize: 19.5.sp,
+        ),
+      ),
+    );
+  }
+}
+
+class BulletList extends StatelessWidget {
+  final List<String> strings;
+  const BulletList({super.key, required this.strings});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.fromLTRB(18.sp, 4.sp, 14.sp, 15.sp),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: strings.map((str) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: 5.sp),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 6.h),
+                  height: 11.h,
+                  width: 11.h,
+                  child: SvgPicture.asset(AppAssets.bulletpoint),
+                  decoration: BoxDecoration(
+                      //shape: BoxShape.circle,
+                      ),
+                ),
+                10.w.horizontalSpace,
+                Expanded(
+                  child: Container(
+                    child: Text(
+                      str,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 17.3.sp,
+                        color: AppColors.textcolor.withOpacity(0.9),
+                        height: 1.55,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }

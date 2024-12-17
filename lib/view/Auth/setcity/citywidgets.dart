@@ -106,14 +106,14 @@ class _LanguageSelectionState extends State<LanguageSelection> {
               ),
             ),
           ),
-          20.h.verticalSpace,
+          30.h.verticalSpace,
           AppButton(
             onPressed: () {
               authprovider.nextStep();
             },
             text: "NEXT",
           ),
-          10.h.verticalSpace,
+          15.h.verticalSpace,
           Center(
             child: GestureDetector(
               onTap: () {
@@ -173,7 +173,14 @@ class SetName extends StatelessWidget {
                   },
                 );
               },
-              child: Image.asset(AppAssets.date),
+              child: Padding(
+                padding:
+                    EdgeInsets.symmetric(vertical: 10.sp, horizontal: 15.sp),
+                child: Image.asset(
+                  AppAssets.birthDate,
+                  height: 6.sp,
+                ),
+              ),
             ),
           ),
           20.h.verticalSpace,
@@ -194,7 +201,14 @@ class SetName extends StatelessWidget {
                   },
                 );
               },
-              child: Image.asset(AppAssets.datepicker),
+              child: Padding(
+                padding:
+                    EdgeInsets.symmetric(vertical: 10.sp, horizontal: 15.sp),
+                child: Image.asset(
+                  AppAssets.birthTime,
+                  height: 6.sp,
+                ),
+              ),
             ),
           ),
           20.h.verticalSpace,
@@ -268,7 +282,8 @@ class _FavouritethingsState extends State<Favouritethings> {
     return Column(
       children: [
         GlobalText(
-          'Choose top 5 holiday destinations',
+          'Choose 5 things you’re really into',
+          textAlign: TextAlign.start,
           textStyle: textStyle20SemiBold.copyWith(
               color: AppColors.redcolor,
               fontSize: 30.sp,
@@ -276,6 +291,9 @@ class _FavouritethingsState extends State<Favouritethings> {
         ),
         30.h.verticalSpace,
         Wrap(
+          alignment: WrapAlignment.start,
+          spacing: 5,
+          runSpacing: 5,
           children: hobbies.map((hobbies) {
             bool isSelected = selectedDestinations.contains(hobbies);
             return AppChip(
@@ -296,7 +314,9 @@ class _FavouritethingsState extends State<Favouritethings> {
         40.h.verticalSpace,
         AppButton(
           onPressed: () {
-            context.pushNamed(AppRoute.thisorthatscreen.name);
+            context.pushReplacementNamed(AppRoute.loginscreen.name);
+
+            // context.pushNamed(AppRoute.thisorthatscreen.name);
           },
           text: "NEXT",
         ),
@@ -360,6 +380,9 @@ class _HolidaydestinationState extends State<Holidaydestination> {
         ),
         30.h.verticalSpace,
         Wrap(
+          alignment: WrapAlignment.start,
+          spacing: 5,
+          runSpacing: 5,
           children: destinations.map((destination) {
             bool isSelected = selectedDestinations.contains(destination);
             return AppChip(

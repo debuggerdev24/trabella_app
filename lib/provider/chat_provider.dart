@@ -1,11 +1,13 @@
 // lib/providers/chat_provider.dart
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatMessage {
   final String messageContent;
-  final String messageType; 
+  final String messageType;
   final String time;
 
   ChatMessage({
@@ -20,16 +22,33 @@ class ChatProvider with ChangeNotifier {
 
   double get currentFontSize => _currentFontSize;
 
+  bool _isMessageControllerActive = false;
+
+  bool _isMediaActive = false;
+
+  bool get isMediaActive => _isMediaActive;
+
+  bool get isMessageControllerActive => _isMessageControllerActive;
+
+  TextEditingController messageController = TextEditingController();
+
+  bool isTextFieldFocused = false;
+
   void increaseFontSize() {
     _currentFontSize += 2.sp;
     notifyListeners();
   }
 
   void decreaseFontSize() {
-    if (_currentFontSize > 10.sp) { 
+    if (_currentFontSize > 10.sp) {
       _currentFontSize -= 2.sp;
       notifyListeners();
     }
+  }
+
+  void setMedia(bool isMedia) {
+    _isMediaActive = isMedia;
+    notifyListeners();
   }
 
   final List<ChatMessage> _messages = [
@@ -61,6 +80,15 @@ class ChatProvider with ChangeNotifier {
 
   void addMessage(ChatMessage message) {
     _messages.add(message);
+    notifyListeners();
+  }
+
+  ChatProvider() {
+    messageController.addListener(checkMessageControllerState);
+  }
+  void checkMessageControllerState() {
+    _isMessageControllerActive = messageController.text.isNotEmpty;
+    log(_isMessageControllerActive.toString());
     notifyListeners();
   }
 }

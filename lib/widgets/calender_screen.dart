@@ -28,20 +28,34 @@ class Calendar extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.r),
               child: Card(
-                color: Colors.white,
+                elevation: 3,
                 child: Column(
                   children: [
-                    SfDateRangePicker(
-                      todayHighlightColor: Colors.transparent,
-                      rangeSelectionColor:
-                          AppColors.darkredcolor.withOpacity(0.2),
-                      endRangeSelectionColor: AppColors.darkredcolor,
-                      startRangeSelectionColor: AppColors.darkredcolor,
-                      headerStyle: DateRangePickerHeaderStyle(
-                          backgroundColor: AppColors.whiteColor),
-                      view: DateRangePickerView.month,
-                      backgroundColor: AppColors.whiteColor,
-                      selectionMode: DateRangePickerSelectionMode.range,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16.r),
+                      child: SfDateRangePicker(
+                        headerHeight: 60.h,
+                        todayHighlightColor: Colors.transparent,
+                        rangeSelectionColor:
+                            AppColors.darkredcolor.withOpacity(0.2),
+                        endRangeSelectionColor: AppColors.darkredcolor,
+                        startRangeSelectionColor: AppColors.darkredcolor,
+                        headerStyle: DateRangePickerHeaderStyle(
+                            textStyle: textStyle18SemiBold.copyWith(
+                                color: AppColors.blackColor),
+                            textAlign: TextAlign.center,
+                            backgroundColor: AppColors.whiteColor),
+                        view: DateRangePickerView.month,
+                        backgroundColor: AppColors.whiteColor,
+                        selectionMode: DateRangePickerSelectionMode.range,
+                        monthCellStyle: DateRangePickerMonthCellStyle(
+                            textStyle: textStyle14SemiBold.copyWith(
+                                color: AppColors.greycolor,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.normal),
+                            disabledDatesTextStyle:
+                                textStyle12.copyWith(color: Colors.pink)),
+                      ),
                     ),
                   ],
                 ),

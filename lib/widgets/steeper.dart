@@ -39,3 +39,46 @@ class Customstepper extends StatelessWidget {
     );
   }
 }
+
+class Customstepper1 extends StatelessWidget {
+  final int stepCount;
+  const Customstepper1({super.key, required this.stepCount});
+
+  @override
+  Widget build(BuildContext context) {
+    final stepperProvider = Provider.of<Authprovider>(context);
+    return Row(
+      children: List.generate(stepCount, (index) {
+        return Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                stepperProvider.jumpToStep(index);
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                width: stepCount == 5 ? 15.r : 14.r,
+                height: 15.r,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: stepperProvider.currentStep >= index
+                      ? AppColors.darkredcolor
+                      : AppColors.greycolor.withOpacity(0.5),
+                ),
+              ),
+            ),
+            if (index < stepCount - 1)
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                width: stepCount == 5 ? 63.w : 50.w,
+                height: 5.r,
+                color: stepperProvider.currentStep > index
+                    ? AppColors.darkredcolor
+                    : AppColors.dotsteeprcolor,
+              ),
+          ],
+        );
+      }),
+    );
+  }
+}

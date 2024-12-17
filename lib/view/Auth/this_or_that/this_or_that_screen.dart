@@ -24,7 +24,7 @@ class ThisOrThatScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            120.h.verticalSpace,
+            150.h.verticalSpace,
             const KBackButton(
               color: AppColors.backgroungcolor,
               iconcolor: AppColors.darkredcolor,
@@ -45,15 +45,20 @@ class ThisOrThatScreen extends StatelessWidget {
               },
               text: "LETS!",
             ),
-            10.h.verticalSpace,
-            Center(
-              child: GlobalText(
-                color: AppColors.backgroungcolor,
-                'Maybe Later!',
-                textStyle: textStyle18SemiBold.copyWith(
-                    decorationColor: AppColors.backgroungcolor,
-                    decoration: TextDecoration.underline,
-                    color: AppColors.backgroungcolor),
+            15.h.verticalSpace,
+            GestureDetector(
+              onTap: () {
+                context.pushReplacementNamed(AppRoute.loginscreen.name);
+              },
+              child: Center(
+                child: GlobalText(
+                  color: AppColors.backgroungcolor,
+                  'Maybe Later!',
+                  textStyle: textStyle18SemiBold.copyWith(
+                      decorationColor: AppColors.backgroungcolor,
+                      decoration: TextDecoration.underline,
+                      color: AppColors.backgroungcolor),
+                ),
               ),
             ),
           ],

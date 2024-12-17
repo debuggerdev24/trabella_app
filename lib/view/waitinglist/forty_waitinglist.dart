@@ -90,7 +90,13 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                         },
                       );
                     },
-                    child: Image.asset(AppAssets.datepicker),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        AppAssets.datepicker,
+                        height: 20.sp,
+                      ),
+                    ),
                   ),
                 ),
                 20.h.verticalSpace,

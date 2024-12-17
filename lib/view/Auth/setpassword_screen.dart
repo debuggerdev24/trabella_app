@@ -32,9 +32,9 @@ class HorizontalStepper extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            70.h.verticalSpace,
-            const Customstepper(),
-            38.h.verticalSpace,
+            100.h.verticalSpace,
+          const  Customstepper1(stepCount: 6),
+            60.h.verticalSpace,
             KBackButton(
               onBackClick: () {
                 stepperProvider.previousStep();
@@ -42,7 +42,7 @@ class HorizontalStepper extends StatelessWidget {
               color: AppColors.darkredcolor,
               iconcolor: AppColors.backgroungcolor,
             ),
-            60.h.verticalSpace,
+            70.h.verticalSpace,
             Expanded(
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),
@@ -74,11 +74,11 @@ class HorizontalStepper extends StatelessWidget {
         children: [
           GlobalText(
             'Let’s see if you\nremember your\nmagic word',
-            textStyle: textStyle20SemiBold.copyWith(
+            textStyle: textstyle30semiBold.copyWith(
               color: AppColors.redcolor,
             ),
           ),
-          150.h.verticalSpace,
+          110.h.verticalSpace,
           AppTextField(
             fillcolor: Colors.transparent,
             hintText: "Confirm your password",
@@ -107,7 +107,7 @@ class HorizontalStepper extends StatelessWidget {
         children: [
           GlobalText(
             'What’s your name?',
-            textStyle: textStyle20SemiBold.copyWith(
+            textStyle: textstyle30semiBold.copyWith(
                 color: AppColors.redcolor,
                 fontSize: 30.sp,
                 fontWeight: FontWeight.w600),
@@ -154,7 +154,7 @@ class HorizontalStepper extends StatelessWidget {
         children: [
           GlobalText(
             'What shall we call you?',
-            textStyle: textStyle20SemiBold.copyWith(
+            textStyle: textstyle30semiBold.copyWith(
               color: AppColors.redcolor,
             ),
           ),
