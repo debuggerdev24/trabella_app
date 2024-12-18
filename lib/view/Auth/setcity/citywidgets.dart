@@ -136,8 +136,16 @@ class _LanguageSelectionState extends State<LanguageSelection> {
   }
 }
 
-class SetName extends StatelessWidget {
+class SetName extends StatefulWidget {
   const SetName({super.key});
+
+  @override
+  State<SetName> createState() => _SetNameState();
+}
+
+class _SetNameState extends State<SetName> {
+  TextEditingController _dateController = TextEditingController();
+  TextEditingController _timeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -156,37 +164,47 @@ class SetName extends StatelessWidget {
           ),
           53.h.verticalSpace,
           AppTextField(
+            controller: _dateController,
+            readOnly: true,
             fillcolor: Colors.transparent,
             labelText: "Date of Birth",
+            style: TextStyle(color: AppColors.textcolor),
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
             suffixIcon: GestureDetector(
               onTap: () {
-                log("ontappp=====>");
                 CustomDatePickers.showPicker(
                   context: context,
                   mode: CupertinoDatePickerMode.date,
                   initialDateTime: stepperProvider.selectedDate,
                   onDateTimeChanged: (value) {
                     stepperProvider.updateDate(value);
+                    setState(() {
+                      _dateController.text = "${value.toLocal()}".split(' ')[0];
+                    });
                   },
                 );
               },
               child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 10.sp, horizontal: 15.sp),
+                padding: EdgeInsets.all(10.sp),
                 child: Image.asset(
                   AppAssets.birthDate,
-                  height: 6.sp,
+                  height: 10.sp,
                 ),
               ),
             ),
           ),
+
+
           20.h.verticalSpace,
+
           AppTextField(
+            readOnly: true,
+            controller: _timeController,
             fillcolor: Colors.transparent,
             labelText: "Birth Time",
+            style: TextStyle(color: AppColors.textcolor),
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
             hintText: DateFormat('hh:mm a').format(stepperProvider.initialTime),
@@ -194,23 +212,29 @@ class SetName extends StatelessWidget {
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
+                
                   mode: CupertinoDatePickerMode.time,
                   initialDateTime: stepperProvider.initialTime,
                   onDateTimeChanged: (value) {
                     stepperProvider.updateTime(value);
+                    setState(() {
+                      _timeController.text =
+                          DateFormat('hh:mm a').format(value);
+                    });
                   },
                 );
               },
               child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 10.sp, horizontal: 15.sp),
+                padding: EdgeInsets.all(10.sp),
                 child: Image.asset(
                   AppAssets.birthTime,
-                  height: 6.sp,
+                  height: 10.sp,
                 ),
               ),
             ),
           ),
+
+          
           20.h.verticalSpace,
           AppTextField(
             fillcolor: Colors.transparent,

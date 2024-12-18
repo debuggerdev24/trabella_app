@@ -25,7 +25,7 @@ class FortyWaitinglistSCreen extends StatefulWidget {
 
 class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
   List<TextEditingController> _controllers = [];
-
+  TextEditingController _dateController = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -73,8 +73,11 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 ),
                 20.h.verticalSpace,
                 AppTextField(
+                  controller: _dateController,
                   fillcolor: Colors.transparent,
                   labelText: "Date of Birth",
+                  readOnly: true,
+                  style: TextStyle(color: AppColors.textcolor),
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText:
@@ -87,14 +90,18 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                         initialDateTime: authProvider.selectedDate,
                         onDateTimeChanged: (value) {
                           authProvider.updateDate(value);
+                          setState(() {
+                            _dateController.text =
+                                "${value.toLocal()}".split(' ')[0];
+                          });
                         },
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(12.sp),
                       child: Image.asset(
-                        AppAssets.datepicker,
-                        height: 20.sp,
+                        AppAssets.birthTime,
+                        height: 12.sp,
                       ),
                     ),
                   ),

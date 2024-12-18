@@ -77,7 +77,7 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                   ),
                   10.w.horizontalSpace,
                   Container(
-                    padding: EdgeInsets.all(13.r),
+                    padding: EdgeInsets.all(15.r),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -85,7 +85,7 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                     child: SvgIcon(
                       AppAssets.tripadvisor,
                       color: AppColors.backgroungcolor,
-                      size: 42.w,
+                      size: 40.w,
                     ),
                   ),
                   10.w.horizontalSpace,

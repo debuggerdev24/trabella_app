@@ -33,6 +33,8 @@ class MyprofileScreen extends StatefulWidget {
 
 class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
+    final TextEditingController _dateController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroungcolor,
@@ -103,6 +105,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 ),
                 20.h.verticalSpace,
                 AppTextField(
+                  readOnly: true,
+controller: _dateController,
                   fillcolor: Colors.transparent,
                   labelText: "Date of Birth",
                   labelStyle:
@@ -116,13 +120,19 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                         mode: CupertinoDatePickerMode.date,
                         initialDateTime: authProvider.selectedDate,
                         onDateTimeChanged: (value) {
+
                           authProvider.updateDate(value);
+                             setState(() {
+                            _dateController.text =
+                                "${value.toLocal()}".split(' ')[0];
+                          }); 
                         },
                       );
                     },
                     child: Image.asset(AppAssets.datepicker),
                   ),
                 ),
+               
                 20.h.verticalSpace,
                 GlobalText(
                   "Where are you based?",

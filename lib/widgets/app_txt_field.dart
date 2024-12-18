@@ -37,7 +37,7 @@ class AppTextField extends StatelessWidget {
     this.bottomText,
     this.bottomTextStyle,
     this.readOnly = false,
-    this.textAlign = TextAlign.start,
+    this.textAlign = TextAlign.start, this.cursorColor,
   });
 
   final String? labelText;
@@ -72,7 +72,7 @@ class AppTextField extends StatelessWidget {
   final bool readOnly;
   final Color? fillcolor;
   final TextAlign textAlign;
-
+  final Color? cursorColor;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -98,6 +98,7 @@ class AppTextField extends StatelessWidget {
         TextFormField(
           enabled: enabled ?? true,
           expands: false,
+          
           // name: name,
           readOnly: readOnly,
           maxLength: maxLength,
@@ -108,7 +109,7 @@ class AppTextField extends StatelessWidget {
           autovalidateMode:
               autoValidateMode ?? AutovalidateMode.onUserInteraction,
           obscureText: obSecureText ?? false,
-          cursorColor: AppColors.blackColor,
+          cursorColor:cursorColor?? AppColors.blackColor,
           cursorHeight: 20,
           style: textStyle16.copyWith(
             color: AppColors.blackColor,

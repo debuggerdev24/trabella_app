@@ -79,10 +79,17 @@ class _EndofverificationScreenState extends State<EndofverificationScreen> {
                     size: 68.w,
                   ),
                   20.w.horizontalSpace,
-                  SvgIcon(
-                    AppAssets.tripadvisor,
-                    color: AppColors.backgroungcolor,
-                    size: 70.w,
+                  Container(
+                    padding: EdgeInsets.all(15.r),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: AppColors.whiteColor, width: 1.3)),
+                    child: SvgIcon(
+                      AppAssets.tripadvisor,
+                      color: AppColors.backgroungcolor,
+                      size: 40.w,
+                    ),
                   ),
                   20.w.horizontalSpace,
                   SvgIcon(

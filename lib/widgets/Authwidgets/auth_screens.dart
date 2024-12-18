@@ -40,6 +40,7 @@ class _SetbirthdayState extends State<Setbirthday> {
           ),
           149.h.verticalSpace,
           AppTextField(
+            readOnly: true,
             controller: _dateController,
             fillcolor: Colors.transparent,
             labelText: "Date of Birth",
@@ -62,7 +63,7 @@ class _SetbirthdayState extends State<Setbirthday> {
                 );
               },
               child: Padding(
-                padding: EdgeInsets.all(8.sp),
+                padding: EdgeInsets.all(10.sp),
                 child: Image.asset(
                   AppAssets.datepicker,
                   height: 10.sp,
