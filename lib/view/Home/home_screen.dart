@@ -59,9 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
 
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 39.w, vertical: 40.h),
+              padding: EdgeInsets.symmetric(horizontal: 39.w, vertical: 30.h),
               width: double.infinity,
-              height: 224.h,
+              height: 131.h,
               color: AppColors.background,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,13 +75,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w600),
                   ),
                   12.h.verticalSpace,
-                  AppButton(onPressed: () {}, text: "PLAN YOUR NEXT TRIP")
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                38.h.verticalSpace,
+                Center(
+                    child: AppButton(
+                        onPressed: () {}, text: "PLAN YOUR NEXT TRIP")),
                 // 40.h.verticalSpace,
                 // Padding(
                 //   padding: EdgeInsets.symmetric(horizontal: 40.r),
@@ -192,33 +195,41 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.h),
-                  child: GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20.h,
-                    crossAxisSpacing: 20.w,
-                    childAspectRatio: 0.9,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          context.pushNamed(AppRoute.thisorthatscreen.name);
-                        },
-                        child: ProfileOptionButton(
-                            AppAssets.thisorthat, "PLAY\nTHIS OR THAT"),
-                      ),
-                      ProfileOptionButton(
-                          AppAssets.stamps, "ADD\nTRAVEL STAMPS"),
-                      ProfileOptionButton(AppAssets.instagramwhite,
-                          "LINK YOUR\nSOCIAL PROFILES"),
-                      ProfileOptionButton(
-                          AppAssets.birthchart, "ENTER YOUR\nBIRTH CHART"),
-                    ],
-                  ),
+                GestureDetector(
+                  onTap: () {
+                    context.pushNamed(AppRoute.thisorthatscreen.name);
+                  },
+                  child: ProfileOptionButton(
+                      AppAssets.thisorthat, "PLAY THIS OR THAT"),
                 ),
+                ProfileOptionButton(AppAssets.stamps, "ADD TRAVEL STAMPS"),
+                ProfileOptionButton(
+                    AppAssets.instagramwhite, "LINK YOUR\nSOCIAL PROFILES"),
+                // Padding(
+                //   padding:
+                //       EdgeInsets.symmetric(horizontal: 10.r, vertical: 10.h),
+                //   child: GridView.count(
+                //     shrinkWrap: true,
+                //     crossAxisCount: 1,
+                //     mainAxisSpacing: 20.h,
+                //     crossAxisSpacing: 20.w,
+                //     childAspectRatio: 0.9,
+                //     physics: NeverScrollableScrollPhysics(),
+                //     children: [
+                //       GestureDetector(
+                //         onTap: () {
+                //           context.pushNamed(AppRoute.thisorthatscreen.name);
+                //         },
+                //         child: ProfileOptionButton(
+                //             AppAssets.thisorthat, "PLAY\nTHIS OR THAT"),
+                //       ),
+                //       ProfileOptionButton(
+                //           AppAssets.stamps, "ADD\nTRAVEL STAMPS"),
+                //       ProfileOptionButton(AppAssets.instagramwhite,
+                //           "LINK YOUR\nSOCIAL PROFILES"),
+                //     ],
+                //   ),
+                // ),
                 20.h.verticalSpace,
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40.r),
@@ -263,8 +274,6 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Image.asset(
           AppAssets.homebackground,
-          height: 430.h,
-          width: 430.w,
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -315,32 +324,38 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget ProfileOptionButton(String icons, String text) {
-    return Container(
-      height: 200.h,
-      width: 164.w,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColors.darkredcolor,
-          width: 1.0,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 41.h, vertical: 10.h),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 23.w,
         ),
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            icons,
-            width: 50.r,
+        height: 100.h,
+        width: 352.w,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.darkredcolor,
+            width: 1.0,
           ),
-          30.h.verticalSpace,
-          GlobalText(
-            text,
-            textAlign: TextAlign.center,
-            textStyle: textStyle18SemiBold.copyWith(
-              color: AppColors.textcolor,
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              icons,
+              width: 40.r,
             ),
-          ),
-        ],
+            50.h.horizontalSpace,
+            GlobalText(
+              textAlign: TextAlign.start,
+              text,
+              textStyle: textStyle18SemiBold.copyWith(
+                color: AppColors.textcolor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

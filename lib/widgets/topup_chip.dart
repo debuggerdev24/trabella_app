@@ -22,8 +22,8 @@ class TopUpChip extends StatelessWidget {
       borderRadius: BorderRadius.circular(30.r),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        height: 48.h,
-        width: 140.w,
+        height: 45.h,
+        width: 135.w,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             border: Border.all(

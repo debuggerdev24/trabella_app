@@ -23,8 +23,6 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroungcolor,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           120.h.verticalSpace,
           Padding(
@@ -72,14 +70,14 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                     'Sign up with a referral code or log in to start connecting with Trabellas around the world!',
                     textStyle: textStyle16.copyWith(
                         color: AppColors.textcolor.withOpacity(0.93),
-                        fontSize: 17.5.sp)),
+                        fontSize: 17.3.sp)),
                 50.h.verticalSpace,
                 Center(
                   child: AppButton(
                     onPressed: () {
                       context.pushNamed(AppRoute.referralcodescreen.name);
                     },
-                    text: "SIGN UP WITH THE CODE",
+                    text: "SIGN UP WITH A CODE",
                   ),
                 ),
                 61.h.verticalSpace,

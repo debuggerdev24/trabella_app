@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
 import 'package:travel_app/provider/profile_provider.dart';
@@ -33,7 +34,7 @@ class MyprofileScreen extends StatefulWidget {
 
 class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
-    final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,34 +107,38 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 20.h.verticalSpace,
                 AppTextField(
                   readOnly: true,
-controller: _dateController,
+                  controller: _dateController,
                   fillcolor: Colors.transparent,
                   labelText: "Date of Birth",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
-                  hintText:
-                      "${authProvider.selectedDate.toLocal()}".split(' ')[0],
+                  hintText: _dateController.text.isEmpty
+                      ? "DD/MM/YY"
+                      : _dateController.text,
                   suffixIcon: GestureDetector(
                     onTap: () {
                       CustomDatePickers.showPicker(
                         context: context,
-                        mode: CupertinoDatePickerMode.date,
                         initialDateTime: authProvider.selectedDate,
-                        onDateTimeChanged: (value) {
-
-                          authProvider.updateDate(value);
-                             setState(() {
-                            _dateController.text =
-                                "${value.toLocal()}".split(' ')[0];
-                          }); 
+                        onDateTimeChanged: (DateTime value) {
+                          final formattedDate =
+                              DateFormat('dd/MM/yyyy').format(value);
+                          setState(() {
+                            _dateController.text = formattedDate;
+                          });
                         },
                       );
                     },
-                    child: Image.asset(AppAssets.datepicker),
+                    child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: Image.asset(
+                        AppAssets.birthDate,
+                        height: 12.sp,
+                      ),
+                    ),
                   ),
                 ),
-               
-                20.h.verticalSpace,
+                10.h.verticalSpace,
                 GlobalText(
                   "Where are you based?",
                   textStyle: textStyle16.copyWith(
@@ -142,22 +147,14 @@ controller: _dateController,
                 Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: CardDropDownField(
-                        hintText: "Australia",
+                        dropdownIcon: AppAssets.down,
+                        hintText: "Select Country",
                         value: homeProvider.selectedcountry,
                         onChanged: (value) {
                           homeProvider.changeSelectedCountry(value);
                         },
                         dropDownList: countrydropdownlist())),
-                20.h.verticalSpace,
-                AppTextField(
-                  fillcolor: Colors.transparent,
-                  maxLength: 200,
-                  labelText: "Bio",
-                  labelStyle:
-                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
-                  hintText: "I’m Thalia.I’m a creative director from...",
-                ),
-                20.h.verticalSpace,
+                10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   maxLength: 200,
@@ -166,7 +163,7 @@ controller: _dateController,
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText: "Trabella Travel",
                 ),
-                20.h.verticalSpace,
+                10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   maxLength: 200,
@@ -175,7 +172,16 @@ controller: _dateController,
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText: "trabella@travel.com",
                 ),
-                20.h.verticalSpace,
+                10.h.verticalSpace,
+                AppTextField(
+                  fillcolor: Colors.transparent,
+                  maxLength: 200,
+                  labelText: "Bio",
+                  labelStyle:
+                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+                  hintText: "I’m Thalia.I’m a creative director from...",
+                ),
+                10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   maxLength: 200,
@@ -184,7 +190,7 @@ controller: _dateController,
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText: "English, Spanish",
                 ),
-                20.h.verticalSpace,
+                10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   labelText: "Zodiac",
@@ -192,7 +198,7 @@ controller: _dateController,
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText: "Sun: Sagittarius",
                 ),
-                20.h.verticalSpace,
+                10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
                   labelStyle:

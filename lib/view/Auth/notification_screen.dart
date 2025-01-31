@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:travel_app/utils/app_colors.dart';
 import 'package:travel_app/utils/global_text.dart';
 import 'package:travel_app/utils/routes/route.dart';
@@ -17,6 +18,46 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  PermissionStatus _permissionStatus = PermissionStatus.denied;
+
+  @override
+  void initState() {
+    super.initState();
+    // Check the current notification permission status on init
+    checkNotificationPermission();
+  }
+
+  // Function to check the current notification permission status
+  void checkNotificationPermission() async {
+    PermissionStatus status = await Permission.notification.status;
+    setState(() {
+      _permissionStatus = status;
+    });
+  }
+
+  // Function to request notification permission
+  void requestNotificationPermission() async {
+    // Request notification permission
+    PermissionStatus status = await Permission.notification.request();
+
+    // Update the permission status in the UI
+    setState(() {
+      _permissionStatus = status;
+    });
+
+    // If permission is granted, navigate to the ID verification screen
+    if (_permissionStatus.isGranted) {
+      context.pushNamed(AppRoute.idverificationscreen.name);
+    } else {
+      // Optionally, handle the case when permission is denied or permanently denied
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Notification permission is required to proceed."),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,19 +79,41 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   iconcolor: AppColors.backgroungcolor,
                 ),
                 70.h.verticalSpace,
-                GlobalText(
-                  'We’ll let you know when you have  Trabellas near you.',
-                  textStyle: textstyle30semiBold.copyWith(
+                RichText(
+                  text: TextSpan(
+                    text: 'We’ll let you know\nwhen you have\n',
+                    style: textstyle30semiBold.copyWith(
                       color: AppColors.redcolor,
                       fontSize: 30.sp,
-                      fontWeight: FontWeight.w600),
+                      fontWeight: FontWeight.w600,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Trabellas',
+                        style: textstyle30semiBold.copyWith(
+                            color: AppColors.redcolor,
+                            fontSize: 30.sp,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FontStyle.italic),
+                      ),
+                      TextSpan(
+                        text: ' near you.',
+                        style: textstyle30semiBold.copyWith(
+                          color: AppColors.redcolor,
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 100.h.verticalSpace,
                 AppButton(
                   onPressed: () {
+                    // requestNotificationPermission();
                     context.pushNamed(AppRoute.idverificationscreen.name);
                   },
-                  text: "ALLOW NOTIFICATION",
+                  text: "ALLOW NOTIFICATIONS",
                 ),
                 10.h.verticalSpace,
                 GestureDetector(

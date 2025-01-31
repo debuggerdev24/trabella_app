@@ -120,27 +120,41 @@ class Mapscreen extends StatelessWidget {
   Widget _savedplace() {
     ScrollController _scrollController = ScrollController();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
+      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Places you saved",
-              style: textStyle18.copyWith(
-                  color: AppColors.textcolor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24.sp)),
-          SizedBox(height: 25.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 7.w),
+            child: Text("Places you saved",
+                style: textStyle18.copyWith(
+                    color: AppColors.textcolor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24.sp)),
+          ),
+          12.h.verticalSpace,
           SizedBox(
-            height: 500.h,
-            child: Scrollbar(
+            height: 160.h,
+            child: RawScrollbar(
               scrollbarOrientation: ScrollbarOrientation.bottom,
               thumbVisibility: true,
+              trackVisibility: true,
+              thickness: 10.w,
+              trackColor: AppColors.progressbar,
+              thumbColor: AppColors.darkredcolor,
               controller: _scrollController,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: restaurants.length,
-                separatorBuilder: (context, index) => Divider(
-                  color: AppColors.blackColor,
+                separatorBuilder: (context, index) => Padding(
+                  padding: EdgeInsets.only(bottom: 20.h),
+                  child: Container(
+                    width: 2.w, // Thickness of the divider
+                    color: AppColors.greycolor,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 12.h, horizontal: 6.w),
+                  ),
                 ),
                 itemBuilder: (context, index) {
                   final restaurant = restaurants[index];
@@ -161,9 +175,7 @@ class Mapscreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.w,
-                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -195,7 +207,6 @@ class Mapscreen extends StatelessWidget {
                                     itemCount: 5,
                                     itemSize: 16.w,
                                   ),
-                                  SizedBox(width: 5.w),
                                   SizedBox(width: 5.w),
                                   Text(
                                     '(${restaurant['reviews']})',
@@ -231,7 +242,7 @@ class Mapscreen extends StatelessWidget {
                 },
               ),
             ),
-          ),
+          )
         ],
       ),
     );

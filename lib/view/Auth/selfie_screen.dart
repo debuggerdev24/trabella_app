@@ -99,18 +99,19 @@ class _selfieScreenState extends State<selfieScreen> {
                 ),
                 const TitleField(text: 'Tips'),
                 10.h.verticalSpace,
-                const BulletList(strings: [
-                  'Make sure we can see you clearly',
-                  'Keep your face free of anything that hides it (glasses are fine,but no sunnies)',
-                  'Look straight at the camera',
-                  'Take a live picture - old photoswon’t work'
-                ]),
+                BulletList(
+                  strings: [
+                    'Make sure we can see you clearly',
+                    'Keep your face free of anything that hides it (glasses are fine,but no sunnies)',
+                    'Look straight at the camera',
+                    'Take a live picture - old photos won’t work'
+                  ],
+                  fontSize: 16.sp,
+                ),
                 22.h.verticalSpace,
               ],
             ),
           );
         });
   }
-
- 
 }

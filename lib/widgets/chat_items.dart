@@ -15,7 +15,6 @@ class ChatItem extends StatelessWidget {
   final int unreadCount;
   final bool isPhoto;
 
-
   ChatItem({
     required this.imageUrl,
     required this.name,
@@ -24,7 +23,6 @@ class ChatItem extends StatelessWidget {
     required this.isRead,
     this.unreadCount = 0,
     this.isPhoto = false,
-
   });
 
   @override
@@ -34,7 +32,7 @@ class ChatItem extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: 30.r,
+            radius: 27.r,
             backgroundImage: AssetImage(imageUrl),
           ),
           10.w.horizontalSpace,
@@ -53,8 +51,7 @@ class ChatItem extends StatelessWidget {
                   maxLine: 1,
                   message,
                   textStyle: textStyle14.copyWith(
-                    color: AppColors.greycolor,
-                  ),
+                      color: AppColors.greycolor, fontSize: 16.sp),
                 ),
               ],
             ),
@@ -65,9 +62,10 @@ class ChatItem extends StatelessWidget {
             children: [
               GlobalText(
                 time,
-                textStyle: textStyle14.copyWith(color: AppColors.greycolor),
+                textStyle: textStyle14.copyWith(
+                  color: AppColors.greycolor,
+                ),
               ),
-              10.h.verticalSpace,
               if (isRead)
                 SvgIcon(
                   AppAssets.read,
@@ -75,7 +73,6 @@ class ChatItem extends StatelessWidget {
                 ),
               if (!isRead)
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 5.h),
                   width: 20.w,
                   height: 20.h,
                   decoration: BoxDecoration(
@@ -86,8 +83,7 @@ class ChatItem extends StatelessWidget {
                   child: GlobalText(
                     '$unreadCount',
                     textAlign: TextAlign.center,
-                    textStyle:
-                        TextStyle(color: Colors.white, fontSize: 12.sp),
+                    textStyle: TextStyle(color: Colors.white, fontSize: 12.sp),
                   ),
                 ),
             ],

@@ -208,7 +208,7 @@ class _ChatmessageScreenState extends State<ChatmessageScreen> {
   Widget topbar(BuildContext context) {
     return Container(
       padding:
-          EdgeInsets.only(top: 70.h, left: 16.w, right: 16.w, bottom: 10.h),
+          EdgeInsets.only(top: 70.h, left: 16.w, right: 16.w, bottom: 15.h),
       decoration: BoxDecoration(
         color: Color(0xFFF5F0E3),
         boxShadow: [
@@ -248,8 +248,8 @@ class _ChatmessageScreenState extends State<ChatmessageScreen> {
                   ),
                   const Row(
                     children: [
-                      Icon(Icons.circle, color: Colors.green, size: 10),
-                      SizedBox(width: 4),
+                      Icon(Icons.circle, color: Colors.green, size: 8),
+                      SizedBox(width: 3),
                       Text(
                         'Online',
                         style: TextStyle(
@@ -264,21 +264,24 @@ class _ChatmessageScreenState extends State<ChatmessageScreen> {
             ],
           ),
           Spacer(),
-          Row(
-            children: [
-              SvgIcon(
-                AppAssets.phone,
-                color: AppColors.darkredcolor,
-                size: 26.sp,
-              ),
-              20.w.horizontalSpace,
-              SvgIcon(
-                AppAssets.videocall,
-                color: AppColors.darkredcolor,
-                size: 22.sp,
-              ),
-              20.w.horizontalSpace,
-            ],
+          Padding(
+            padding: EdgeInsets.only(top: 18.h),
+            child: Row(
+              children: [
+                SvgIcon(
+                  AppAssets.phone,
+                  color: AppColors.darkredcolor,
+                  size: 23.sp,
+                ),
+                20.w.horizontalSpace,
+                SvgIcon(
+                  AppAssets.videocall,
+                  color: AppColors.darkredcolor,
+                  size: 17.sp,
+                ),
+                20.w.horizontalSpace,
+              ],
+            ),
           ),
         ],
       ),

@@ -26,7 +26,7 @@ class _TakeselfiescreenState extends State<Takeselfiescreen> {
     super.initState();
     Provider.of<CameraProvider>(context, listen: false)
         .initializeCameraController(
-            previewSize: Size(0.1.sw, 0.1.sh), isFrontCamera: true);
+            previewSize: Size(0.2.sw, 0.1.sh), isFrontCamera: true);
   }
 
   @override

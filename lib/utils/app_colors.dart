@@ -15,4 +15,5 @@ class AppColors {
   static const darkredcolor = Color(0xFFD7372B);
   static const redcolor = Color(0xFFEF3934);
   static const background = Color(0xFFebe7d6);
+  static const progressbar = Color(0xFFCCCCCC);
 }

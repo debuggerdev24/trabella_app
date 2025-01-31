@@ -100,6 +100,10 @@ class AppAssets {
   static const String taurus = "assets/icons/taurus.svg";
   static const String media = "assets/icons/media.svg";
   static const String doubleCheck = "assets/icons/doubleCheck.svg";
+  static const String line = "assets/icons/line.svg";
+  static const String edit = "assets/icons/Edit.svg";
+   static const String serch = "assets/icons/serch.svg";
+
 
   // Tabs//
   static const String home = "assets/icons/home.svg";

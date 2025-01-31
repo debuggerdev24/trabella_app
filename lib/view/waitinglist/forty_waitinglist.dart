@@ -26,6 +26,7 @@ class FortyWaitinglistSCreen extends StatefulWidget {
 class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
   List<TextEditingController> _controllers = [];
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _emailcontroller = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -63,8 +64,9 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                     fontSize: 30.sp,
                   ),
                 ),
-                20.h.verticalSpace,
+                76.h.verticalSpace,
                 AppTextField(
+                  controller: _emailcontroller,
                   fillcolor: Colors.transparent,
                   labelText: "Email",
                   labelStyle:
@@ -86,7 +88,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                     onTap: () {
                       CustomDatePickers.showPicker(
                         context: context,
-                        mode: CupertinoDatePickerMode.date,
+                        // mode: CupertinoDatePickerMode.date,
                         initialDateTime: authProvider.selectedDate,
                         onDateTimeChanged: (value) {
                           authProvider.updateDate(value);
@@ -98,7 +100,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                       );
                     },
                     child: Padding(
-                      padding: EdgeInsets.all(12.sp),
+                      padding: EdgeInsets.all(16.sp),
                       child: Image.asset(
                         AppAssets.birthTime,
                         height: 12.sp,
@@ -115,6 +117,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: CardDropDownField(
+                      dropdownIcon: AppAssets.down,
                       hintText: "Australia",
                       value: homeProvider.selectedcountry,
                       onChanged: (value) {

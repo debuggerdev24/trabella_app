@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/provider/auth_provider.dart';
@@ -31,12 +32,26 @@ class _SetbirthdayState extends State<Setbirthday> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GlobalText(
-            'When is your birthday, Trabella?',
-            textStyle: textstyle30semiBold.copyWith(
+          RichText(
+            text: TextSpan(
+              text: 'When is your birthday, ',
+              style: textstyle30semiBold.copyWith(
                 color: AppColors.redcolor,
                 fontSize: 30.sp,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w600,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Trabella?',
+                  style: textstyle30semiBold.copyWith(
+                      color:
+                          AppColors.redcolor, // Set a different color or style
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.italic),
+                ),
+              ],
+            ),
           ),
           149.h.verticalSpace,
           AppTextField(
@@ -44,26 +59,28 @@ class _SetbirthdayState extends State<Setbirthday> {
             controller: _dateController,
             fillcolor: Colors.transparent,
             labelText: "Date of Birth",
-            style: TextStyle(color: AppColors.textcolor),
+            style: const TextStyle(color: AppColors.textcolor),
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
-            hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
+            hintText: _dateController.text.isEmpty
+                ? "DD/MM/YY"
+                : _dateController.text,
             suffixIcon: GestureDetector(
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
-                  mode: CupertinoDatePickerMode.date,
                   initialDateTime: stepperProvider.selectedDate,
-                  onDateTimeChanged: (value) {
-                    stepperProvider.updateDate(value);
+                  onDateTimeChanged: (DateTime value) {
+                    final formattedDate =
+                        DateFormat('dd/MM/yyyy').format(value);
                     setState(() {
-                      _dateController.text = "${value.toLocal()}".split(' ')[0];
+                      _dateController.text = formattedDate;
                     });
                   },
                 );
               },
               child: Padding(
-                padding: EdgeInsets.all(10.sp),
+                padding: EdgeInsets.all(15.sp),
                 child: Image.asset(
                   AppAssets.datepicker,
                   height: 10.sp,
@@ -174,12 +191,26 @@ class _SetlocationState extends State<Setlocation> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GlobalText(
-          'Where do you live,\nThalia?',
-          textStyle: textstyle30semiBold.copyWith(
+        RichText(
+          text: TextSpan(
+            text: 'Where do you live,\n', // Main part of the text
+            style: textstyle30semiBold.copyWith(
               color: AppColors.redcolor,
               fontSize: 30.sp,
-              fontWeight: FontWeight.w600),
+              fontWeight: FontWeight.w600,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Thalia?', // The second part of the text
+                style: textstyle30semiBold.copyWith(
+                    color: AppColors
+                        .redcolor, // Optional: change the color or style
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w600,
+                    fontStyle: FontStyle.italic),
+              ),
+            ],
+          ),
         ),
         145.h.verticalSpace,
         AppTextField(

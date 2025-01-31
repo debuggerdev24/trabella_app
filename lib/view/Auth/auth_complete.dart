@@ -75,7 +75,7 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                     color: AppColors.backgroungcolor,
                     size: 68.w,
                   ),
-                  10.w.horizontalSpace,
+                  20.w.horizontalSpace,
                   Container(
                     padding: EdgeInsets.all(15.r),
                     decoration: BoxDecoration(
@@ -88,7 +88,7 @@ class _AuthCompletedScreenState extends State<AuthCompletedScreen> {
                       size: 40.w,
                     ),
                   ),
-                  10.w.horizontalSpace,
+                  20.w.horizontalSpace,
                   SvgIcon(
                     AppAssets.instagram,
                     color: AppColors.backgroungcolor,

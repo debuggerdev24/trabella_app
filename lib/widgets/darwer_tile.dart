@@ -39,6 +39,12 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerItem(
             context,
             iconPath: AppAssets.setting,
+            title: "Emergency Contacts",
+            onTap: () {},
+          ),
+          _buildDrawerItem(
+            context,
+            iconPath: AppAssets.setting,
             title: "Settings",
             onTap: () {
               context.pushNamed(AppRoute.settingscreen.name);

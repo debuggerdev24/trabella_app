@@ -100,22 +100,26 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                 19.h.verticalSpace,
                 const TitleField(text: 'ID we accept are:'),
                 2.h.verticalSpace,
-                const BulletList(
+                BulletList(
                   strings: [
                     'Passport',
                     'Driver’s Licence',
                     'EU Nationality Card'
                   ],
+                  fontSize: 18.sp,
                 ),
                 32.h.verticalSpace,
                 const TitleField(text: 'Tips'),
                 2.h.verticalSpace,
-                const BulletList(strings: [
-                  'Make sure you’re in a well-lit room',
-                  'Check we can see all the details of\n your ID clearly',
-                  'Put your ID on a plain, dark surface',
-                  'Check we can see all the details of\n your ID clearly'
-                ]),
+                BulletList(
+                  strings: [
+                    'Make sure you’re in a well-lit room',
+                    'Check there’s no glare on your ID',
+                    'Put your ID on a plain, dark surface',
+                    'Check we can see all the details of\n your ID clearly'
+                  ],
+                  fontSize: 15.sp,
+                ),
                 35.h.verticalSpace,
               ],
             ),
@@ -145,7 +149,9 @@ class TitleField extends StatelessWidget {
 
 class BulletList extends StatelessWidget {
   final List<String> strings;
-  const BulletList({super.key, required this.strings});
+  final double fontSize;
+
+  const BulletList({super.key, required this.strings, required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -162,8 +168,8 @@ class BulletList extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 6.h),
-                  height: 11.h,
-                  width: 11.h,
+                  height: 10.h,
+                  width: 10.h,
                   child: SvgPicture.asset(AppAssets.bulletpoint),
                   decoration: BoxDecoration(
                       //shape: BoxShape.circle,
@@ -171,15 +177,13 @@ class BulletList extends StatelessWidget {
                 ),
                 10.w.horizontalSpace,
                 Expanded(
-                  child: Container(
-                    child: Text(
-                      str,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 17.3.sp,
-                        color: AppColors.textcolor.withOpacity(0.9),
-                        height: 1.55,
-                      ),
+                  child: Text(
+                    str,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: AppColors.textcolor.withOpacity(0.9),
+                      height: 1.55,
                     ),
                   ),
                 ),

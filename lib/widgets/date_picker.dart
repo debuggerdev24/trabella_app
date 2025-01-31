@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/app_colors.dart';
+import 'package:intl/intl.dart'; // Import intl for date formatting
 
 class CustomDatePickers {
   static void showPicker({
     required BuildContext context,
-    required CupertinoDatePickerMode mode,
     required DateTime initialDateTime,
     required Function(DateTime) onDateTimeChanged,
   }) {
@@ -13,6 +13,8 @@ class CustomDatePickers {
       context: context,
       builder: (_) {
         final size = MediaQuery.of(context).size;
+        DateTime selectedDate = initialDateTime;
+
         return Container(
           decoration: const BoxDecoration(
             color: AppColors.whiteColor,
@@ -28,11 +30,22 @@ class CustomDatePickers {
               topRight: Radius.circular(18),
             ),
           ),
-          height: size.height * 0.27,
-          child: CupertinoDatePicker(
-            mode: mode,
-            initialDateTime: initialDateTime,
-            onDateTimeChanged: onDateTimeChanged,
+          height: size.height * 0.35,
+          child: Column(
+            children: [
+              Expanded(
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  use24hFormat: true,
+                  // Show Date, Month, Year
+                  initialDateTime: initialDateTime,
+                  onDateTimeChanged: (DateTime newDateTime) {
+                    selectedDate = newDateTime;
+                    onDateTimeChanged(newDateTime);
+                  },
+                ),
+              ),
+            ],
           ),
         );
       },

@@ -48,7 +48,7 @@ class _CatOrDogScreenState extends State<CatOrDogScreen> {
               onBackClick: () {
                 if (_currentPage > 0) {
                   _pageController.previousPage(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                   );
                 }

@@ -19,19 +19,19 @@ class VerifyScreen extends StatelessWidget {
       backgroundColor: AppColors.darkredcolor,
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 37.0,
+          horizontal: 32.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             150.h.verticalSpace,
-            KBackButton(
+            const KBackButton(
               color: AppColors.backgroungcolor,
               iconcolor: AppColors.darkredcolor,
             ),
             70.h.verticalSpace,
             GlobalText(
-              'Thank you, we’ve verified your email !',
+              'Thank you, we’ve verified your email!',
               textStyle: textstyle30semiBold.copyWith(
                   color: AppColors.backgroungcolor),
             ),

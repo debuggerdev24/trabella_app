@@ -91,28 +91,30 @@ class _TripsScreenState extends State<TripsScreen>
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-                shadowColor: AppColors.greycolor,
-                backgroundColor: AppColors.backgroungcolor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              shadowColor: AppColors.greycolor,
+              backgroundColor: AppColors.backgroungcolor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              ),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20.h, vertical: 30.h),
+              content: SizedBox(
+                width: 500.w,
+                height: 0.39.sh,
+                child: PageView(
+                  controller: _dialogPageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    createtrip(_dialogPageController),
+                    _destination(_dialogPageController),
+                    _flightAttendance(_dialogPageController),
+                    _accommodation(_dialogPageController, () {
+                      context.pop();
+                    }),
+                  ],
                 ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20.h, vertical: 30.h),
-                content: SizedBox(
-                    width: 500.w,
-                    height: 0.50.sh,
-                    child: PageView(
-                      controller: _dialogPageController,
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        createtrip(_dialogPageController),
-                        _destination(_dialogPageController),
-                        _flightAttendance(_dialogPageController),
-                        _accommodation(_dialogPageController, () {
-                          context.pop();
-                        }),
-                      ],
-                    )));
+              ),
+            );
           },
         );
       },
@@ -166,11 +168,11 @@ class _TripsScreenState extends State<TripsScreen>
           ),
           fillcolor: Colors.transparent,
         ),
-        30.h.verticalSpace,
+        60.h.verticalSpace,
         AppButton(
           onPressed: () {
             pageController.nextPage(
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn,
             );
           },
@@ -185,151 +187,162 @@ class _TripsScreenState extends State<TripsScreen>
       builder: (context, tripProvider, child) {
         List<Map<String, dynamic>> _destinations = tripProvider.destinations;
 
-        return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: SvgPicture.asset(AppAssets.cancel),
-                ),
-              ),
-              10.h.verticalSpace,
-              GlobalText(
-                "Create trip",
-                textAlign: TextAlign.center,
-                textStyle: textStyle20SemiBold.copyWith(
-                  color: AppColors.darkredcolor,
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              20.h.verticalSpace,
-              for (var i = 0; i < _destinations.length; i++) ...[
-                GlobalText(
-                  textAlign: TextAlign.start,
-                  "Destination ${i + 1}",
-                  textStyle: textStyle16.copyWith(
-                      color: AppColors.blackColor, fontWeight: FontWeight.w600),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CardDropDownField(
-                    hintText: "Select Country",
-                    value: _destinations[i]['country'],
-                    onChanged: (value) {
-                      tripProvider.updateDestination(i, 'country', value);
+        return Scrollbar(
+          thumbVisibility: true,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pop();
                     },
-                    dropDownList: countrydropdownlist(),
+                    child: SvgPicture.asset(AppAssets.cancel),
+                  ),
+                ),
+                10.h.verticalSpace,
+                GlobalText(
+                  "Create trip",
+                  textAlign: TextAlign.center,
+                  textStyle: textStyle20SemiBold.copyWith(
+                    color: AppColors.darkredcolor,
+                    fontSize: 30.sp,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 20.h.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () async {
-                          DateTime? pickedDate =
-                              await showDefultDatePicker(context);
-                          if (pickedDate != null) {
-                            tripProvider.updateDestination(
-                                i, 'fromDate', pickedDate);
-                          }
-                        },
-                        child: InputDecorator(
-                          decoration: InputDecoration(
-                            labelText: "From",
-                            border: OutlineInputBorder(),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.start,
-                                _destinations[i]['fromDate'] != null
-                                    ? "${_destinations[i]['fromDate'].day.toString().padLeft(2, '0')}/"
-                                        "${_destinations[i]['fromDate'].month.toString().padLeft(2, '0')}/"
-                                        "${_destinations[i]['fromDate'].year}"
-                                    : "DD/MM/YY",
-                              ),
-                              Image.asset(AppAssets.datepicker),
-                            ],
+                for (var i = 0; i < _destinations.length; i++) ...[
+                  GlobalText(
+                    textAlign: TextAlign.start,
+                    "Destination ${i + 1}",
+                    textStyle: textStyle16.copyWith(
+                        color: AppColors.blackColor,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: CardDropDownField(
+                      hintText: "Select Country",
+                      value: _destinations[i]['country'],
+                      onChanged: (value) {
+                        tripProvider.updateDestination(i, 'country', value);
+                      },
+                      dropDownList: countrydropdownlist(),
+                      dropdownIcon: AppAssets.down,
+                    ),
+                  ),
+                  20.h.verticalSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () async {
+                            // DateTime? pickedDate =
+                            //     await CustomDatePickers.showPicker(context);
+                            // if (pickedDate != null) {
+                            //   tripProvider.updateDestination(
+                            //       i, 'fromDate', pickedDate);
+                            // }
+                          },
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              labelText: "From",
+                              border: OutlineInputBorder(),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  textAlign: TextAlign.start,
+                                  _destinations[i]['fromDate'] != null
+                                      ? "${_destinations[i]['fromDate'].day.toString().padLeft(2, '0')}/"
+                                          "${_destinations[i]['fromDate'].month.toString().padLeft(2, '0')}/"
+                                          "${_destinations[i]['fromDate'].year}"
+                                      : "DD/MM/YY",
+                                ),
+                                Image.asset(
+                                  AppAssets.birthDate,
+                                  width: 20.w,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    5.w.horizontalSpace,
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () async {
-                          DateTime? pickedDate =
-                              await showDefultDatePicker(context);
-                          if (pickedDate != null) {
-                            tripProvider.updateDestination(
-                                i, 'toDate', pickedDate);
-                          }
-                        },
-                        child: InputDecorator(
-                          decoration: InputDecoration(
-                            labelText: "To",
-                            border: OutlineInputBorder(),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.start,
-                                _destinations[i]['toDate'] != null
-                                    ? "${_destinations[i]['toDate'].day.toString().padLeft(2, '0')}/"
-                                        "${_destinations[i]['toDate'].month.toString().padLeft(2, '0')}/"
-                                        "${_destinations[i]['toDate'].year}"
-                                    : "DD/MM/YY",
-                              ),
-                              Image.asset(AppAssets.datepicker),
-                            ],
+                      5.w.horizontalSpace,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () async {
+                            DateTime? pickedDate =
+                                await showDefultDatePicker(context);
+                            if (pickedDate != null) {
+                              tripProvider.updateDestination(
+                                  i, 'toDate', pickedDate);
+                            }
+                          },
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              labelText: "To",
+                              border: OutlineInputBorder(),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  textAlign: TextAlign.start,
+                                  _destinations[i]['toDate'] != null
+                                      ? "${_destinations[i]['toDate'].day.toString().padLeft(2, '0')}/"
+                                          "${_destinations[i]['toDate'].month.toString().padLeft(2, '0')}/"
+                                          "${_destinations[i]['toDate'].year}"
+                                      : "DD/MM/YY",
+                                ),
+                                Image.asset(
+                                  AppAssets.birthDate,
+                                  width: 20.w,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                  30.h.verticalSpace,
+                  const DottedLine(),
+                  20.h.verticalSpace,
+                ],
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      tripProvider.addDestination({
+                        "country": null,
+                        "fromDate": null,
+                        "toDate": null,
+                      });
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.darkredcolor,
+                      radius: 25.r,
+                      child: Icon(Icons.add, color: Colors.white, size: 30.sp),
                     ),
-                  ],
+                  ),
                 ),
-                30.h.verticalSpace,
-                const DottedLine(),
-                20.h.verticalSpace,
-              ],
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    tripProvider.addDestination({
-                      "country": null,
-                      "fromDate": null,
-                      "toDate": null,
-                    });
+                SizedBox(height: 20.h),
+                AppButton(
+                  onPressed: () {
+                    pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
                   },
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.darkredcolor,
-                    radius: 25.r,
-                    child: Icon(Icons.add, color: Colors.white, size: 30.sp),
-                  ),
+                  text: "NEXT",
                 ),
-              ),
-              SizedBox(height: 20.h),
-              AppButton(
-                onPressed: () {
-                  pageController.nextPage(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                  );
-                },
-                text: "NEXT",
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -356,7 +369,7 @@ class _TripsScreenState extends State<TripsScreen>
                   child: SvgPicture.asset(AppAssets.cancel),
                 ),
               ),
-              SizedBox(height: 10.0),
+              10.h.verticalSpace,
               Center(
                 child: GlobalText(
                   "Create trip",
@@ -368,7 +381,7 @@ class _TripsScreenState extends State<TripsScreen>
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              20.h.verticalSpace,
               for (var i = 0; i < flightAttendances.length; i++) ...[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -382,11 +395,10 @@ class _TripsScreenState extends State<TripsScreen>
                     },
                   ),
                 ),
-                SizedBox(height: 20.0),
+                20.h.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // From Date Picker
                     Expanded(
                       child: GestureDetector(
                         onTap: () async {
@@ -398,7 +410,7 @@ class _TripsScreenState extends State<TripsScreen>
                           }
                         },
                         child: InputDecorator(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "From",
                             border: OutlineInputBorder(),
                           ),
@@ -411,15 +423,20 @@ class _TripsScreenState extends State<TripsScreen>
                                         "${(flightAttendances[i]['fromDate'] as DateTime).month.toString().padLeft(2, '0')}/"
                                         "${(flightAttendances[i]['fromDate'] as DateTime).year}"
                                     : "DD/MM/YY",
+                                style: textStyle18.copyWith(
+                                    fontSize: 15.sp,
+                                    color: AppColors.textcolor),
                               ),
-                              Image.asset(AppAssets.datepicker),
+                              Image.asset(
+                                AppAssets.birthDate,
+                                width: 23.w,
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 5.0),
-                    // To Time Picker
+                    10.w.horizontalSpace,
                     Expanded(
                       child: GestureDetector(
                         onTap: () async {
@@ -446,8 +463,14 @@ class _TripsScreenState extends State<TripsScreen>
                                     ? "${(flightAttendances[i]['toTime'] as TimeOfDay).hour.toString().padLeft(2, '0')}:"
                                         "${(flightAttendances[i]['toTime'] as TimeOfDay).minute.toString().padLeft(2, '0')}"
                                     : "HH:MM",
+                                style: textStyle18.copyWith(
+                                    color: AppColors.textcolor,
+                                    fontSize: 15.sp),
                               ),
-                              Image.asset(AppAssets.datepicker),
+                              Image.asset(
+                                AppAssets.birthDate,
+                                width: 23.w,
+                              ),
                             ],
                           ),
                         ),

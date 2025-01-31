@@ -17,13 +17,15 @@ class ThisOrThat extends StatelessWidget {
       required this.thisimage,
       required this.thatimage,
       required this.text,
-      required this.pagecontroller, required this.onpressed, required this.ontap});
+      required this.pagecontroller,
+      required this.onpressed,
+      required this.ontap});
   final String thisimage;
   final String thatimage;
   final String text;
   final PageController pagecontroller;
   final VoidCallback onpressed;
-   final VoidCallback ontap;
+  final VoidCallback ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class ThisOrThat extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: 10.h,
-            crossAxisSpacing: 10.w,
+            crossAxisSpacing: 16.w,
             children: [
               GestureDetector(
                 onTap: () {},
@@ -58,9 +60,7 @@ class ThisOrThat extends StatelessWidget {
             ],
           ),
           70.h.verticalSpace,
-          AppButton(
-              onPressed:ontap,
-              text: "NEXT"),
+          AppButton(onPressed: ontap, text: "NEXT"),
           20.h.verticalSpace,
           Center(
             child: GestureDetector(

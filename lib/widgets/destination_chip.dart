@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_app/utils/app_colors.dart';
@@ -22,17 +24,18 @@ class AppChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double chipWidth = (MediaQuery.of(context).size.width / 2) -
-        20; // Half width minus padding
-
     return GestureDetector(
       onTap: onTap,
       child: IntrinsicWidth(
+        // stepWidth: 150,
         child: Container(
-          margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
-          padding:
-              EdgeInsets.only(left: 10.w, top: 10, bottom: 10, right: 10.w),
-          // alignment: Alignment.center,
+          margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.sp),
+          padding: EdgeInsets.only(
+              left: text.length > 20 ? 0.sp : 30.sp,
+              top: 10,
+              bottom: 10,
+              right: text.length > 20 ? 0.sp : 30.sp),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border.all(
               color: isSelected ? AppColors.darkredcolor : AppColors.textcolor,

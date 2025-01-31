@@ -30,6 +30,7 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   bool cardadding = true;
+  bool _hideSearchIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,13 @@ class _WalletScreenState extends State<WalletScreen> {
               30.h.verticalSpace,
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40.w),
+                  // child: AppButton(
+                  //         onPressed: () {
+                  //           openAlertBox(onCreditCard: () {
+                  //             _cardPayment();
+                  //           });
+                  //         },
+                  //         text: "ADD MONEY"),
                   child: !cardadding
                       ? AppButton(
                           onPressed: () {
@@ -420,7 +428,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         color: AppColors.darkredcolor,
                         width: 2,
                         strokeAlign: 20)),
-                hintText: 'AUD 00.00',
+                hintText: 'AUD00.00',
                 hintStyle:
                     textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
               ),
@@ -430,14 +438,14 @@ class _WalletScreenState extends State<WalletScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TopUpChip(
-                  value: TopUpEnum.AUD100,
+                  value: TopUpEnum.AUD50,
                   currentValue: provider.topupamount,
                   ontap: (value) {
                     provider.changeTopup(value);
                   },
                 ),
                 TopUpChip(
-                  value: TopUpEnum.AUD150,
+                  value: TopUpEnum.AUD100,
                   currentValue: provider.topupamount,
                   ontap: (value) {
                     provider.changeTopup(value);
@@ -450,7 +458,7 @@ class _WalletScreenState extends State<WalletScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TopUpChip(
-                  value: TopUpEnum.AUD200,
+                  value: TopUpEnum.AUD150,
                   currentValue: provider.topupamount,
                   ontap: (value) {
                     provider.changeTopup(value);
@@ -458,7 +466,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
                 10.h.verticalSpace,
                 TopUpChip(
-                  value: TopUpEnum.AUD50,
+                  value: TopUpEnum.AUD200,
                   currentValue: provider.topupamount,
                   ontap: (value) {
                     provider.changeTopup(value);
@@ -594,12 +602,12 @@ class _WalletScreenState extends State<WalletScreen> {
                     strokeAlign: 20,
                   ),
                 ),
-                hintText: 'AUD 50.00',
-                hintStyle:
-                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
+                hintText: 'AUD50.00',
+                hintStyle: textStyle16.copyWith(
+                    fontSize: 36.sp, color: AppColors.textcolor),
               ),
             ),
-            10.h.verticalSpace,
+            40.h.verticalSpace,
             Center(
               child: GlobalText(
                 'Between',
@@ -613,15 +621,21 @@ class _WalletScreenState extends State<WalletScreen> {
             10.h.verticalSpace,
             CardDropDownField(
               hintText: "Search",
-              value: "Jordan",
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  if (value != null && value.isNotEmpty) {
+                    _hideSearchIcon = true;
+                  }
+                });
+              },
               dropDownList: countrydropdownlist(),
+              dropdownIcon: AppAssets.down,
             ),
             20.h.verticalSpace,
             Center(
               child: CircleAvatar(
                 backgroundColor: AppColors.darkredcolor,
-                radius: 25.0,
+                radius: 20.r,
                 child: SvgPicture.asset(AppAssets.addlanguage),
               ),
             ),
@@ -736,9 +750,9 @@ class _WalletScreenState extends State<WalletScreen> {
                     strokeAlign: 20,
                   ),
                 ),
-                hintText: 'AUD 50.00',
-                hintStyle:
-                    textStyle16.copyWith(fontSize: 30.sp, color: Colors.grey),
+                hintText: 'AUD50.00',
+                hintStyle: textStyle16.copyWith(
+                    fontSize: 36.sp, color: AppColors.textcolor),
               ),
             ),
             20.h.verticalSpace,

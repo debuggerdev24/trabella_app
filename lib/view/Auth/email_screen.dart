@@ -20,6 +20,7 @@ class Emailscreen extends StatefulWidget {
 
 class _EmailscreenState extends State<Emailscreen> {
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController _emailController = TextEditingController();
   bool _isScrolled = false;
 
   @override
@@ -69,7 +70,7 @@ class _EmailscreenState extends State<Emailscreen> {
               child: GlobalText(
                 'Let’s start with your email',
                 textStyle: textstyle30semiBold.copyWith(
-                    fontSize: 29.99.sp,
+                    fontSize: 29.sp,
                     color: AppColors.redcolor,
                     fontWeight: FontWeight.w600),
               ),
@@ -80,6 +81,7 @@ class _EmailscreenState extends State<Emailscreen> {
                 horizontal: 40.w,
               ),
               child: AppTextField(
+                controller: _emailController,
                 fillcolor: Colors.transparent,
                 hintText: "trabella@travel.com",
               ),
@@ -144,19 +146,33 @@ class _EmailscreenState extends State<Emailscreen> {
   }
 
   Widget suggestionButton(String text) {
-    return Container(
-      width: 144.w,
-      height: 40.h,
-      decoration: BoxDecoration(
-          color: AppColors.backgroungcolor,
-          border: Border.all(color: AppColors.greycolor),
-          borderRadius: BorderRadius.circular(30.r)),
-      child: Center(
+    return GestureDetector(
+      onTap: () {
+        String currentText = _emailController.text.trim();
+        if (!currentText.contains('@')) {
+          _emailController.text = currentText + text;
+          _emailController.selection = TextSelection.fromPosition(
+            TextPosition(offset: _emailController.text.length),
+          );
+        }
+      },
+      child: Container(
+        width: 144.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+            color: AppColors.backgroungcolor,
+            border: Border.all(color: AppColors.greycolor),
+            borderRadius: BorderRadius.circular(30.r)),
+        child: Center(
           child: GlobalText(
-        text,
-        textStyle: textStyle16Bold.copyWith(
-            color: AppColors.textcolor.withOpacity(0.8), fontSize: 16.sp),
-      )),
+            text,
+            textStyle: textStyle16Bold.copyWith(
+              color: AppColors.textcolor.withOpacity(0.8),
+              fontSize: 16.sp,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

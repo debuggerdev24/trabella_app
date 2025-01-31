@@ -71,7 +71,7 @@ class Customstepper1 extends StatelessWidget {
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 width: stepCount == 5 ? 63.w : 50.w,
-                height: 5.r,
+                height: 4.5.r,
                 color: stepperProvider.currentStep > index
                     ? AppColors.darkredcolor
                     : AppColors.dotsteeprcolor,

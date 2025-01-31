@@ -28,7 +28,6 @@ class FeedbackScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const KBackButton(
-                    
                       color: AppColors.backgroungcolor,
                       iconcolor: AppColors.darkredcolor),
                   Spacer(),

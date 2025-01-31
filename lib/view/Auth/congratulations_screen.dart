@@ -35,8 +35,8 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
             children: <Widget>[
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 35.w,
                 ),
                 child: SvgIcon(
                   AppAssets.check,
@@ -46,8 +46,8 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
               ),
               50.h.verticalSpace,
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 35.w,
                 ),
                 child: GlobalText(
                   'Congratulations!',
@@ -57,8 +57,8 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 35.w,
                 ),
                 child: GlobalText(
                   'You’vee signed up successfully. Time to explore the Trabella’s world!',
@@ -86,11 +86,12 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
         color: AppColors.darkredcolor,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GlobalText("Let’s set up your profile!",
               textStyle: textStyle18SemiBold.copyWith(
                   color: AppColors.backgroungcolor, fontSize: 24.sp)),
+          32.h.verticalSpace,
           AppButton(
               colorType: AppButtonColorType.secondary,
               onPressed: () {
@@ -98,6 +99,7 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
               },
               text: "SURE!",
               textStyle: const TextStyle(color: AppColors.backgroungcolor)),
+          10.h.verticalSpace,
           GestureDetector(
             onTap: () {
               context.pushNamed(AppRoute.setcityscreen.name);

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +11,7 @@ import 'package:travel_app/widgets/back_button.dart';
 
 class SelfieviewScreen extends StatelessWidget {
   final String imagePath;
+
   const SelfieviewScreen({super.key, required this.imagePath});
 
   @override
@@ -24,11 +24,8 @@ class SelfieviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 40.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   150.h.verticalSpace,
@@ -37,13 +34,14 @@ class SelfieviewScreen extends StatelessWidget {
                     iconcolor: AppColors.backgroungcolor,
                   ),
                   130.h.verticalSpace,
-                  ClipOval(
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.file(
-                      File(imagePath),
-                      fit: BoxFit.cover,
-                      width: 500.w,
-                      height: 350.w,
+                  Center(
+                    child: ClipOval(
+                      child: Image.file(
+                        File(imagePath),
+                        width: 295.w,
+                        height: 380.w,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   90.h.verticalSpace,

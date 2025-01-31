@@ -29,7 +29,7 @@ class LanguageSelection extends StatefulWidget {
 
 class _LanguageSelectionState extends State<LanguageSelection> {
   List<String?> selectedLanguages = ['English'];
-  List<TextEditingController> _controllers = [];
+  final List<TextEditingController> _controllers = [];
 
   @override
   void initState() {
@@ -69,7 +69,7 @@ class _LanguageSelectionState extends State<LanguageSelection> {
           110.h.verticalSpace,
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: _controllers.length,
             itemBuilder: (context, index) {
               return Padding(
@@ -91,6 +91,7 @@ class _LanguageSelectionState extends State<LanguageSelection> {
                               color: AppColors.textcolor, fontSize: 16.sp),
                         ));
                   }).toList(),
+                  dropdownIcon: AppAssets.down,
                 ),
               );
             },
@@ -168,26 +169,29 @@ class _SetNameState extends State<SetName> {
             readOnly: true,
             fillcolor: Colors.transparent,
             labelText: "Date of Birth",
-            style: TextStyle(color: AppColors.textcolor),
+            style: const TextStyle(color: AppColors.textcolor),
             labelStyle:
                 textStyle18SemiBold.copyWith(color: AppColors.blackColor),
-            hintText: "${stepperProvider.selectedDate.toLocal()}".split(' ')[0],
+            hintText: _dateController.text.isEmpty
+                ? "DD/MM/YY"
+                : _dateController.text,
             suffixIcon: GestureDetector(
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
-                  mode: CupertinoDatePickerMode.date,
+                  // mode: CupertinoDatePickerMode.date,
                   initialDateTime: stepperProvider.selectedDate,
-                  onDateTimeChanged: (value) {
-                    stepperProvider.updateDate(value);
+                  onDateTimeChanged: (DateTime value) {
+                    final formattedDate =
+                        DateFormat('dd/MM/yyyy').format(value);
                     setState(() {
-                      _dateController.text = "${value.toLocal()}".split(' ')[0];
+                      _dateController.text = formattedDate;
                     });
                   },
                 );
               },
               child: Padding(
-                padding: EdgeInsets.all(10.sp),
+                padding: EdgeInsets.all(15.sp),
                 child: Image.asset(
                   AppAssets.birthDate,
                   height: 10.sp,
@@ -195,10 +199,7 @@ class _SetNameState extends State<SetName> {
               ),
             ),
           ),
-
-
           20.h.verticalSpace,
-
           AppTextField(
             readOnly: true,
             controller: _timeController,
@@ -212,8 +213,7 @@ class _SetNameState extends State<SetName> {
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
-                
-                  mode: CupertinoDatePickerMode.time,
+                  // mode: CupertinoDatePickerMode.time,
                   initialDateTime: stepperProvider.initialTime,
                   onDateTimeChanged: (value) {
                     stepperProvider.updateTime(value);
@@ -225,7 +225,7 @@ class _SetNameState extends State<SetName> {
                 );
               },
               child: Padding(
-                padding: EdgeInsets.all(10.sp),
+                padding: EdgeInsets.all(15.sp),
                 child: Image.asset(
                   AppAssets.birthTime,
                   height: 10.sp,
@@ -233,8 +233,6 @@ class _SetNameState extends State<SetName> {
               ),
             ),
           ),
-
-          
           20.h.verticalSpace,
           AppTextField(
             fillcolor: Colors.transparent,
@@ -314,27 +312,76 @@ class _FavouritethingsState extends State<Favouritethings> {
               fontWeight: FontWeight.w600),
         ),
         30.h.verticalSpace,
+
         Wrap(
           alignment: WrapAlignment.start,
           spacing: 5,
           runSpacing: 5,
-          children: hobbies.map((hobbies) {
-            bool isSelected = selectedDestinations.contains(hobbies);
-            return AppChip(
-              text: hobbies,
-              isSelected: isSelected,
-              onTap: () {
-                setState(() {
-                  if (isSelected) {
-                    selectedDestinations.remove(hobbies);
-                  } else {
-                    selectedDestinations.add(hobbies);
-                  }
-                });
-              },
+          children: List.generate((hobbies.length / 2).ceil(), (index) {
+            int firstIndex = index * 2;
+            int secondIndex = firstIndex + 1;
+            return Row(
+              children: [
+                Expanded(
+                  child: AppChip(
+                    text: hobbies[firstIndex],
+                    isSelected:
+                        selectedDestinations.contains(hobbies[firstIndex]),
+                    onTap: () {
+                      setState(() {
+                        if (selectedDestinations
+                            .contains(hobbies[firstIndex])) {
+                          selectedDestinations.remove(hobbies[firstIndex]);
+                        } else {
+                          selectedDestinations.add(hobbies[firstIndex]);
+                        }
+                      });
+                    },
+                  ),
+                ),
+                if (secondIndex < hobbies.length)
+                  AppChip(
+                    text: hobbies[secondIndex],
+                    isSelected:
+                        selectedDestinations.contains(hobbies[secondIndex]),
+                    onTap: () {
+                      setState(() {
+                        if (selectedDestinations
+                            .contains(hobbies[secondIndex])) {
+                          selectedDestinations.remove(hobbies[secondIndex]);
+                        } else {
+                          selectedDestinations.add(hobbies[secondIndex]);
+                        }
+                      });
+                    },
+                  ),
+              ],
             );
-          }).toList(),
+          }),
         ),
+
+        // Wrap(
+        //   alignment: WrapAlignment.start,
+        //   spacing: 5,
+        //   runSpacing: 5,
+        //   children: hobbies.map((hobbies) {
+        //     bool isSelected = selectedDestinations.contains(hobbies);
+        //     return AppChip(
+        //       text: hobbies,
+        //       isSelected: isSelected,
+        //       onTap: () {
+        //         setState(() {
+        //           if (isSelected) {
+        //             selectedDestinations.remove(hobbies);
+        //           } else {
+        //             selectedDestinations.add(hobbies);
+        //           }
+        //         });
+        //       },
+        //     );
+        //   }).toList(),
+        // ),
+
         40.h.verticalSpace,
         AppButton(
           onPressed: () {
@@ -386,7 +433,7 @@ class _HolidaydestinationState extends State<Holidaydestination> {
     "HO CHI MINH",
     "PARIS",
     "BERLIN",
-    "MACHU PICHHU"
+    "MACHU PICHHU",
   ];
 
   @override
@@ -407,22 +454,48 @@ class _HolidaydestinationState extends State<Holidaydestination> {
           alignment: WrapAlignment.start,
           spacing: 5,
           runSpacing: 5,
-          children: destinations.map((destination) {
-            bool isSelected = selectedDestinations.contains(destination);
-            return AppChip(
-              text: destination,
-              isSelected: isSelected,
-              onTap: () {
-                setState(() {
-                  if (isSelected) {
-                    selectedDestinations.remove(destination);
-                  } else {
-                    selectedDestinations.add(destination);
-                  }
-                });
-              },
+          children: List.generate((destinations.length / 2).ceil(), (index) {
+            int firstIndex = index * 2;
+            int secondIndex = firstIndex + 1;
+            return Row(
+              children: [
+                Expanded(
+                  child: AppChip(
+                    text: destinations[firstIndex],
+                    isSelected:
+                        selectedDestinations.contains(destinations[firstIndex]),
+                    onTap: () {
+                      setState(() {
+                        if (selectedDestinations
+                            .contains(destinations[firstIndex])) {
+                          selectedDestinations.remove(destinations[firstIndex]);
+                        } else {
+                          selectedDestinations.add(destinations[firstIndex]);
+                        }
+                      });
+                    },
+                  ),
+                ),
+                if (secondIndex < destinations.length)
+                  AppChip(
+                    text: destinations[secondIndex],
+                    isSelected: selectedDestinations
+                        .contains(destinations[secondIndex]),
+                    onTap: () {
+                      setState(() {
+                        if (selectedDestinations
+                            .contains(destinations[secondIndex])) {
+                          selectedDestinations
+                              .remove(destinations[secondIndex]);
+                        } else {
+                          selectedDestinations.add(destinations[secondIndex]);
+                        }
+                      });
+                    },
+                  ),
+              ],
             );
-          }).toList(),
+          }),
         ),
         40.h.verticalSpace,
         AppButton(

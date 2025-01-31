@@ -64,24 +64,33 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          10.h.verticalSpace,
           const TopBar(),
+          20.h.verticalSpace,
+          Divider(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                53.h.verticalSpace,
+                30.h.verticalSpace,
                 GlobalText(
                   'Chat',
                   textStyle: textStyle20SemiBold.copyWith(
                     color: AppColors.darkredcolor,
-                    fontSize: 30.sp,
+                    fontSize: 36.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 20.h.verticalSpace,
                 AppTextField(
-                  prefixIcon: const Icon(Icons.search),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(13),
+                    child: SvgIcon(
+                      AppAssets.serch,
+                      color: AppColors.textcolor,
+                    ),
+                  ),
                   hintText: "Search....",
                   hintStyle: textStyle14.copyWith(
                     color: AppColors.greycolor,

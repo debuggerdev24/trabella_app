@@ -37,7 +37,8 @@ class AppTextField extends StatelessWidget {
     this.bottomText,
     this.bottomTextStyle,
     this.readOnly = false,
-    this.textAlign = TextAlign.start, this.cursorColor,
+    this.textAlign = TextAlign.start,
+    this.cursorColor,
   });
 
   final String? labelText;
@@ -98,8 +99,6 @@ class AppTextField extends StatelessWidget {
         TextFormField(
           enabled: enabled ?? true,
           expands: false,
-          
-          // name: name,
           readOnly: readOnly,
           maxLength: maxLength,
           keyboardType: keyboardType,
@@ -109,7 +108,7 @@ class AppTextField extends StatelessWidget {
           autovalidateMode:
               autoValidateMode ?? AutovalidateMode.onUserInteraction,
           obscureText: obSecureText ?? false,
-          cursorColor:cursorColor?? AppColors.blackColor,
+          cursorColor: cursorColor ?? AppColors.blackColor,
           cursorHeight: 20,
           style: textStyle16.copyWith(
             color: AppColors.blackColor,
@@ -168,7 +167,9 @@ class AppTextField extends StatelessWidget {
           ),
           validator: validator,
           onChanged: onChanged,
-          maxLines: maxLines,
+          maxLines: obSecureText ?? false
+              ? 1
+              : maxLines, 
         ),
         if (bottomText != null)
           Align(
