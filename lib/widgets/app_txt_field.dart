@@ -7,7 +7,8 @@ import 'package:travel_app/utils/styles.dart';
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
-    this.labelText = '',
+    this.labelText,
+    this.labelRichText,
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
@@ -42,58 +43,61 @@ class AppTextField extends StatelessWidget {
   });
 
   final String? labelText;
-
-  final bool isRequired;
+  final RichText? labelRichText;
   final Widget? prefixIcon;
-  final String? prefixText;
   final Widget? suffixIcon;
+  final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onChanged;
   final String? hintText;
-  final TextStyle? hintStyle;
-  final TextStyle? style;
-  final TextStyle? labelStyle;
   final TextEditingController? controller;
-  final FormFieldValidator? validator;
-  final Function(String?)? onChanged;
-  final void Function()? onTap;
   final AutovalidateMode? autoValidateMode;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final String? prefixText;
+  final VoidCallback? onTap;
   final bool? obSecureText;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
   final InputBorder? border;
-  final InputBorder? errorBorder;
-  final OutlineInputBorder? outlineInputBorder;
   final EdgeInsetsGeometry? contentPadding;
   final int? maxLength;
   final Widget? suffix;
   final Widget? prefix;
+  final InputBorder? errorBorder;
   final int? maxLines;
+  final InputBorder? outlineInputBorder;
+  final TextStyle? hintStyle;
+  final Color? fillcolor;
   final bool? enabled;
+  final bool isRequired;
   final String? bottomText;
   final TextStyle? bottomTextStyle;
   final bool readOnly;
-  final Color? fillcolor;
   final TextAlign textAlign;
   final Color? cursorColor;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        labelText?.isNotEmpty ?? false
+        (labelRichText != null || (labelText?.isNotEmpty ?? false))
             ? Container(
                 height: 30.h,
                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),
                 alignment: Alignment.centerLeft,
-                child: RichText(
-                  text: TextSpan(children: [
-                    TextSpan(
-                      text: labelText,
-                      style: labelStyle ??
-                          textStyle18SemiBold.copyWith(
-                              color: AppColors.blackColor),
+                child: labelRichText ??
+                    RichText(
+                      text: TextSpan(
+                        text: labelText,
+                        style: labelStyle ??
+                            TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color:AppColors.greycolor
+                            ),
+                      ),
                     ),
-                  ]),
-                ),
               )
             : const SizedBox(),
         TextFormField(
@@ -108,11 +112,13 @@ class AppTextField extends StatelessWidget {
           autovalidateMode:
               autoValidateMode ?? AutovalidateMode.onUserInteraction,
           obscureText: obSecureText ?? false,
-          cursorColor: cursorColor ?? AppColors.blackColor,
+          cursorColor: cursorColor ?? Colors.black,
           cursorHeight: 20,
-          style: textStyle16.copyWith(
-            color: AppColors.blackColor,
-          ),
+          style: style ??
+              TextStyle(
+                fontSize: 18.sp,
+                color: Colors.black,
+              ),
           onTap: onTap,
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
@@ -128,11 +134,12 @@ class AppTextField extends StatelessWidget {
             fillColor: fillcolor,
             filled: true,
             hintStyle: hintStyle ??
-                textStyle14.copyWith(
-                  color: Colors.grey,
+                TextStyle(
+                  fontSize: 18.sp,
+                  color:Colors.grey
                 ),
             contentPadding: contentPadding ??
-                REdgeInsets.symmetric(horizontal: 15.r, vertical: 23.r),
+                EdgeInsets.symmetric(horizontal: 15.r, vertical: 23.r),
             disabledBorder: border ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),
@@ -143,40 +150,42 @@ class AppTextField extends StatelessWidget {
             enabledBorder: border ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),
-                  borderSide: const BorderSide(color: AppColors.greycolor),
+                  borderSide: const BorderSide(color: Colors.grey),
                 ),
             focusedBorder: border ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),
-                  borderSide: const BorderSide(color: AppColors.greycolor),
+                  borderSide: const BorderSide(color: Colors.grey),
                 ),
             border: border ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),
                   borderSide: const BorderSide(
-                    color: AppColors.greycolor,
+                    color: Colors.grey,
                   ),
                 ),
             errorBorder: errorBorder ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.error,
+                  borderSide: const BorderSide(
+                    color: Colors.red,
                   ),
                 ),
           ),
           validator: validator,
           onChanged: onChanged,
-          maxLines: obSecureText ?? false
-              ? 1
-              : maxLines, 
+          maxLines: obSecureText ?? false ? 1 : maxLines,
         ),
         if (bottomText != null)
           Align(
             alignment: Alignment.topRight,
             child: Text(
               bottomText!,
-              style: textStyle18.copyWith(color: AppColors.greycolor),
+              style: bottomTextStyle ??
+                  TextStyle(
+                    fontSize: 14.sp,
+                    color: Colors.grey,
+                  ),
             ),
           )
       ],

@@ -59,7 +59,7 @@ class ThisOrThat extends StatelessWidget {
               ),
             ],
           ),
-          70.h.verticalSpace,
+          60.h.verticalSpace,
           AppButton(onPressed: ontap, text: "NEXT"),
           20.h.verticalSpace,
           Center(

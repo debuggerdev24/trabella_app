@@ -199,7 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 38.w),
+                padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: Row(
                   children: [
                     thisorthat("Cat", AppAssets.cat),
@@ -263,15 +263,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: textStyle16Bold.copyWith(
                             fontSize: 40.sp, color: AppColors.backgroungcolor)),
                     64.w.horizontalSpace,
-                    CircleAvatar(
-                      backgroundColor: AppColors.darkredcolor,
-                      radius: 20.r,
-                      child: SvgIcon(
-                        AppAssets.profilecheck,
-                        size: 20.w,
-                        color: AppColors.backgroungcolor,
-                      ),
-                    ),
+                  SvgPicture.asset(AppAssets.profile1),
+                   
                   ],
                 ),
               ],
@@ -342,7 +335,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget friends(String text) {
     return IntrinsicWidth(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 45.w, vertical: 13),
+        padding: EdgeInsets.symmetric(horizontal: 45.w, vertical: 10.h),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(30.r),
@@ -364,30 +357,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget thisorthat(final String text, final String image) {
-    return Card(
-      color: AppColors.whiteColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-            child: Image.asset(
-              image,
-              height: 180.h,
-              width: 148.w,
-              fit: BoxFit.cover,
+    return Padding(
+      padding:EdgeInsets.symmetric(horizontal: 7.w),
+      child: Card(
+        color: AppColors.whiteColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+              child: Image.asset(
+                image,
+                height: 160.h,
+                width: 180.w,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: GlobalText(text,
-                textStyle: textStyle16.copyWith(
-                    color: AppColors.textcolor, fontSize: 16.sp)),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: GlobalText(text,
+                  textStyle: textStyle16.copyWith(
+                      color: AppColors.textcolor, fontSize: 16.sp)),
+            ),
+          ],
+        ),
       ),
     );
   }

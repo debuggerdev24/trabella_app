@@ -103,6 +103,7 @@ class AppAssets {
   static const String line = "assets/icons/line.svg";
   static const String edit = "assets/icons/Edit.svg";
    static const String serch = "assets/icons/serch.svg";
+    static const String profile1 = "assets/icons/profilecheck1.svg";
 
 
   // Tabs//

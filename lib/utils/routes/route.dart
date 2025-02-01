@@ -114,7 +114,7 @@ class AppNavigator {
   static StatefulNavigationShell? indexedStackNavigationShell;
 
   static final router = GoRouter(
-    initialLocation: AppRoute.splashScreen.path,
+    initialLocation: AppRoute.homescreen.path,
     debugLogDiagnostics: true,
     navigatorKey: rootNavigator,
     routes: [
