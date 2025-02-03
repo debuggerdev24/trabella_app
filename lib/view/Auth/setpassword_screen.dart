@@ -82,7 +82,10 @@ class HorizontalStepper extends StatelessWidget {
           AppTextField(
             fillcolor: Colors.transparent,
             hintText: "Confirm your password",
-            suffixIcon: Image.asset(AppAssets.password),
+            suffixIcon: Padding(
+                padding: EdgeInsets.only(left: 10.r),
+              child: Image.asset(AppAssets.password),
+            ),
             onChanged: (value) {
               stepperProvider.updateConfirmPassword(value ?? "");
             },

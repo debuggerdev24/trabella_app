@@ -50,6 +50,7 @@ class Calendar extends StatelessWidget {
                       child: SfDateRangePicker(
                         headerHeight: 60.h,
                         todayHighlightColor: Colors.transparent,
+                        
                         rangeSelectionColor:
                             AppColors.darkredcolor.withOpacity(0.2),
                         endRangeSelectionColor: AppColors.darkredcolor,

@@ -148,7 +148,10 @@ class _SetpasswordState extends State<Setpassword> {
             fillcolor: Colors.transparent,
             controller: _setpasswordcontroller,
             hintText: "Choose your password",
-            suffixIcon: Image.asset(AppAssets.password),
+            suffixIcon: Padding(
+              padding: EdgeInsets.only(left: 10.r),
+              child: Image.asset(AppAssets.password),
+            ),
             onChanged: (String? value) {
               stepperProvider.updatePassword(value ?? "");
             },

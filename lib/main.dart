@@ -47,6 +47,7 @@ class _MyAppState extends State<MyApp> {
           title: 'TRABELLA APP',
           routerConfig: AppNavigator.router,
           debugShowCheckedModeBanner: false,
+
         );
       });
 }

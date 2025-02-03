@@ -72,9 +72,12 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
 
   openAlertBox() {
     return showDialog(
+     barrierColor: AppColors.blackColor.withOpacity(.8),
+     
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            
             backgroundColor: AppColors.backgroungcolor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12.r))),
@@ -98,7 +101,10 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                   ],
                 ),
                 19.h.verticalSpace,
-                const TitleField(text: 'ID we accept are:'),
+                Padding(
+                  padding:EdgeInsets.only(left: 0.r),
+                  child: const TitleField(text: 'ID we accept are:'),
+                ),
                 2.h.verticalSpace,
                 BulletList(
                   strings: [
@@ -109,14 +115,17 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                   fontSize: 18.sp,
                 ),
                 32.h.verticalSpace,
-                const TitleField(text: 'Tips'),
+                Padding(
+                   padding:EdgeInsets.only(right: 25.r),
+                  child: const TitleField(text: 'Tips'),
+                ),
                 2.h.verticalSpace,
                 BulletList(
                   strings: [
                     'Make sure you’re in a well-lit room',
                     'Check there’s no glare on your ID',
                     'Put your ID on a plain, dark surface',
-                    'Check we can see all the details of\n your ID clearly'
+                    'Check we can see all the details of\nyourID clearly'
                   ],
                   fontSize: 15.sp,
                 ),
@@ -175,7 +184,7 @@ class BulletList extends StatelessWidget {
                       //shape: BoxShape.circle,
                       ),
                 ),
-                10.w.horizontalSpace,
+                20.w.horizontalSpace,
                 Expanded(
                   child: Text(
                     str,

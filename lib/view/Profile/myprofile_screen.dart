@@ -157,7 +157,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
-                  maxLength: 200,
+                  // maxLength: 200,
                   labelText: "Emergency contact",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -166,7 +166,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
-                  maxLength: 200,
+                  // maxLength: 200,
                   labelText: "Emergency contact email ",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -175,7 +175,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
-                  maxLength: 200,
+                  // maxLength: 200,
                   labelText: "Bio",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),
@@ -184,7 +184,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 10.h.verticalSpace,
                 AppTextField(
                   fillcolor: Colors.transparent,
-                  maxLength: 200,
+                  // maxLength: 200,
                   labelText: "Languages ",
                   labelStyle:
                       textStyle18SemiBold.copyWith(color: AppColors.blackColor),

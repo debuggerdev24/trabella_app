@@ -81,8 +81,9 @@ class _SettingScreenState extends State<SettingScreen> {
           ? Transform.scale(
               scaleX: 0.8,
               scaleY: 0.8,
-              child: Switch.adaptive(
-                applyCupertinoTheme: true,
+              child: Switch(
+                
+                // applyCupertinoTheme: true,
                 inactiveTrackColor: AppColors.blackColor,
                 inactiveThumbColor: AppColors.redcolor,
                 trackOutlineWidth: MaterialStateProperty.all(0),

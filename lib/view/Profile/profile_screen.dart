@@ -391,7 +391,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget stampcollection() {
     return Container(
       color: AppColors.whiteColor,
-      height: 550.h,
+      height: 600.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -407,21 +407,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
+            crossAxisCount: 2,
+            childAspectRatio: 0.9
             ),
             itemCount: stamps.length,
             itemBuilder: (context, index) {
               final stamp = stamps[index];
               return Column(
                 children: [
-                  Stack(
-                    children: [
-                      Image.asset(stamp['image']!, height: 160.h, width: 251.w),
-                    ],
-                  ),
-                  8.h.verticalSpace,
+                  Image.asset(stamp['image']!, height: 200.h,width: 200.w,),
+                  10.h.verticalSpace,
                   Icon(
                     Icons.favorite_border,
                     size: 32.w,
