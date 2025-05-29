@@ -118,6 +118,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   suffixIcon: GestureDetector(
                     onTap: () {
                       CustomDatePickers.showPicker(
+                        mode: CupertinoDatePickerMode.date,
                         context: context,
                         initialDateTime: authProvider.selectedDate,
                         onDateTimeChanged: (DateTime value) {

@@ -8,6 +8,7 @@ class CustomDatePickers {
     required BuildContext context,
     required DateTime initialDateTime,
     required Function(DateTime) onDateTimeChanged,
+    required CupertinoDatePickerMode mode, // <-- Make mode required
   }) {
     showCupertinoModalPopup<void>(
       context: context,
@@ -35,9 +36,8 @@ class CustomDatePickers {
             children: [
               Expanded(
                 child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
+                  mode: mode, // <-- Use the passed mode
                   use24hFormat: true,
-                  // Show Date, Month, Year
                   initialDateTime: initialDateTime,
                   onDateTimeChanged: (DateTime newDateTime) {
                     selectedDate = newDateTime;
@@ -52,6 +52,7 @@ class CustomDatePickers {
     );
   }
 }
+
 
 Future<DateTime?> showDefultDatePicker(BuildContext context) {
   return showDatePicker(

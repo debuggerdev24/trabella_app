@@ -60,7 +60,7 @@ class _TakePhotoScreenState extends State<TakePhotoScreen> {
                             aspectRatio:
                                 cameraProvider.controller!.value.aspectRatio,
                             child: RotatedBox(
-                              quarterTurns: 1,
+                              quarterTurns: 4,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12.r),
                                 child:

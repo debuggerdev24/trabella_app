@@ -113,7 +113,7 @@ class _IDverificationScreenState extends State<IDverificationScreen> {
                     'EU Nationality Card'
                   ],
                   fontSize: 18.sp,
-                ),
+                ), 
                 32.h.verticalSpace,
                 Padding(
                    padding:EdgeInsets.only(right: 25.r),

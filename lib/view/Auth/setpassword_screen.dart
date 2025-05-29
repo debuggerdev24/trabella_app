@@ -119,8 +119,7 @@ class HorizontalStepper extends StatelessWidget {
           AppTextField(
             fillcolor: Colors.transparent,
             labelText: "First Name",
-            labelStyle:
-                textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+            
             hintText: "Trabella",
             onChanged: (value) {
               stepperProvider.updateFirstName(value ?? "");
@@ -130,8 +129,7 @@ class HorizontalStepper extends StatelessWidget {
           AppTextField(
             fillcolor: Colors.transparent,
             labelText: "Last Name",
-            labelStyle:
-                textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+         
             hintText: "Travel",
             onChanged: (value) {
               stepperProvider.updateLastName(value ?? "");

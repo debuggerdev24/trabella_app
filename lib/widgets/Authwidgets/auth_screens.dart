@@ -37,17 +37,14 @@ class _SetbirthdayState extends State<Setbirthday> {
               text: 'When is your birthday, ',
               style: textstyle30semiBold.copyWith(
                 color: AppColors.redcolor,
-                fontSize: 30.sp,
-                fontWeight: FontWeight.w600,
               ),
               children: <TextSpan>[
                 TextSpan(
                   text: 'Trabella?',
                   style: textstyle30semiBold.copyWith(
                       color:
-                          AppColors.redcolor, // Set a different color or style
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.w600,
+                          AppColors.redcolor, 
+                    
                       fontStyle: FontStyle.italic),
                 ),
               ],
@@ -68,6 +65,7 @@ class _SetbirthdayState extends State<Setbirthday> {
             suffixIcon: GestureDetector(
               onTap: () {
                 CustomDatePickers.showPicker(
+                  mode: CupertinoDatePickerMode.date,
                   context: context,
                   initialDateTime: stepperProvider.selectedDate,
                   onDateTimeChanged: (DateTime value) {
@@ -196,7 +194,7 @@ class _SetlocationState extends State<Setlocation> {
       children: [
         RichText(
           text: TextSpan(
-            text: 'Where do you live,\n', // Main part of the text
+            text: 'Where do you live,\n', 
             style: textstyle30semiBold.copyWith(
               color: AppColors.redcolor,
               fontSize: 30.sp,

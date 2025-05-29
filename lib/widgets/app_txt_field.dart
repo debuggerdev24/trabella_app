@@ -91,10 +91,10 @@ class AppTextField extends StatelessWidget {
                       text: TextSpan(
                         text: labelText,
                         style: labelStyle ??
-                            TextStyle(
+                            textStyle18.copyWith(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
-                              color:AppColors.greycolor
+                              color:AppColors.textcolor
                             ),
                       ),
                     ),
@@ -139,7 +139,7 @@ class AppTextField extends StatelessWidget {
                   color:Colors.grey
                 ),
             contentPadding: contentPadding ??
-                EdgeInsets.symmetric(horizontal: 15.r, vertical: 10.r),
+                EdgeInsets.symmetric(horizontal: 15.r, vertical: 16.r),
             disabledBorder: border ??
                 OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.r),

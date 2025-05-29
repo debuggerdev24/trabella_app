@@ -71,6 +71,8 @@ class _selfieScreenState extends State<selfieScreen> {
 
   openAlertBox() {
     return showDialog(
+       barrierColor: AppColors.blackColor.withOpacity(.8),
+     
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(

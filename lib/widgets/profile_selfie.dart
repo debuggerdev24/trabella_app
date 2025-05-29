@@ -34,7 +34,7 @@ class _ClickingProfilePickViewState extends State<ClickingProfilePickView> {
                     alignment: Alignment.center,
                     transform: Matrix4.rotationY(3.14159),
                     child: RotatedBox(
-                      quarterTurns: 3,
+                      quarterTurns: 4,
                       child: CameraPreview(
                           widget.profilePickerProvider.controller!),
                     ),

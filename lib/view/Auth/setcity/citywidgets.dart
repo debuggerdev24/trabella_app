@@ -179,7 +179,7 @@ class _SetNameState extends State<SetName> {
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
-                  // mode: CupertinoDatePickerMode.date,
+                   mode: CupertinoDatePickerMode.date,
                   initialDateTime: stepperProvider.selectedDate,
                   onDateTimeChanged: (DateTime value) {
                     final formattedDate =
@@ -213,7 +213,7 @@ class _SetNameState extends State<SetName> {
               onTap: () {
                 CustomDatePickers.showPicker(
                   context: context,
-                  // mode: CupertinoDatePickerMode.time,
+                   mode: CupertinoDatePickerMode.time,
                   initialDateTime: stepperProvider.initialTime,
                   onDateTimeChanged: (value) {
                     stepperProvider.updateTime(value);

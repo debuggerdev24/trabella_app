@@ -103,8 +103,6 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                   controller: _emailcontroller,
                   fillcolor: Colors.transparent,
                   labelText: "Email",
-                  labelStyle:
-                      textStyle18SemiBold.copyWith(color: AppColors.blackColor),
                   hintText: "trabella@travvel.com",
                 ),
                 20.h.verticalSpace,
@@ -118,8 +116,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                     labelText: "Date of Birth",
                     readOnly: true,
                     style: TextStyle(color: AppColors.textcolor),
-                    labelStyle:
-                        textStyle18SemiBold.copyWith(color: AppColors.blackColor),
+                    
                      hintText: _dateController.text.isEmpty
                   ? "DD/MM/YY"
                   : _dateController.text,
@@ -127,7 +124,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                       onTap: () {
                         CustomDatePickers.showPicker(
                           context: context,
-                          // mode: CupertinoDatePickerMode.date,
+                           mode: CupertinoDatePickerMode.date,
                           initialDateTime: authProvider.selectedDate,
                               onDateTimeChanged: (DateTime value) {
                       final formattedDate =
@@ -151,8 +148,11 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                 20.h.verticalSpace,
                 GlobalText(
                   "Where are you based?",
-                  textStyle: textStyle16.copyWith(
-                      color: AppColors.blackColor, fontWeight: FontWeight.w600),
+                  textStyle:    textStyle18.copyWith(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w600,
+                              color:AppColors.textcolor
+                            )
                 ),
                 Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -188,7 +188,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
               text: 'Trabella',
               style: TextStyle(
                 fontSize: 18.sp,
-                color: AppColors.greycolor,
+                color: AppColors.textcolor,
                 fontStyle: FontStyle.italic,
                fontWeight: FontWeight.w600,
                              
@@ -201,7 +201,7 @@ class _FortyWaitinglistSCreenState extends State<FortyWaitinglistSCreen> {
                     fontSize: 18.sp,
                     fontStyle: FontStyle.normal,
                      fontWeight: FontWeight.w600,
-                              color:AppColors.greycolor
+                              color:AppColors.textcolor
                   ),
                 ),
               ],
